@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaPhone } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaXTwitter } from "react-icons/fa6";
 import Drawer from "../ui/Drawer";
@@ -46,6 +46,15 @@ const NavBar = () => {
                 rel="noopener noreferrer"
               >
                 <FaFacebookF className="w-4 h-4 hover:text-[#f4d35e] transition-colors duration-200" />
+              </a>
+            </li>
+            <li className="cursor-pointer">
+              <a
+                href="https://www.instagram.com/lankatravelrides/profilecard/#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram className="w-4 h-4 hover:text-[#f4d35e] transition-colors duration-200" />
               </a>
             </li>
             <li className="cursor-pointer">

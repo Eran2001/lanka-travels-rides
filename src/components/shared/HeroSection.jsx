@@ -92,7 +92,7 @@ const HeroSection = () => {
                 Affordable Pricing
               </div>
               <div className="max-lg:mb-2 max-sm:col-span-2 sm:col-span-1">
-                Easy Online Booking
+                Immediate replacement
               </div>
               <div className="max-lg:mb-2 max-sm:col-span-2 sm:col-span-1">
                 Comprehensive Insurance
@@ -167,13 +167,14 @@ const HeroSection = () => {
           <div className="md:w-1/2">
             <h2 className="text-2xl font-semibold mb-4">Why Choose Us</h2>
             <h3 className="text-4xl font-bold mb-6 max-lg:mb-2 max-lg:text-[30px]">
-              More than 105+ luxury collection cars
+              More than 40 years of experience
             </h3>
             <p className="text-gray-600 mb-8 max-lg:mb-2">
-              Lorem ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a gallery of
-              type and scrambled it to make a type specimen book.
+              24 hours of service, Comprehensive insurance, Immediate
+              replacement upon breakdown, New modern types of vehicles with Ac,
+              Reliable, Trustworthy and friendly service provide by us, free
+              baby seats, Maps, guide, more than 40 years of experience,
+              Reasonable prices.
             </p>
             <Button
               text="Rent a Vehicle"
