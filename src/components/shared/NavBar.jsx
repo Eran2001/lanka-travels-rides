@@ -50,7 +50,7 @@ const NavBar = () => {
             </li>
             <li className="cursor-pointer">
               <a
-                href="https://www.instagram.com/lankatravelrides/profilecard/#"
+                href="https://www.instagram.com/lankatravelrides?igsh=aDlobXhwdjg5aW1t"
                 target="_blank"
                 rel="noopener noreferrer"
               >
