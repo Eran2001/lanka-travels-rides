@@ -166,11 +166,11 @@ const Services = () => {
               />
             </svg>
             <h3 className="mt-12 text-xl font-bold text-gray-900 font-pj">
-              Easy Booking
+              Wide Vehicle Selection
             </h3>
             <p className="mt-5 text-base text-gray-600 font-pj">
-              Rent a car in just a few clicks. Our intuitive booking system
-              ensures a seamless experience.
+              From compact cars to spacious SUVs, choose the perfect vehicle
+              that suits your trip and preferences.
             </p>
           </div>
 
@@ -205,26 +205,27 @@ const Services = () => {
           {/* 5 */}
           <div className="md:p-8 lg:p-14 md:border-l md:border-[#5c3d2e] md:border-t">
             <svg
+              xmlns="http://www.w3.org/2000/svg"
               className="mx-auto"
-              width="46"
+              width="42"
               height="42"
-              viewBox="0 0 46 42"
+              viewBox="0 0 24 24"
               fill="none"
+              stroke="#161616"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              {/* SVG path remains unchanged */}
-              <path
-                d="M30.5 18.5..."
-                fill="#D4D4D8"
-                stroke="#161616"
-                strokeWidth="2"
-              />
-              <path d="M41 41H5..." stroke="#161616" strokeWidth="2" />
+              <path d="M3 13l1.5-4.5h15L21 13" />
+              <path d="M5 17V13h14v4" />
+              <circle cx="7.5" cy="17.5" r="1.5" />
+              <circle cx="16.5" cy="17.5" r="1.5" />
             </svg>
             <h3 className="mt-12 text-xl font-bold text-gray-900 font-pj">
-              Top-Notch Vehicles
+              Top‑Notch Vehicles
             </h3>
             <p className="mt-5 text-base text-gray-600 font-pj">
-              Enjoy well-maintained, modern cars for a smooth and safe ride
+              Enjoy well‑maintained, modern cars for a smooth and safe ride
               every time.
             </p>
           </div>
@@ -232,27 +233,27 @@ const Services = () => {
           {/* 6 */}
           <div className="md:p-8 lg:p-14 md:border-l md:border-[#5c3d2e] md:border-t">
             <svg
+              xmlns="http://www.w3.org/2000/svg"
               className="mx-auto"
-              width="44"
-              height="44"
-              viewBox="0 0 44 44"
+              width="42"
+              height="42"
+              viewBox="0 0 24 24"
               fill="none"
+              stroke="#161616"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              {/* SVG path remains unchanged */}
-              <path d="M25 7C..." stroke="#161616" strokeWidth="2" />
-              <path
-                d="M19 1C..."
-                fill="#D4D4D8"
-                stroke="#161616"
-                strokeWidth="2"
-              />
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+              <path d="M16 8l2 2l4-4" />
             </svg>
             <h3 className="mt-12 text-xl font-bold text-gray-900 font-pj">
-              Real-Time Availability
+              Real‑Time Availability
             </h3>
             <p className="mt-5 text-base text-gray-600 font-pj">
-              Check car availability in real-time and plan your travel without
-              delays or guesswork.
+              Our team ensures vehicle availability is always up to date, so you
+              get the car you need when you need it.
             </p>
           </div>
         </div>

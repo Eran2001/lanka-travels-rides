@@ -19,10 +19,10 @@ const OurTeam = () => {
               alt="Team member"
             />
             <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">
-              Jerome Bell
+              M.M Larif
             </p>
             <p className="mt-2 text-base font-normal text-gray-600 font-pj">
-              Founder & CEO
+              Image proprietor
             </p>
           </div>
 
@@ -34,10 +34,10 @@ const OurTeam = () => {
               alt="Team member"
             />
             <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">
-              Angela Taylor
+              Nafla Larif
             </p>
             <p className="mt-2 text-base font-normal text-gray-600 font-pj">
-              Operations Manager
+              Account Section
             </p>
           </div>
 
@@ -49,10 +49,10 @@ const OurTeam = () => {
               alt="Team member"
             />
             <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">
-              Michael Lee
+              Lafri Larif
             </p>
             <p className="mt-2 text-base font-normal text-gray-600 font-pj">
-              Fleet Supervisor
+              Rental money exchange
             </p>
           </div>
 
@@ -64,10 +64,10 @@ const OurTeam = () => {
               alt="Team member"
             />
             <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">
-              Emily Davis
+              Luraif Larif
             </p>
             <p className="mt-2 text-base font-normal text-gray-600 font-pj">
-              Customer Experience Lead
+              Hiring & Tourism
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ const OurTeam = () => {
           </svg>
         </div>
 
-        <div className="max-w-3xl mx-auto mt-12 space-y-8 sm:space-y-0 sm:flex sm:items-center sm:justify-center sm:mt-16 sm:gap-x-16">
+        {/* <div className="max-w-3xl mx-auto mt-12 space-y-8 sm:space-y-0 sm:flex sm:items-center sm:justify-center sm:mt-16 sm:gap-x-16">
           <div>
             <img
               className="w-auto mx-auto h-11"
@@ -116,7 +116,7 @@ const OurTeam = () => {
               alt="Partner 3"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

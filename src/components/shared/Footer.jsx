@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
+        <div className="grid grid-cols-4 max-lg:grid-cols-5 max-md:grid-cols-4 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
             <Link to="/">
               <p className="text-[#5c3d2e] font-bold text-xl">Drive Lanka</p>
@@ -155,7 +155,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
+          {/* <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
             <p className="text-sm font-semibold tracking-widest text-[#f9f5e3] uppercase">
               Subscribe to newsletter
             </p>
@@ -173,7 +173,7 @@ export default function Footer() {
                 className="inline-flex items-center justify-center ml-1 px-6 py-4 mt-6 font-semibold ring-1 ring-offset-1 ring-[#5c3d2e] text-[#5c3d2e]"
               />
             </form>
-          </div>
+          </div> */}
         </div>
 
         <hr className="mt-16 mb-10 border-[#5c3d2e]" />

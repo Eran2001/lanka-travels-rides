@@ -18,7 +18,7 @@ const OurProgress = () => {
           <div>
             <h3 className="font-bold text-7xl">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#006D5B] to-[#6ca0dc]">
-                6+
+                40+
               </span>
             </h3>
             <p className="mt-4 text-xl font-medium text-gray-900">
@@ -32,7 +32,7 @@ const OurProgress = () => {
           <div>
             <h3 className="font-bold text-7xl">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#006D5B] to-[#6ca0dc]">
-                4800+
+                1000+
               </span>
             </h3>
             <p className="mt-4 text-xl font-medium text-gray-900">
@@ -44,7 +44,7 @@ const OurProgress = () => {
           <div>
             <h3 className="font-bold text-7xl">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#006D5B] to-[#6ca0dc]">
-                35+
+                20+
               </span>
             </h3>
             <p className="mt-4 text-xl font-medium text-gray-900">
