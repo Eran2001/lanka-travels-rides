@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 const RentWithDriver = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    document.title = "Drive Lanka | Rent A Driver";
+    document.title = "Lanka Travels Rides | Rent A Driver";
   }, []);
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-16 mt-27">

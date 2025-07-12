@@ -10,7 +10,7 @@ const RentVehicles = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Drive Lanka | Rent Vehicles";
+    document.title = "Lanka Travels Rides | Rent Vehicles";
   }, []);
 
   const vehicles = [

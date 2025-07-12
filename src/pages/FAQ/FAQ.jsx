@@ -9,7 +9,7 @@ const FAQs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Drive Lanka | FAQs";
+    document.title = "Lanka Travels Rides | FAQs";
   }, []);
 
   const faqs = [

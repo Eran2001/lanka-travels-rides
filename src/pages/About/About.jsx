@@ -7,7 +7,7 @@ const About = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Drive Lanka | About Us";
+    document.title = "Lanka Travels Rides | About Us";
   }, []);
 
   return (

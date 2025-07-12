@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 const SelfDrive = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    document.title = "Drive Lanka | Self Drive";
+    document.title = "Lanka Travels Rides | Self Drive";
   }, []);
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-16 mt-27">

@@ -36,7 +36,7 @@ export default function Clients() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Drive Lanka | Clients";
+    document.title = "Lanka Travels Rides | Clients";
     const timeout = setTimeout(() => {
       setIsLoading(false);
     }, 200);

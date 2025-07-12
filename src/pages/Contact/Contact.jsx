@@ -38,7 +38,7 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    document.title = "Drive Lanka | Contact Us";
+    document.title = "Lanka Travels Rides | Contact Us";
     const timeout = setTimeout(() => {
       setIsLoading(false);
     }, 200);

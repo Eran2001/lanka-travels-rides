@@ -12,7 +12,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Drive Lanka | Home";
+    document.title = "Lanka Travels Rides | Home";
   }, [isLoading]);
 
   useEffect(() => {

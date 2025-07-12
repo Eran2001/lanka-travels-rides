@@ -9,7 +9,7 @@ const OurFleet = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Drive Lanka | Our Fleet";
+    document.title = "Lanka Travels Rides | Our Fleet";
     const timeout = setTimeout(() => {
       setIsLoading(false);
     }, 500);

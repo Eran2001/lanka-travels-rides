@@ -8,7 +8,7 @@ const Payments = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Drive Lanka | Payments";
+    document.title = "Lanka Travels Rides | Payments";
     const timeout = setTimeout(() => {
       setIsLoading(false);
     }, 200);

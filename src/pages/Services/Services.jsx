@@ -7,7 +7,7 @@ const Services = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    document.title = "Drive Lanka | Services";
+    document.title = "Lanka Travels Rides | Services";
     const timeout = setTimeout(() => {
       setIsLoading(false);
     }, 500);
