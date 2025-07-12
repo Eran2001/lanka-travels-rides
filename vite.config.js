@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    host: "devlop.tourism-sri-lanka.dev-tour.lk",
+    host: "devlop.lanka-travels-rides.dev-rides.lk",
     port: 5173,
     https: false,
   },
