@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCar } from "react-icons/fa";
+import Toyota from "../../assets/images/Toyota_Canada_Inc.-Logo.wine.svg";
+import BMW from "../../assets/images/BMW-Logo.wine.svg";
+import Honda from "../../assets/images/Honda-Logo.wine.svg";
+import Suzuki from "../../assets/images/Suzuki-Logo.wine.svg";
 
 import Button from "@/components/ui/Button";
 
@@ -106,47 +110,16 @@ const HeroSection = () => {
       </div>
 
       {/* Trusted Brands Section */}
-      <div className="bg-white py-16">
+      <div className="bg-white py-12">
         <div className="container mx-auto px-4">
           <h3 className="text-center text-xl text-[#5c3d2e] mb-16">
             Featuring Top Global Car Brands Known for Safety and Reliability
           </h3>
-          <div className="grid grid-cols-3 md:grid-cols-7 max-md:gap-16 gap-8 items-center justify-items-center opacity-60">
-            <img
-              src="https://p1.hiclipart.com/preview/74/87/742/luxury-mercedesbenz-car-mercedesstern-mercedesbenz-sprinter-logo-mercedesbenz-sclass-vehicle-png-clipart.jpg"
-              alt="Toyota"
-              className="h-15"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg"
-              alt="BMW"
-              className="h-15"
-            />
-            <img
-              src="https://1000logos.net/wp-content/uploads/2021/03/Bentley-logo.png"
-              alt="Mercedes-Benz"
-              className="h-15"
-            />
-            <img
-              src="https://images.seeklogo.com/logo-png/19/2/mercedes-benz-logo-png_seeklogo-190348.png"
-              alt="Audi"
-              className="h-15"
-            />
-            <img
-              src="https://fabrikbrands.com/wp-content/uploads/Famous-luxury-car-logos-17-1200x750.png"
-              alt="Honda"
-              className="h-15"
-            />
-            <img
-              src="https://icon2.cleanpng.com/lnd/20241121/bj/96a913c68a8055c91e7626887336cc.webp"
-              alt="Ford"
-              className="h-15"
-            />
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3_4xRHQcnM4mRQ5Pj1GCnDBt3OcFGd7yu5A&s"
-              alt="Nissan"
-              className="h-15"
-            />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-60">
+            <img src={Toyota} alt="Toyota" className="h-24" />
+            <img src={BMW} alt="BMW" className="h-24" />
+            <img src={Honda} alt="Honda" className="h-24" />
+            <img src={Suzuki} alt="Suzuki" className="h-24" />
           </div>
         </div>
       </div>
