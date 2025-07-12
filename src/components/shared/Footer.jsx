@@ -180,7 +180,7 @@ export default function Footer() {
 
         <div className="flex justify-around items-center max-sm:flex-col max-sm:w-full max-sm:gap-4 sm:gap-14 md:gap-32 lg:gap-54 xl:gap-158 pt-8">
           <p className="max-sm:text-lg max-sm:text-center">
-            © Copyright 2021, All Rights Reserved.
+            © Copyright {new Date().getFullYear()}, All Rights Reserved.
           </p>
           <ul className="flex justify-center max-sm:justify-around max-sm:mt-10 max-sm:w-[300px] items-center sm:gap-4 gap-8">
             <li>
