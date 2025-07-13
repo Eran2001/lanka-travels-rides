@@ -36,7 +36,7 @@ const NavBar = () => {
               </span>
             </li>
             <li className="flex items-center space-x-2">
-              <IoMail className="w-4 h-4" />
+              <IoMail className="w-4 h-4 max-sm:hidden" />
               <span className="text-sm max-sm:hidden">
                 Lankatravelrides@gmail.com
               </span>
@@ -57,11 +57,6 @@ const NavBar = () => {
                 rel="noopener noreferrer"
               >
                 <FaInstagram className="w-4 h-4 hover:text-[#f4d35e] transition-colors duration-200" />
-              </a>
-            </li>
-            <li className="cursor-pointer">
-              <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-                <FaXTwitter className="w-4 h-4 hover:text-[#f4d35e] transition-colors duration-200" />
               </a>
             </li>
           </ul>
