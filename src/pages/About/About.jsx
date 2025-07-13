@@ -1,14 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import Button from "@/components/ui/Button";
+import Loading from "@/components/ui/Loading";
+
 import OurTeam from "../Home/OurTeam";
 
 const About = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     document.title = "Lanka Travels Rides | About Us";
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+
+    return () => clearTimeout(timeout);
   }, []);
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-16 mt-27">

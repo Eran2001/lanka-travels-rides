@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
+import Loading from "@/components/ui/Loading";
 
 const RentVehicles = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Lanka Travels Rides | Rent Vehicles";
   }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) return <Loading />;
 
   const vehicles = [
     {

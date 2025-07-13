@@ -146,7 +146,7 @@ export default function Blogs() {
 
   return (
     <>
-      <section className="py-12 bg-white sm:py-16 lg:py-20 mt-27">
+      <section className="py-16 bg-white sm:py-20 lg:py-24 mt-27">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           {/* <div className="max-w-md mx-auto text-center">
             <h2 className="text-3xl font-bold text-[#5c3d2e] sm:text-4xl ">

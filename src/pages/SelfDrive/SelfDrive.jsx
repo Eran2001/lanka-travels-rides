@@ -1,13 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Button from "@/components/ui/Button";
+import Loading from "@/components/ui/Loading";
 
 const SelfDrive = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     document.title = "Lanka Travels Rides | Self Drive";
   }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) return <Loading />;
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-16 mt-27">
       <div className="container mx-auto px-4">

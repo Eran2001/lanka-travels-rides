@@ -2,15 +2,27 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Button from "@/components/ui/Button";
+import Loading from "@/components/ui/Loading";
 
 const FAQs = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Lanka Travels Rides | FAQs";
   }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) return <Loading />;
 
   const faqs = [
     {
