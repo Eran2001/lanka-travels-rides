@@ -29,7 +29,7 @@ const NavBar = () => {
       >
         <div>
           <ul className="flex justify-center items-center gap-4">
-            <li className="flex items-center space-x-2 max-sm:hidden">
+            <li className="flex items-center space-x-2 ">
               <FaPhone className="w-4 h-4" />
               <span className="text-sm">
                 Contact: +94 77 790 0734 / +94 77 790 0720
@@ -37,7 +37,9 @@ const NavBar = () => {
             </li>
             <li className="flex items-center space-x-2">
               <IoMail className="w-4 h-4" />
-              <span className="text-sm">Lankatravelrides@gmail.com</span>
+              <span className="text-sm max-sm:hidden">
+                Lankatravelrides@gmail.com
+              </span>
             </li>
             <li className="cursor-pointer">
               <a
