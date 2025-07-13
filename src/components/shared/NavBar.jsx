@@ -32,7 +32,7 @@ const NavBar = () => {
             <li className="flex items-center space-x-2 max-sm:hidden">
               <FaPhone className="w-4 h-4" />
               <span className="text-sm">
-                Contact our support team: +94 (77) 790 0734 / +94 (77) 790 0720
+                Contact: +94 77 790 0734 / +94 77 790 0720
               </span>
             </li>
             <li className="flex items-center space-x-2">
