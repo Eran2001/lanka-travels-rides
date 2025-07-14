@@ -15,6 +15,7 @@
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.1.10",
+    "animejs": "^4.0.2",
     "axios": "^1.10.0",
     "flowbite": "^3.1.2",
     "framer-motion": "^12.19.2",

@@ -1,10 +1,91 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
 const Services = () => {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const serviceRefs = useRef([]);
+  const svgRefs = useRef([]);
+
+  // Initial animations
+  useEffect(() => {
+    // Section background fade-in
+    if (sectionRef.current) {
+      anime({
+        targets: sectionRef.current,
+        backgroundColor: ["rgba(249, 245, 227, 0)", "#f9f5e3"],
+        duration: 1000,
+        easing: "easeOutQuad",
+      });
+    }
+
+    // Header animation (title and subtitle)
+    if (headerRef.current) {
+      anime({
+        targets: headerRef.current.children,
+        translateY: [60, 0],
+        scale: [0.8, 1],
+        opacity: [0, 1],
+        delay: anime.stagger(150, { start: 200 }),
+        duration: 800,
+        easing: "easeOutElastic(1, 0.7)",
+      });
+    }
+
+    // Service cards animation (staggered)
+    if (serviceRefs.current.length > 0) {
+      anime({
+        targets: serviceRefs.current,
+        translateY: [60, 0],
+        scale: [0.85, 1],
+        opacity: [0, 1],
+        delay: anime.stagger(120, { start: 600 }),
+        duration: 800,
+        easing: "easeOutElastic(1, 0.8)",
+      });
+    }
+
+    // SVG animations (staggered scale and rotate)
+    if (svgRefs.current.length > 0) {
+      anime({
+        targets: svgRefs.current,
+        scale: [0.7, 1],
+        rotate: ["-10deg", "0deg"],
+        opacity: [0, 1],
+        delay: anime.stagger(120, { start: 800 }),
+        duration: 700,
+        easing: "easeOutElastic(1, 0.9)",
+      });
+    }
+  }, []);
+
+  // Hover animation for service cards
+  const handleHover = (el) => {
+    anime({
+      targets: el,
+      scale: [1, 1.05],
+      translateY: [0, -10],
+      backgroundColor: ["#f9f5e3", "#f4d35e"],
+      duration: 300,
+      easing: "easeOutQuad",
+    });
+  };
+
+  const handleHoverLeave = (el) => {
+    anime({
+      targets: el,
+      scale: [1.05, 1],
+      translateY: [-10, 0],
+      backgroundColor: ["#f4d35e", "#f9f5e3"],
+      duration: 300,
+      easing: "easeOutQuad",
+    });
+  };
+
   return (
-    <section className="py-12 bg-[#f9f5e3] sm:py-16 lg:py-20">
+    <section ref={sectionRef} className="py-12 bg-[#f9f5e3] sm:py-16 lg:py-20">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="text-center">
+        <div ref={headerRef} className="text-center">
           <h2 className="text-3xl font-bold leading-tight text-[#5c3d2e] sm:text-4xl xl:text-5xl font-pj">
             Reliable Car Rental Services for Every Journey
           </h2>
@@ -14,16 +95,21 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 mt-10 text-center sm:mt-16 sm:grid-cols-2 sm:gap-x-12 gap-y-12 md:grid-cols-3 md:gap-0 xl:mt-24">
-          {/* 1 */}
-          <div className="md:p-8 lg:p-14">
-            {/* Icon */}
+        <div className="grid grid-cols-1 mt-10 text-center sm:mt-16 sm:grid-cols-2 sm:gap-x-12 gap-y-12 md:grid-cols-3 md:gap-8 xl:mt-24">
+          {/* Service 1: 24/7 Customer Support */}
+          <div
+            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            ref={(el) => (serviceRefs.current[0] = el)}
+            onMouseEnter={(e) => handleHover(e.currentTarget)}
+            onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+          >
             <svg
               className="mx-auto"
               width="46"
               height="46"
               viewBox="0 0 46 46"
               fill="none"
+              ref={(el) => (svgRefs.current[0] = el)}
             >
               <path
                 d="M45 29V23C45 10.85 35.15 1 23 1C10.85 1 1 10.85 1 23V29"
@@ -61,14 +147,20 @@ const Services = () => {
             </p>
           </div>
 
-          {/* 2 */}
-          <div className="md:p-8 lg:p-14 md:border-l md:border-[#5c3d2e]">
+          {/* Service 2: Affordable Pricing */}
+          <div
+            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            ref={(el) => (serviceRefs.current[1] = el)}
+            onMouseEnter={(e) => handleHover(e.currentTarget)}
+            onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+          >
             <svg
               className="mx-auto"
               width="46"
               height="46"
               viewBox="0 0 46 46"
               fill="none"
+              ref={(el) => (svgRefs.current[1] = el)}
             >
               <path
                 d="M27 27H19V45H27V27Z"
@@ -122,14 +214,20 @@ const Services = () => {
             </p>
           </div>
 
-          {/* 3 */}
-          <div className="md:p-8 lg:p-14 md:border-l md:border-[#5c3d2e]">
+          {/* Service 3: Wide Vehicle Selection */}
+          <div
+            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            ref={(el) => (serviceRefs.current[2] = el)}
+            onMouseEnter={(e) => handleHover(e.currentTarget)}
+            onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+          >
             <svg
               className="mx-auto"
               width="42"
               height="42"
               viewBox="0 0 42 42"
               fill="none"
+              ref={(el) => (svgRefs.current[2] = el)}
             >
               <path
                 d="M41 1H1V41H41V1Z"
@@ -174,16 +272,21 @@ const Services = () => {
             </p>
           </div>
 
-          {/* 4 */}
-          <div className="md:p-8 lg:p-14 md:border-t md:border-[#5c3d2e]">
+          {/* Service 4: Flexible Rentals */}
+          <div
+            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            ref={(el) => (serviceRefs.current[3] = el)}
+            onMouseEnter={(e) => handleHover(e.currentTarget)}
+            onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+          >
             <svg
               className="mx-auto"
               width="42"
               height="42"
               viewBox="0 0 42 42"
               fill="none"
+              ref={(el) => (svgRefs.current[3] = el)}
             >
-              {/* SVG path remains unchanged */}
               <path d="M9 9H33" stroke="#161616" strokeWidth="2" />
               <path d="M9 17H33" stroke="#161616" strokeWidth="2" />
               <path d="M1 25H13V31H29V25H41" stroke="#161616" strokeWidth="2" />
@@ -202,8 +305,13 @@ const Services = () => {
             </p>
           </div>
 
-          {/* 5 */}
-          <div className="md:p-8 lg:p-14 md:border-l md:border-[#5c3d2e] md:border-t">
+          {/* Service 5: Top-Notch Vehicles */}
+          <div
+            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            ref={(el) => (serviceRefs.current[4] = el)}
+            onMouseEnter={(e) => handleHover(e.currentTarget)}
+            onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mx-auto"
@@ -215,6 +323,7 @@ const Services = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              ref={(el) => (svgRefs.current[4] = el)}
             >
               <path d="M3 13l1.5-4.5h15L21 13" />
               <path d="M5 17V13h14v4" />
@@ -222,16 +331,21 @@ const Services = () => {
               <circle cx="16.5" cy="17.5" r="1.5" />
             </svg>
             <h3 className="mt-12 text-xl font-bold text-gray-900 font-pj">
-              Top‑Notch Vehicles
+              Top-Notch Vehicles
             </h3>
             <p className="mt-5 text-base text-gray-600 font-pj">
-              Enjoy well‑maintained, modern cars for a smooth and safe ride
+              Enjoy well-maintained, modern cars for a smooth and safe ride
               every time.
             </p>
           </div>
 
-          {/* 6 */}
-          <div className="md:p-8 lg:p-14 md:border-l md:border-[#5c3d2e] md:border-t">
+          {/* Service 6: Real-Time Availability */}
+          <div
+            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            ref={(el) => (serviceRefs.current[5] = el)}
+            onMouseEnter={(e) => handleHover(e.currentTarget)}
+            onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mx-auto"
@@ -243,13 +357,14 @@ const Services = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              ref={(el) => (svgRefs.current[5] = el)}
             >
               <circle cx="12" cy="12" r="10" />
               <path d="M12 6v6l4 2" />
               <path d="M16 8l2 2l4-4" />
             </svg>
             <h3 className="mt-12 text-xl font-bold text-gray-900 font-pj">
-              Real‑Time Availability
+              Real-Time Availability
             </h3>
             <p className="mt-5 text-base text-gray-600 font-pj">
               Our team ensures vehicle availability is always up to date, so you
