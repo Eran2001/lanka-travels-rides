@@ -1,14 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../../components/ui/Button";
 import { useNavigate } from "react-router-dom";
-import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
+// import anime from "animejs";
 
 const CustomerFeedback = () => {
   const navigate = useNavigate();
-  const sectionRef = useRef(null);
-  const headerRef = useRef(null);
-  const buttonRef = useRef(null);
-  const cardRefs = useRef([]);
+  const carouselRef = useRef(null);
+  const isPaused = useRef(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const feedbacks = [
     {
@@ -35,246 +34,196 @@ const CustomerFeedback = () => {
       avatar:
         "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png",
     },
+    // Add more feedbacks (total 10 or more)
     {
       quote:
-        "Amazing customer service and top-notch vehicles. Made my trip to Sri Lanka unforgettable!",
-      name: "Michael Brown",
-      role: "Entrepreneur",
-      avatar:
-        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png",
-    },
-    {
-      quote:
-        "The team went above and beyond to accommodate my needs. Affordable and reliable!",
-      name: "Sarah Davis",
-      role: "Marketing Manager",
-      avatar:
-        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png",
-    },
-    {
-      quote:
-        "Rented a luxury car for a special occasion. The process was seamless and the car was perfect!",
-      name: "David Lee",
-      role: "Event Planner",
-      avatar:
-        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png",
-    },
-    {
-      quote:
-        "Friendly staff and a great selection of cars. Will definitely rent again on my next visit!",
-      name: "Emma White",
-      role: "Tourist",
-      avatar:
-        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png",
-    },
-    {
-      quote:
-        "The car was in pristine condition, and the pricing was transparent. Highly satisfied!",
-      name: "James Taylor",
-      role: "Software Developer",
-      avatar:
-        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png",
-    },
-    {
-      quote:
-        "Perfect for my business trip. The support team was available 24/7 to assist me!",
-      name: "Olivia Martin",
-      role: "Consultant",
-      avatar:
-        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png",
-    },
-    {
-      quote:
-        "Great value for money and a smooth rental process. Highly recommend to everyone!",
-      name: "William Clark",
+        "Amazing car options and smooth booking. The staff was really helpful too!",
+      name: "Kevin Patel",
       role: "Photographer",
-      avatar:
-        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+    },
+    {
+      quote:
+        "I’ll definitely rent from here again. Reliable and clean vehicles.",
+      name: "Amara Singh",
+      role: "Travel Agent",
+      avatar: "https://randomuser.me/api/portraits/women/5.jpg",
+    },
+    {
+      quote: "Really good support and they even gave me a free upgrade!",
+      name: "Liam Mendes",
+      role: "Youtuber",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
+    },
+    {
+      quote: "Prices were fair and the service was top-notch!",
+      name: "Sophia Rodrigo",
+      role: "Influencer",
+      avatar: "https://randomuser.me/api/portraits/women/6.jpg",
+    },
+    {
+      quote:
+        "My go-to rental platform in Sri Lanka now. Hassle-free and super smooth!",
+      name: "Danuka Perera",
+      role: "Marketing Executive",
+      avatar: "https://randomuser.me/api/portraits/men/7.jpg",
+    },
+    {
+      quote: "Appreciated the on-time delivery and great support team!",
+      name: "Isuri Fernando",
+      role: "Interior Designer",
+      avatar: "https://randomuser.me/api/portraits/women/7.jpg",
+    },
+    {
+      quote: "Love the customer-first attitude. I felt valued as a client!",
+      name: "Ravindu Madushanka",
+      role: "Finance Analyst",
+      avatar: "https://randomuser.me/api/portraits/men/8.jpg",
     },
   ];
 
-  // Initial animations
+  const extendedFeedbacks = [...feedbacks, ...feedbacks];
+
   useEffect(() => {
-    // Section background fade-in
-    if (sectionRef.current) {
-      anime({
-        targets: sectionRef.current,
-        backgroundColor: ["rgba(249, 245, 227, 0)", "#f9f5e3"],
-        duration: 1000,
-        easing: "easeOutQuad",
-      });
-    }
-
-    // Header animation
-    if (headerRef.current) {
-      anime({
-        targets: headerRef.current.children,
-        translateY: [60, 0],
-        scale: [0.8, 1],
-        opacity: [0, 1],
-        delay: anime.stagger(150, { start: 200 }),
-        duration: 800,
-        easing: "easeOutElastic(1, 0.7)",
-      });
-    }
-
-    // Button animation
-    if (buttonRef.current) {
-      anime({
-        targets: buttonRef.current,
-        translateY: [30, 0],
-        scale: [0.9, 1],
-        opacity: [0, 1],
-        duration: 700,
-        easing: "easeOutElastic(1, 0.9)",
-        delay: 500,
-      });
-    }
-
-    // Cards initial animation
-    if (cardRefs.current.length > 0) {
-      anime({
-        targets: cardRefs.current,
-        translateY: [60, 0],
-        scale: [0.85, 1],
-        opacity: [0, 1],
-        delay: anime.stagger(120, { start: 700 }),
-        duration: 800,
-        easing: "easeOutElastic(1, 0.8)",
-      });
-    }
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Hover animation for cards
-  const handleHover = (el) => {
-    anime({
-      targets: el,
-      scale: [1, 1.05],
-      translateY: [0, -10],
-      backgroundColor: ["#ffffff", "#f4d35e"],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
+  // Auto-scroll only on desktop
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!isMobile && carousel) {
+      const cardWidth = carousel.querySelector(".carousel-card").offsetWidth;
+      const gap = 16;
+      const totalScrollWidth = (cardWidth + gap) * feedbacks.length;
 
-  const handleHoverLeave = (el) => {
-    anime({
-      targets: el,
-      scale: [1.05, 1],
-      translateY: [-10, 0],
-      backgroundColor: ["#f4d35e", "#ffffff"],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
+      const scrollSpeed = 1.2;
+      carousel.scrollLeft = 0;
+
+      const interval = setInterval(() => {
+        if (!isPaused.current) {
+          carousel.scrollLeft += scrollSpeed;
+          if (carousel.scrollLeft >= totalScrollWidth) {
+            carousel.scrollLeft = 0;
+          }
+        }
+      }, 16);
+
+      carousel.addEventListener("mouseenter", () => (isPaused.current = true));
+      carousel.addEventListener("mouseleave", () => (isPaused.current = false));
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [isMobile]);
 
   return (
-    <section ref={sectionRef} className="py-12 bg-[#f9f5e3] sm:py-16 lg:py-20">
-      <style>
-        {`
-          @keyframes slide {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
+    <section className="py-12 bg-[#f9f5e3] sm:py-16 lg:py-20">
+      <style>{`
+        .carousel-container {
+          overflow: hidden;
+          position: relative;
+          width: 100%;
+          padding: 2rem;
+          -webkit-overflow-scrolling: touch;
+        }
+        .carousel {
+          display: flex;
+          gap: 2rem;
+          animation: slideinfinite 80s linear infinite;
+        }
+        @keyframes slideinfinite {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .carousel-card {
+          flex-shrink: 0;
+          width: 300px;
+          scroll-snap-align: center;
+        }
+        @media (max-width: 639px) {
           .carousel {
-            display: flex;
-            animation: slide 30s linear infinite;
+            flex-direction: column;
+            gap: 1.5rem;
+            animation: none;
           }
-          .carousel:hover {
-            animation-play-state: paused;
-          }
-          .carousel-container {
-            overflow-x: hidden;
-            position: relative;
+          .carousel-card {
             width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
           }
-        `}
-      </style>
+        }
+      `}</style>
+
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center">
-          <div ref={headerRef} className="text-center">
-            <p className="text-lg font-medium text-[#5c3d2e] font-pj">
-              More than +1000 customers love our car rental service
-            </p>
-            <h2 className="mt-4 text-3xl font-bold text-[#5c3d2e] sm:text-4xl xl:text-5xl font-pj">
-              Our happy clients say about us
-            </h2>
-          </div>
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="text-lg font-medium text-[#5c3d2e] font-pj">
+            More than +1000 customers love our car rental service
+          </p>
+          <h2 className="mt-4 text-3xl font-bold text-[#5c3d2e] sm:text-4xl xl:text-5xl font-pj">
+            Our happy clients say about us
+          </h2>
+        </div>
 
-          <div className="relative mt-10 md:mt-24">
-            <div className="absolute -inset-x-1 inset-y-16 md:-inset-x-2 md:-inset-y-6">
-              <div
-                className="w-full h-full max-w-5xl mx-auto rounded-3xl opacity-30 blur-lg filter"
-                style={{
-                  background:
-                    "linear-gradient(90deg, #44ff9a -0.55%, #f4d35e 22.86%, #44ff9a 48.36%, #f4d35e 73.33%, #44ff9a 99.34%)",
-                }}
-              ></div>
-            </div>
-
-            <div className="carousel flex flex-row gap-6 md:gap-10">
-              {[...feedbacks, ...feedbacks].map((feedback, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col overflow-hidden shadow-xl rounded-xl w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0"
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  onMouseEnter={(e) => handleHover(e.currentTarget)}
-                  onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-                >
-                  <div className="flex flex-col justify-between flex-1 p-6 bg-white lg:py-8 lg:px-7">
-                    <div className="flex-1">
-                      <div className="flex items-center justify-center">
-                        {[...Array(5)].map((_, i) => (
-                          <svg
-                            key={i}
-                            className="w-5 h-5 text-[#FDB241]"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <blockquote className="flex-1 mt-8">
-                        <p className="text-lg leading-relaxed text-gray-900 font-pj">
-                          {feedback.quote}
-                        </p>
-                      </blockquote>
+        <div className="mt-12">
+          <div className="carousel-container" ref={carouselRef}>
+            <div className="carousel">
+              {(isMobile ? feedbacks.slice(0, 3) : extendedFeedbacks).map(
+                (f, i) => (
+                  <div
+                    key={i}
+                    className="carousel-card bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-[1.02]"
+                  >
+                    <div className="flex items-center justify-center mb-4">
+                      {[...Array(5)].map((_, idx) => (
+                        <svg
+                          key={idx}
+                          className="w-5 h-5 text-[#FDB241]"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
                     </div>
-                    <div className="flex items-center mt-8">
+                    <blockquote>
+                      <p className="text-gray-800 text-base leading-relaxed font-pj">
+                        {f.quote}
+                      </p>
+                    </blockquote>
+                    <div className="flex items-center mt-6">
                       <img
-                        className="flex-shrink-0 object-cover rounded-full w-11 h-11"
-                        src={feedback.avatar}
-                        alt=""
+                        className="w-11 h-11 rounded-full object-cover"
+                        src={f.avatar}
+                        alt={f.name}
                       />
                       <div className="ml-4">
-                        <p className="text-base font-bold text-gray-900 font-pj">
-                          {feedback.name}
+                        <p className="text-sm font-bold text-gray-900 font-pj">
+                          {f.name}
                         </p>
-                        <p className="mt-0.5 text-sm font-pj text-gray-600">
-                          {feedback.role}
+                        <p className="text-xs text-gray-500 font-pj">
+                          {f.role}
                         </p>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
             </div>
           </div>
         </div>
-        <div className="mt-8 text-center md:mt-16">
+
+        <div className="mt-10 text-center">
           <Button
             text="Check all reviews"
             onClick={() => navigate("/clients")}
-            className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-8 bg-[#006D5B]"
-            ref={buttonRef}
-            onMouseEnter={(e) => handleHover(e.currentTarget)}
-            onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+            className="px-8 py-4 max-sm:px-10 max-sm:py-4 bg-[#006D5B]"
           />
         </div>
       </div>

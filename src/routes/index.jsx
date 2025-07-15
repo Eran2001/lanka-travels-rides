@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       { path: "fleet", element: <OurFleet /> },
       { path: "rent-vehicles", element: <RentVehicles /> },
       { path: "faqs", element: <FAQ /> },
-      { path: "with-driver", element: <RentWithDriver /> },
+      { path: "rent-with-driver", element: <RentWithDriver /> },
       { path: "self-drive", element: <SelfDrive /> },
       { path: "special-offers", element: <SpecialOffers /> },
       { path: "terms-and-conditions", element: <Terms /> },

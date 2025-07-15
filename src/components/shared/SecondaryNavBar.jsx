@@ -12,7 +12,6 @@ const SecondaryNavBar = () => {
   const drawerContentRef = useRef(null);
 
   useEffect(() => {
-    // Logo animation (bounce-in)
     anime({
       targets: logoRef.current,
       translateY: [50, 0],
@@ -22,39 +21,54 @@ const SecondaryNavBar = () => {
       easing: "easeOutElastic(1, 0.8)",
     });
 
-    // Desktop nav links animation (staggered bounce-in)
     anime({
       targets: linksRef.current.slice(0, 5),
-      translateX: [50, 0],
-      scale: [0.9, 1],
+      translateY: [50, 0],
+      scale: [0.85, 1],
       opacity: [0, 1],
       delay: anime.stagger(100, { start: 400 }),
+      duration: 800,
+      easing: "easeOutElastic(1, 0.6)",
+    });
+
+    anime({
+      targets: hamburgerRef.current,
+      translateY: [30, 0],
+      scale: [0.9, 1],
+      opacity: [0, 1],
       duration: 600,
-      easing: "easeOutQuad",
+      easing: "easeOutElastic(1, 0.6)",
     });
   }, []);
 
-  // Drawer animation when opened
   useEffect(() => {
-    if (isDrawerOpen) {
+    if (isDrawerOpen && drawerContentRef.current) {
+      anime({
+        targets: drawerContentRef.current,
+        translateX: ["100%", 0],
+        opacity: [0, 1],
+        duration: 500,
+        easing: "easeOutQuad",
+      });
       anime({
         targets: drawerContentRef.current.children,
-        translateY: [50, 0],
-        scale: [0.85, 1],
+        translateY: [40, 0],
         opacity: [0, 1],
-        delay: anime.stagger(120, { start: 200 }),
-        duration: 700,
-        easing: "easeOutElastic(1, 0.9)",
+        delay: anime.stagger(100, { start: 200 }),
+        duration: 600,
+        easing: "easeOutElastic(1, 0.6)",
       });
     }
   }, [isDrawerOpen]);
 
-  // Hover animation for logo, desktop links, and hamburger
   const handleHover = (el) => {
     anime({
       targets: el,
-      scale: [1, 1.15],
-      rotate: ["0deg", "5deg"],
+      scale: [1, 1.05],
+      boxShadow: [
+        "0 0 0 rgba(244, 211, 94, 0)",
+        "0 0 12px rgba(244, 211, 94, 0.6)",
+      ],
       duration: 300,
       easing: "easeOutQuad",
     });
@@ -63,31 +77,11 @@ const SecondaryNavBar = () => {
   const handleHoverLeave = (el) => {
     anime({
       targets: el,
-      scale: [1.15, 1],
-      rotate: ["5deg", "0deg"],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
-
-  // Drawer link hover animation (no rotation)
-  const handleDrawerHover = (el) => {
-    anime({
-      targets: el,
-      scale: [1, 1.1],
-      backgroundColor: ["#f4d35e", "#5c3d2e"],
-      color: ["#5c3d2e", "#f4d35e"],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
-
-  const handleDrawerHoverLeave = (el) => {
-    anime({
-      targets: el,
-      scale: [1.1, 1],
-      backgroundColor: ["#5c3d2e", "#f4d35e"],
-      color: ["#f4d35e", "#5c3d2e"],
+      scale: [1.05, 1],
+      boxShadow: [
+        "0 0 12px rgba(244, 211, 94, 0.6)",
+        "0 0 0 rgba(244, 211, 94, 0)",
+      ],
       duration: 300,
       easing: "easeOutQuad",
     });
@@ -95,81 +89,102 @@ const SecondaryNavBar = () => {
 
   return (
     <>
-      <nav className="w-full fixed z-[10000] top-9 max-xl:top-5 bg-[#f4d35e] flex justify-between items-center px-6 py-6">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `text-[#5c3d2e] font-bold text-xl ${
-              isActive
-                ? ""
-                : " hover:text-[#5c3d2e] transition-all duration-200"
-            }`
+      <style>
+        {`
+          .nav-link::after, .nav-icon::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #f4d35e;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            pointer-events: none;
           }
-          ref={logoRef}
-          onMouseEnter={(e) => handleHover(e.currentTarget)}
-          onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-        >
-          Drive Lanka
-        </NavLink>
+          .nav-link:hover::after, .nav-icon:hover::after {
+            animation: sparkle 0.6s ease-out forwards;
+          }
+          @keyframes sparkle {
+            0% { transform: scale(0); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+          }
+          .nav-link:hover::after {
+            top: 10%;
+            left: 90%;
+          }
+        `}
+      </style>
 
-        {/* Desktop Links */}
-        <ul className="flex max-xl:hidden gap-4">
-          {[
-            "Rent Vehicles",
-            "Rent with Driver",
-            "Self Drive",
-            "FAQs",
-            "Special Offers",
-          ].map((item, index) => (
-            <NavLink
-              key={item}
-              to={`/${item.toLowerCase().replace(" ", "-")}`}
-              className={({ isActive }) =>
-                `px-3 py-2 rounded-md text-sm font-medium text-[#5c3d2e] transition-all duration-200 ${
-                  isActive
-                    ? "bg-[#5c3d2e] text-[#f4d35e]"
-                    : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
-                }`
-              }
-              ref={(el) => (linksRef.current[index] = el)}
-              onMouseEnter={(e) => handleHover(e.currentTarget)}
-              onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-            >
-              {item}
-            </NavLink>
-          ))}
-        </ul>
-
-        {/* Mobile Hamburger */}
-        <div className="xl:hidden">
-          <RxHamburgerMenu
-            ref={hamburgerRef}
-            className="text-[#5c3d2e] w-6 h-6 cursor-pointer"
-            onClick={() => setIsDrawerOpen(true)}
+      <nav className="w-full fixed top-14 xl:top-[36px] z-[9999] bg-[#f4d35e] text-[#5c3d2e] shadow-md">
+        <div className="max-w-screen-xl mx-auto px-4 py-6 flex items-center justify-between">
+          <NavLink
+            to="/"
+            ref={logoRef}
+            className="font-bold text-xl relative"
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-          />
+          >
+            Drive Lanka
+          </NavLink>
+
+          <ul className="hidden xl:flex gap-4 items-center">
+            {[
+              "Rent Vehicles",
+              "Rent with Driver",
+              "Self Drive",
+              "FAQs",
+              "Special Offers",
+            ].map((item, index) => (
+              <NavLink
+                key={item}
+                to={`/${item.toLowerCase().replace(/ /g, "-")}`}
+                className={({ isActive }) =>
+                  `nav-link relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-[#5c3d2e] text-[#f4d35e]"
+                      : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
+                  }`
+                }
+                ref={(el) => (linksRef.current[index] = el)}
+                onMouseEnter={(e) => handleHover(e.currentTarget)}
+                onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+              >
+                {item}
+              </NavLink>
+            ))}
+          </ul>
+
+          <div className="xl:hidden">
+            <RxHamburgerMenu
+              ref={hamburgerRef}
+              className="text-[#5c3d2e] w-6 h-6 cursor-pointer"
+              onClick={() => setIsDrawerOpen(true)}
+              onMouseEnter={(e) => handleHover(e.currentTarget)}
+              onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+            />
+          </div>
         </div>
       </nav>
 
-      {/* Drawer for Mobile */}
       <Drawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
         title="Drive Lanka"
-        width="w-70"
+        width="w-72"
       >
         <div
           ref={drawerContentRef}
-          className="flex flex-col space-y-1 max-lg:space-y-4 text-[#5c3d2e]"
+          className="flex flex-col space-y-3 text-[#5c3d2e]"
         >
           {[
             "Home",
             "Services",
             "Clients",
             "Our Blog",
-            "About Us",
-            "Contact Us",
+            "about",
+            "contact",
             "Rent Vehicles",
             "Rent with Driver",
             "Self Drive",
@@ -181,19 +196,19 @@ const SecondaryNavBar = () => {
               to={
                 item === "Home"
                   ? "/"
-                  : `/${item.toLowerCase().replace(" ", "-")}`
+                  : `/${item.toLowerCase().replace(/ /g, "-")}`
               }
               onClick={() => setIsDrawerOpen(false)}
               className={({ isActive }) =>
-                `px-4 py-4 rounded-md text-base font-medium transition-all duration-200 ${
+                `nav-link px-4 py-3 rounded-md text-base font-medium transition-all duration-200 ${
                   isActive
                     ? "bg-[#5c3d2e] text-[#f4d35e]"
                     : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
                 }`
               }
               ref={(el) => (linksRef.current[index + 5] = el)}
-              onMouseEnter={(e) => handleDrawerHover(e.currentTarget)}
-              onMouseLeave={(e) => handleDrawerHoverLeave(e.currentTarget)}
+              onMouseEnter={(e) => handleHover(e.currentTarget)}
+              onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
             >
               {item}
             </NavLink>

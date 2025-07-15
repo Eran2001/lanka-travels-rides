@@ -23,6 +23,45 @@ const Services = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  useEffect(() => {
+    if (isLoading) return;
+
+    // Animate overview cards on page load: slide up + fade in
+    anime({
+      targets: overviewCardRefs.current,
+      translateY: [100, 0],
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      delay: anime.stagger(150, { start: 200 }),
+      duration: 900,
+      easing: "easeOutBounce",
+    });
+
+    // Animate Why Choose Us items on page load similarly
+    anime({
+      targets: whyChooseUsItemRefs.current,
+      translateY: [100, 0],
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      delay: anime.stagger(150, { start: 300 }),
+      duration: 900,
+      easing: "easeOutBounce",
+    });
+
+    // Animate Call to Action button fade + pop in
+    const ctaBtn = ctaSectionRef.current?.querySelector("button");
+    if (ctaBtn) {
+      anime({
+        targets: ctaBtn,
+        scale: [0.8, 1],
+        opacity: [0, 1],
+        duration: 800,
+        easing: "easeOutElastic(1, .7)",
+        delay: 600,
+      });
+    }
+  }, [isLoading]);
+
   // Scroll-triggered animations
   useEffect(() => {
     const sections = [
@@ -145,11 +184,11 @@ const Services = () => {
   const handleCardHover = (el) => {
     anime({
       targets: el,
-      scale: [1, 1.05],
-      translateY: [0, -12],
+      scale: [1, 1.07],
+      translateY: [0, -15],
       boxShadow: [
-        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-        "0 20px 30px -5px rgba(0, 0, 0, 0.25), 0 8px 12px -3px rgba(0, 0, 0, 0.15)",
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
       ],
       duration: 400,
       easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
@@ -159,11 +198,11 @@ const Services = () => {
   const handleCardHoverLeave = (el) => {
     anime({
       targets: el,
-      scale: [1.05, 1],
-      translateY: [-12, 0],
+      scale: [1.07, 1],
+      translateY: [-15, 0],
       boxShadow: [
-        "0 20px 30px -5px rgba(0, 0, 0, 0.25), 0 8px 12px -3px rgba(0, 0, 0, 0.15)",
-        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
       ],
       duration: 400,
       easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
