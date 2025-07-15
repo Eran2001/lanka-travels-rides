@@ -110,7 +110,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full xl:pt-30 max-xl:pt-14 max-md:pt-36 bg-[#f9f5e3] ">
+    <div className="w-full xl:pt-30 max-xl:pt-14 max-md:pt-36 max-sm:pt-44 bg-[#f9f5e3] ">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 min-h-[70.7vh]">
         {/* Text */}
         <div
@@ -130,7 +130,7 @@ const HeroSection = () => {
           <Button
             text="Rent Now"
             onClick={() => navigate("/rent-vehicles")}
-            className="px-8 py-4 bg-[#006D5B] max-md:py-6 max-md:px-14 text-[#5c3d2e] max-md:text-xl"
+            className="px-8 py-4 bg-[#006D5B] max-md:py-6 max-md:px-14 text-[#5c3d2e] max-md:text-xl max-sm:mt-6"
             ref={buttonRef}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
