@@ -157,10 +157,10 @@ export default function Footer() {
 
   return (
     <section ref={sectionRef} className="py-6 bg-[#f4d35e] sm:pt-10 lg:pt-14">
-      <div className="px-4 mx-auto sm:px-6 lg:px-8 w-5xl">
+      <div className="px-4 mx-auto sm:px-6 lg:px-8 xl:w-5xl max-xl:w-3xl max-md:w-md">
         {/* Title + Button */}
         <div ref={topSectionRef} className="w-full mx-auto text-center mb-10">
-          <h5 className="text-[#5c3d2e] text-5xl max-sm:text-xl">
+          <h5 className="text-[#5c3d2e] text-5xl max-lg:text-3xl">
             Drop us a line or two, we are open for creative minds and
             collaborations!
           </h5>
@@ -175,7 +175,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 max-md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-3 max-md:grid-cols-3 lg:grid-cols-3 gap-10">
           {/* Company Overview */}
           <div ref={(el) => (gridRefs.current[0] = el)}>
             <Link to="/">

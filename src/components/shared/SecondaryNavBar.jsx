@@ -117,8 +117,8 @@ const SecondaryNavBar = () => {
         `}
       </style>
 
-      <nav className="w-full fixed top-14 xl:top-[36px] z-[9999] bg-[#f4d35e] text-[#5c3d2e] shadow-md">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-around">
+      <nav className="w-full fixed top-14 max-xl:top-[28px] xl:top-[36px] z-[9999] bg-[#f4d35e] text-[#5c3d2e] shadow-md">
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-around max-2xl:justify-between">
           <NavLink
             to="/"
             ref={logoRef}

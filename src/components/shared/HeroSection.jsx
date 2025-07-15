@@ -110,16 +110,19 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full pt-30 bg-[#f9f5e3] ">
+    <div className="w-full xl:pt-30 max-xl:pt-14 max-md:pt-36 bg-[#f9f5e3] ">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 min-h-[70.7vh]">
         {/* Text */}
-        <div ref={textRef} className="w-full md:w-3/8 text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl xl:text-6xl text-[#5c3d2e] font-bold mb-6 leading-tight">
+        <div
+          ref={textRef}
+          className="w-full max-xl:w-3/4 xl:w-3/8 max-md:w-7/8 text-center md:text-left"
+        >
+          <h1 className="max-xl:text-5xl xl:text-6xl max-lg:text-3xl max-md:text-6xl text-[#5c3d2e] font-bold mb-6 leading-tight">
             EXCLUSIVE CARS
             <br />
             RENTAL IN SRI LANKA
           </h1>
-          <p className="text-[#5c3d2e] mb-8 text-base md:text-lg max-w-lg mx-auto md:mx-0">
+          <p className="text-[#5c3d2e] mb-8 text-base md:text-md xl:text-lg max-w-lg mx-auto md:mx-0">
             Choose from a wide range of high-quality, well-maintained vehicles
             ready for rent. Whether you need a car for business, travel, or a
             special occasion — we've got the perfect ride for you.
@@ -127,7 +130,7 @@ const HeroSection = () => {
           <Button
             text="Rent Now"
             onClick={() => navigate("/rent-vehicles")}
-            className="px-8 py-4 bg-[#006D5B] text-white"
+            className="px-8 py-4 bg-[#006D5B] text-white max-md:py-6 max-md:px-10"
             ref={buttonRef}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
@@ -135,7 +138,7 @@ const HeroSection = () => {
         </div>
 
         {/* Car Image with Fade Transition */}
-        <div className="w-full md:w-5/8">
+        <div className="w-full max-xl:w-5/8 xl:w-5/8 max-md:w-7/8 max-md:hidden">
           <div className="relative w-full h-[48.5vh] flex items-center justify-center overflow-hidden">
             {carImages.map((img, idx) => (
               <img
@@ -155,7 +158,7 @@ const HeroSection = () => {
       </div>
 
       {/* Rental Times Bar */}
-      <div className="bg-[#006D5B] py-8 mt-[-1px]">
+      <div className="bg-[#006D5B] py-8 xl:mt-[-1px]">
         <div className="container mx-auto px-4">
           <div
             ref={rentalTimesRef}
