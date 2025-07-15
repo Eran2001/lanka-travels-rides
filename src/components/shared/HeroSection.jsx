@@ -110,7 +110,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full xl:pt-30 max-xl:pt-14 max-md:pt-36 max-sm:pt-48 bg-[#f9f5e3] ">
+    <div className="w-full xl:pt-30 max-xl:pt-14 max-md:pt-36 max-sm:pt-48 max-sm:pb-6 bg-[#f9f5e3] ">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 min-h-[70.7vh]">
         {/* Text */}
         <div
