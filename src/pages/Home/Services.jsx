@@ -98,7 +98,7 @@ const Services = () => {
         <div className="grid grid-cols-1 mt-10 text-center sm:mt-16 sm:grid-cols-2 sm:gap-x-12 gap-y-12 md:grid-cols-3 md:gap-8 xl:mt-24">
           {/* Service 1: 24/7 Customer Support */}
           <div
-            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="md:p-8 lg:p-14 max-sm:p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             ref={(el) => (serviceRefs.current[0] = el)}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
@@ -149,7 +149,7 @@ const Services = () => {
 
           {/* Service 2: Affordable Pricing */}
           <div
-            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="md:p-8 lg:p-14 max-sm:p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             ref={(el) => (serviceRefs.current[1] = el)}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
@@ -216,7 +216,7 @@ const Services = () => {
 
           {/* Service 3: Wide Vehicle Selection */}
           <div
-            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="md:p-8 lg:p-14 max-sm:p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             ref={(el) => (serviceRefs.current[2] = el)}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
@@ -274,7 +274,7 @@ const Services = () => {
 
           {/* Service 4: Flexible Rentals */}
           <div
-            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="md:p-8 lg:p-14 max-sm:p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             ref={(el) => (serviceRefs.current[3] = el)}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
@@ -307,7 +307,7 @@ const Services = () => {
 
           {/* Service 5: Top-Notch Vehicles */}
           <div
-            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="md:p-8 lg:p-14 max-sm:p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             ref={(el) => (serviceRefs.current[4] = el)}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
@@ -341,7 +341,7 @@ const Services = () => {
 
           {/* Service 6: Real-Time Availability */}
           <div
-            className="md:p-8 lg:p-14 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="md:p-8 lg:p-14 max-sm:p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             ref={(el) => (serviceRefs.current[5] = el)}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}

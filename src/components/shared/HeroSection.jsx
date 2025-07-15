@@ -130,7 +130,7 @@ const HeroSection = () => {
           <Button
             text="Rent Now"
             onClick={() => navigate("/rent-vehicles")}
-            className="px-8 py-4 bg-[#006D5B] text-white max-md:py-6 max-md:px-10"
+            className="px-8 py-4 bg-[#006D5B] max-md:py-6 max-md:px-14 text-[#5c3d2e] max-md:text-xl"
             ref={buttonRef}
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
@@ -245,7 +245,7 @@ const HeroSection = () => {
           {/* Text Content */}
           <div
             ref={luxuryTextRef}
-            className="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center max-w-xl"
+            className="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center max-md:items-center max-w-xl"
           >
             <h2 className="text-xl md:text-3xl font-semibold text-[#00513f] mb-3 tracking-wide">
               Why Choose Us
@@ -263,7 +263,7 @@ const HeroSection = () => {
             <Button
               text="Rent a Vehicle"
               onClick={() => navigate("/rent-vehicles")}
-              className="px-6 py-4 bg-[#006D5B] text-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl max-w-max"
+              className="px-6 py-4 max-md:py-6 max-md:px-14 bg-[#006D5B] text-[#5c3d2e] max-md:text-xl rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl max-w-max"
               ref={luxuryButtonRef}
               onMouseEnter={(e) => handleHover(e.currentTarget)}
               onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}

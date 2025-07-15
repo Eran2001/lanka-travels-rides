@@ -223,7 +223,7 @@ const CustomerFeedback = () => {
           <Button
             text="Check all reviews"
             onClick={() => navigate("/clients")}
-            className="px-8 py-4 max-sm:px-10 max-sm:py-4 bg-[#006D5B]"
+            className="px-8 py-4 max-sm:px-10 max-sm:py-4 max-md:text-xl bg-[#006D5B]"
           />
         </div>
       </div>
