@@ -130,7 +130,7 @@ const OurTeam = () => {
           </h2>
         </div>
 
-        <div className="grid max-w-6xl grid-cols-1 px-20 mx-auto mt-12 text-center sm:px-0 sm:grid-cols-2 md:mt-20 gap-x-8 md:grid-cols-4 gap-y-12 lg:gap-x-16 xl:gap-x-20">
+        <div className="grid max-w-6xl grid-cols-1 px-20 mx-auto mt-12 text-center sm:px-0 sm:grid-cols-2 md:mt-20 gap-x-4 md:grid-cols-4 gap-y-12 lg:gap-x-16 xl:gap-x-10">
           {/* Member 1 */}
           <div
             className="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6"
@@ -233,30 +233,6 @@ const OurTeam = () => {
             ))}
           </svg>
         </div>
-
-        {/* <div className="max-w-3xl mx-auto mt-12 space-y-8 sm:space-y-0 sm:flex sm:items-center sm:justify-center sm:mt-16 sm:gap-x-16">
-          <div>
-            <img
-              className="w-auto mx-auto h-11"
-              src="https://cdn.rareblocks.xyz/collection/clarity/images/team/1/logo-waverio.svg"
-              alt="Partner 1"
-            />
-          </div>
-          <div>
-            <img
-              className="w-auto mx-auto h-11"
-              src="https://cdn.rareblocks.xyz/collection/clarity/images/team/1/logo-squarestone.svg"
-              alt="Partner 2"
-            />
-          </div>
-          <div>
-            <img
-              className="w-auto mx-auto h-11"
-              src="https://cdn.rareblocks.xyz/collection/clarity/images/team/1/logo-creaty.svg"
-              alt="Partner 3"
-            />
-          </div>
-        </div> */}
       </div>
     </section>
   );

@@ -160,7 +160,7 @@ const CustomerFeedback = () => {
         }
       `}</style>
 
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="px-4 mx-auto w-7xl sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <p className="text-lg font-medium text-[#5c3d2e] font-pj">
             More than +1000 customers love our car rental service
@@ -179,7 +179,7 @@ const CustomerFeedback = () => {
                     key={i}
                     className="carousel-card bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-[1.02]"
                   >
-                    <div className="flex items-center justify-center mb-4">
+                    <div className="flex items-center justify-start mb-4">
                       {[...Array(5)].map((_, idx) => (
                         <svg
                           key={idx}

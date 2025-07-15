@@ -110,10 +110,10 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full pt-28 xl:pt-32 bg-[#f9f5e3]">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 min-h-[calc(100vh-7rem)]">
+    <div className="w-full pt-30 bg-[#f9f5e3] ">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 min-h-[70.7vh]">
         {/* Text */}
-        <div ref={textRef} className="w-full md:w-1/2 text-center md:text-left">
+        <div ref={textRef} className="w-full md:w-3/8 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl xl:text-6xl text-[#5c3d2e] font-bold mb-6 leading-tight">
             EXCLUSIVE CARS
             <br />
@@ -135,8 +135,8 @@ const HeroSection = () => {
         </div>
 
         {/* Car Image with Fade Transition */}
-        <div className="w-full md:w-1/2">
-          <div className="relative w-full h-[350px] flex items-center justify-center overflow-hidden">
+        <div className="w-full md:w-5/8">
+          <div className="relative w-full h-[48.5vh] flex items-center justify-center overflow-hidden">
             {carImages.map((img, idx) => (
               <img
                 key={idx}

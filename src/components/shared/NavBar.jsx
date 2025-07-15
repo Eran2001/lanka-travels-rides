@@ -100,7 +100,7 @@ const NavBar = () => {
       </style>
 
       <nav className="navbar">
-        <div className="w-full max-w-screen-xl mx-auto px-4 py-1 flex items-center justify-between max-xl:justify-center gap-4 overflow-x-auto whitespace-nowrap">
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-1 flex items-center justify-around max-xl:justify-center gap-4 flex-wrap">
           <ul
             ref={contactRef}
             className="flex items-center gap-6 text-sm shrink-0"
