@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCar } from "react-icons/fa";
+import why_choose_us from "../../assets/images/why_choose_us.jpg";
 import Toyota from "../../assets/images/Toyota_Canada_Inc.-Logo.wine.svg";
 import BMW from "../../assets/images/BMW-Logo.wine.svg";
 import Honda from "../../assets/images/Honda-Logo.wine.svg";
@@ -233,10 +234,10 @@ const HeroSection = () => {
       <div className="bg-gradient-to-r from-[#e6f0ec] to-[#f9fdfb] py-16">
         <div className="container mx-auto px-4 flex flex-col md:flex-row gap-12 items-stretch luxury-section">
           {/* Image */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-start">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-center">
             <img
               ref={luxuryImageRef}
-              src="https://media.istockphoto.com/id/1285180944/photo/cars-on-a-parking.jpg?s=612x612&w=0&k=20&c=nVMwAXJHf6cwKdB-Wf-xedj3CuVpLA6fOBPhE2LVUzk="
+              src={why_choose_us}
               alt="Luxury Cars"
               className="h-full max-w-lg w-full rounded-2xl shadow-2xl border border-gray-200 object-cover transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-3xl cursor-pointer"
             />
