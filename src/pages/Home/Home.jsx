@@ -7,6 +7,7 @@ import OurTeam from "./OurTeam";
 import Services from "./Services";
 import FAQ from "../../pages/Home/FAQ";
 import OurProgress from "./OurProgress";
+import LocationMap from "./LocationMap";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,7 @@ const Home = () => {
       <CustomerFeedback />
       <OurTeam />
       <FAQ />
+      <LocationMap />
     </div>
   );
 };

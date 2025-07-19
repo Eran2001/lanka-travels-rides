@@ -119,10 +119,7 @@ const OurTeam = () => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-12 bg-white w-full sm:py-16 lg:py-20"
-    >
+    <section ref={sectionRef} className=" bg-white w-full sm:py-16 lg:py-20">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div ref={headerRef} className="text-center">
           <h2 className="text-3xl font-bold text-[#5c3d2e] sm:text-4xl xl:text-5xl font-pj">
@@ -130,7 +127,7 @@ const OurTeam = () => {
           </h2>
         </div>
 
-        <div className="grid max-w-6xl grid-cols-1 px-20 mx-auto mt-12 text-center sm:px-0 sm:grid-cols-2 md:mt-20 gap-x-4 md:grid-cols-4 gap-y-12 lg:gap-x-16 xl:gap-x-10">
+        <div className="grid max-w-6xl grid-cols-1 px-10 mx-auto mt-12 text-center sm:px-0 sm:grid-cols-2 md:mt-20 gap-x-4 md:grid-cols-4 gap-y-12 lg:gap-x-16 xl:gap-x-10">
           {/* Member 1 */}
           <div
             className="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6"

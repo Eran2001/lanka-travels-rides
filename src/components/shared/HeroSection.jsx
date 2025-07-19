@@ -159,7 +159,7 @@ const HeroSection = () => {
       </div>
 
       {/* Rental Times Bar */}
-      <div className="bg-[#006D5B] py-8 xl:mt-[-1px]">
+      <div className="bg-[#006D5B] py-8 xl:mt-[-1px] max-sm:mt-14">
         <div className="container mx-auto px-4">
           <div
             ref={rentalTimesRef}
