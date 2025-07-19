@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
+import user_logo from "../../assets/images/user.png";
 
 const OurTeam = () => {
   const sectionRef = useRef(null);
@@ -119,7 +120,10 @@ const OurTeam = () => {
   };
 
   return (
-    <section ref={sectionRef} className=" bg-white w-full sm:py-16 lg:py-20">
+    <section
+      ref={sectionRef}
+      className=" bg-white w-full sm:py-16 lg:py-20 max-sm:py-8"
+    >
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div ref={headerRef} className="text-center">
           <h2 className="text-3xl font-bold text-[#5c3d2e] sm:text-4xl xl:text-5xl font-pj">
@@ -137,7 +141,7 @@ const OurTeam = () => {
           >
             <img
               className="object-cover w-32 h-32 mx-auto rounded-full lg:w-44 lg:h-44 grayscale filter"
-              src="https://cdn.rareblocks.xyz/collection/clarity/images/team/1/team-member-1.png"
+              src={user_logo}
               alt="Team member"
             />
             <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">
@@ -157,7 +161,7 @@ const OurTeam = () => {
           >
             <img
               className="object-cover w-32 h-32 mx-auto rounded-full lg:w-44 lg:h-44 grayscale filter"
-              src="https://cdn.rareblocks.xyz/collection/clarity/images/team/1/team-member-2.png"
+              src={user_logo}
               alt="Team member"
             />
             <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">
@@ -177,7 +181,7 @@ const OurTeam = () => {
           >
             <img
               className="object-cover w-32 h-32 mx-auto rounded-full lg:w-44 lg:h-44 grayscale filter"
-              src="https://cdn.rareblocks.xyz/collection/clarity/images/team/1/team-member-3.png"
+              src={user_logo}
               alt="Team member"
             />
             <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">
@@ -197,7 +201,7 @@ const OurTeam = () => {
           >
             <img
               className="object-cover w-32 h-32 mx-auto rounded-full lg:w-44 lg:h-44 grayscale filter"
-              src="https://cdn.rareblocks.xyz/collection/clarity/images/team/1/team-member-4.png"
+              src={user_logo}
               alt="Team member"
             />
             <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">

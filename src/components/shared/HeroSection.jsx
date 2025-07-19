@@ -200,31 +200,34 @@ const HeroSection = () => {
       </div>
 
       {/* Brands */}
-      <div className="bg-[#f0f7f4] py-16">
-        {" "}
+      <div className="bg-[#f0f7f4] py-20 md:py-14">
         {/* soft light green background */}
         <div className="container mx-auto px-4">
-          <h3 className="text-center text-xl md:text-2xl font-semibold text-[#00513f] mb-10 uppercase tracking-wider relative">
+          <h3 className="text-center text-2xl md:text-3xl font-bold text-[#00513f] mb-12 uppercase tracking-wider relative">
             Featuring Top Global Car Brands Known for Safety and Reliability
             <span
-              className="block w-20 h-1 bg-[#006D5B] mx-auto mt-2 rounded-full"
+              className="block w-24 h-1 bg-[#006D5B] mx-auto mt-3 rounded-full"
               aria-hidden="true"
             ></span>
           </h3>
 
           <div
             ref={brandsRef}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-10 justify-items-center items-center opacity-90"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 justify-items-center items-center opacity-95"
           >
             {[Toyota, BMW, Honda, Suzuki].map((logo, index) => (
-              <img
+              <div
                 key={index}
-                src={logo}
-                alt={`Brand ${index}`}
-                className="h-20 w-auto p-3 bg-white rounded-xl shadow-md cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-lg"
+                className="p-4 bg-white rounded-2xl shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
                 onMouseEnter={(e) => handleHover(e.currentTarget)}
                 onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-              />
+              >
+                <img
+                  src={logo}
+                  alt={`Brand ${index}`}
+                  className="h-20 w-auto object-contain"
+                />
+              </div>
             ))}
           </div>
         </div>

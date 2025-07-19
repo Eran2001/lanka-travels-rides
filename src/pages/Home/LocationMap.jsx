@@ -6,7 +6,7 @@ const LocationMap = () => {
 
   return (
     <div className="bg-[#f9f5e3] pb-8">
-      <div className="xl:w-7xl lg:w-5xl md:w-3xl sm:w-2xl max-sm:w-[100%] mx-auto">
+      <div className="xl:w-7xl lg:w-5xl md:w-3xl sm:w-2xl max-sm:w-100 mx-auto">
         <h2 className="text-3xl font-bold text-[#5c3d2e] text-center mb-6">
           Our Location
         </h2>
