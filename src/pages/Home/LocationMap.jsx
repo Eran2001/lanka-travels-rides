@@ -5,7 +5,7 @@ const LocationMap = () => {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.297997496298!2d80.23939421531675!3d6.035949528283173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae1731582b95293%3A0xacbc73c2354dcaba!2sLarif%20Travels%20%26%20Tours!5e0!3m2!1sen!2slk!4v1729343876543!5m2!1sen!2slk";
 
   return (
-    <div className="bg-[#f9f5e3] pb-8">
+    <div className="bg-white pb-24 w-full pt-8">
       <div className="xl:w-7xl lg:w-5xl md:w-3xl sm:w-2xl max-sm:w-100 mx-auto">
         <h2 className="text-3xl font-bold text-[#5c3d2e] text-center mb-6">
           Our Location
