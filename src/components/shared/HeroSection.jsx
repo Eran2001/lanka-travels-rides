@@ -7,6 +7,7 @@ import BMW from "../../assets/images/BMW-Logo.wine.svg";
 import Honda from "../../assets/images/Honda-Logo.wine.svg";
 import Suzuki from "../../assets/images/Suzuki-Logo.wine.svg";
 import Button from "@/components/ui/Button";
+import Notification from "@/components/ui/Notification";
 
 import { MdSupportAgent, MdCarRepair, MdAttachMoney } from "react-icons/md";
 import { FaExchangeAlt, FaShieldAlt, FaCarSide } from "react-icons/fa";

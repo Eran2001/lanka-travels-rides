@@ -1,74 +1,64 @@
-import React, { useEffect, useRef } from "react";
-import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
+import React from "react";
+import { Icon as IconifyIcon } from "@iconify/react";
 
 const Button = ({
-  text = "Click me",
-  type = "button",
-  onClick,
+  icon,
+  text = "Click",
+  iconPosition = "left",
+  iconSize = 20,
+  href = "#_",
   className = "",
-  disabled = false,
+  textClass = "",
+  onClick,
+  type = "button",
 }) => {
-  const buttonRef = useRef(null);
+  const isLink = !!href;
 
-  // Entrance animation
-  useEffect(() => {
-    if (buttonRef.current) {
-      anime({
-        targets: buttonRef.current,
-        translateY: [30, 0],
-        scale: [0.9, 1],
-        opacity: [0, 1],
-        duration: 600,
-        easing: "easeOutElastic(1, 0.9)",
-        delay: 200,
-      });
-    }
-  }, []);
+  const content = (
+    <span className="relative inline-flex items-center justify-center">
+      {/* Icon Left */}
+      {icon && iconPosition === "left" && (
+        <IconifyIcon
+          icon={icon}
+          width={iconSize}
+          height={iconSize}
+          className={`${text ? "mr-2" : ""}`}
+        />
+      )}
 
-  // Hover animation
-  const handleHover = (el) => {
-    anime({
-      targets: el,
-      scale: [1, 1.05],
-      translateY: [0, -5],
-      boxShadow: [
-        "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-        "0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      ],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
+      {/* Text */}
+      {text && <span className={`relative ${textClass}`}>{text}</span>}
 
-  const handleHoverLeave = (el) => {
-    anime({
-      targets: el,
-      scale: [1.05, 1],
-      translateY: [-5, 0],
-      boxShadow: [
-        "0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-        "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-      ],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
+      {/* Icon Right */}
+      {icon && iconPosition === "right" && (
+        <IconifyIcon
+          icon={icon}
+          width={iconSize}
+          height={iconSize}
+          className={`${text ? "ml-2" : ""}`}
+        />
+      )}
+    </span>
+  );
 
-  return (
-    <button
-      ref={buttonRef}
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={`relative rounded-lg px-5 py-2.5 overflow-hidden group bg-[#f4d35e] hover:bg-gradient-to-r hover:from-[#5c3d2e] hover:to-[#f4d35e] text-[#5c3d2e] hover:text-[#f9f5e3] hover:ring-2 hover:ring-offset-2 hover:ring-[#5c3d2e] transition-all ease-out duration-300 shadow-md hover:shadow-lg ${
-        disabled
-          ? "opacity-50 cursor-not-allowed pointer-events-none"
-          : "cursor-pointer"
-      } ${className}`}
-      onMouseEnter={(e) => !disabled && handleHover(e.currentTarget)}
-      onMouseLeave={(e) => !disabled && handleHoverLeave(e.currentTarget)}
-    >
-      {text}
+  const baseClasses = `
+    relative rounded px-5 py-2.5 overflow-hidden group 
+    bg-primary text-light hover:bg-gradient-to-r 
+    hover:from-primary hover:to-green-400 hover:ring-2 
+    hover:ring-offset-2 hover:ring-green-400 
+    transition-all ease-out duration-300
+    ${className}
+  `;
+
+  return isLink ? (
+    <a href={href} className={baseClasses} onClick={onClick}>
+      <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease" />
+      {content}
+    </a>
+  ) : (
+    <button type={type} className={baseClasses} onClick={onClick}>
+      <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease" />
+      {content}
     </button>
   );
 };
