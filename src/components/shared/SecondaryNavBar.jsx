@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Drawer from "../ui/Drawer";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
-import logoImg from "../../assets/images/logoOriginal.png";
+import logoImg from "../../assets/images/logoImg.jpg";
 
 const SecondaryNavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
