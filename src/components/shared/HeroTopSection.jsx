@@ -81,7 +81,7 @@ const HeroTopSection = () => {
         <Button
           text="Rent Now"
           onClick={() => navigate("/rent-vehicles")}
-          className="px-8 py-4 bg-[#006D5B] max-md:py-6 max-md:px-14 text-[#5c3d2e] max-md:text-xl max-sm:mt-14 "
+          className="px-8 py-4 bg-[#006D5B] max-md:py-6 max-md:px-14 text-[#5c3d2e] max-md:text-xl max-sm:mt-8 cursor-pointer"
           ref={buttonRef}
           onMouseEnter={(e) => handleHover(e.currentTarget)}
           onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
