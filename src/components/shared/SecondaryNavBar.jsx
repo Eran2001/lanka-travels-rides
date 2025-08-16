@@ -158,7 +158,7 @@ const SecondaryNavBar = () => {
             <img
               src={logoImg}
               alt="Drive Lanka Logo"
-              className="h-12 w-auto object-contain"
+              className="h-12 w-auto object-contain max-md:pt-1"
             />
           </NavLink>
 
