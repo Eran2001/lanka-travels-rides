@@ -1,64 +1,56 @@
 import React from "react";
-import { Icon as IconifyIcon } from "@iconify/react";
 
 const Button = ({
   icon,
   text = "Click",
   iconPosition = "left",
   iconSize = 20,
-  href = "#_",
   className = "",
   textClass = "",
   onClick,
   type = "button",
 }) => {
-  const isLink = !!href;
+  // Render icon if provided
+  const renderIcon = () =>
+    icon
+      ? React.cloneElement(icon, {
+          style: {
+            fontSize: iconSize,
+            width: iconSize,
+            height: iconSize,
+            verticalAlign: "middle",
+          },
+          className: `inline-block align-middle ${
+            iconPosition === "left" ? "mr-2" : "ml-2"
+          }`,
+        })
+      : null;
 
-  const content = (
-    <span className="relative inline-flex items-center justify-center">
-      {/* Icon Left */}
-      {icon && iconPosition === "left" && (
-        <IconifyIcon
-          icon={icon}
-          width={iconSize}
-          height={iconSize}
-          className={`${text ? "mr-2" : ""}`}
-        />
-      )}
-
-      {/* Text */}
-      {text && <span className={`relative ${textClass}`}>{text}</span>}
-
-      {/* Icon Right */}
-      {icon && iconPosition === "right" && (
-        <IconifyIcon
-          icon={icon}
-          width={iconSize}
-          height={iconSize}
-          className={`${text ? "ml-2" : ""}`}
-        />
-      )}
-    </span>
+  const iconLeft = iconPosition === "left";
+  const Content = (
+    <>
+      {iconLeft && renderIcon()}
+      <span
+        className={`relative transition-colors duration-300 delay-200 group-hover:text-white ease ${textClass}`}
+      >
+        {text}
+      </span>
+      {!iconLeft && renderIcon()}
+    </>
   );
 
-  const baseClasses = `
-    relative rounded px-5 py-2.5 overflow-hidden group 
-    bg-primary text-light hover:bg-gradient-to-r 
-    hover:from-primary hover:to-green-400 hover:ring-2 
-    hover:ring-offset-2 hover:ring-green-400 
-    transition-all ease-out duration-300
-    ${className}
-  `;
+  const baseClass =
+    "relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-gray-100 border border-gray-100 shadow-inner group " +
+    className;
 
-  return isLink ? (
-    <a href={href} className={baseClasses} onClick={onClick}>
-      <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease" />
-      {content}
-    </a>
-  ) : (
-    <button type={type} className={baseClasses} onClick={onClick}>
-      <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease" />
-      {content}
+  return (
+    <button type={type} className={baseClass} onClick={onClick}>
+      <span className="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+      <span className="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+      <span className="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+      <span className="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+      <span className="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+      {Content}
     </button>
   );
 };
