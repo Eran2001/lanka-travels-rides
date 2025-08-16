@@ -48,6 +48,34 @@ const SecondaryNavBar = () => {
   }, []);
 
   useEffect(() => {
+    if (isDrawerOpen) {
+      // Disable scroll when drawer is open
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore scroll when drawer closes
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup when component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isDrawerOpen]);
+
+  // Add this useEffect below your existing anime effects
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isDrawerOpen]);
+
+  useEffect(() => {
     if (isDrawerOpen && drawerContentRef.current) {
       anime({
         targets: drawerContentRef.current,
