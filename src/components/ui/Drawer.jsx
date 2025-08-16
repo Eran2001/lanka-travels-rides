@@ -38,8 +38,8 @@ const Drawer = ({
         </button>
 
         {/* Header */}
-        <div className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-lg font-semibold">{title}</h2>
+        <div className="flex justify-between items-center p-4 border-b border-b-primary">
+          <h2 className="text-lg font-semibold text-primary">{title}</h2>
         </div>
 
         {/* Content */}

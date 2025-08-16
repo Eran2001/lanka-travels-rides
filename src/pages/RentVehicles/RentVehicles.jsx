@@ -2,12 +2,98 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
-import Modal from "@/components/ui/Modal";
+import aqua1 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.48_44e1fb58.jpg";
+import aqua2 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.48_b090ba82.jpg";
+import aqua3 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.48_de8861ee.jpg";
+import aqua4 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.49_1ef79802.jpg";
+import aqua5 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.49_234dc77b.jpg";
+import aqua6 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.50_d723ce2b.jpg";
+
+import bmw1 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.19_64b2cac9.jpg";
+import bmw2 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.20_847e7faf.jpg";
+import bmw3 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.20_f7d7ff26.jpg";
+import bmw4 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.21_b50861e7.jpg";
+import bmw5 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.22_365d455d.jpg";
+
+import hyb1 from "../../assets/car/HYB/WhatsApp Image 2025-08-07 at 18.04.38_68e6e943.jpg";
+import hyb2 from "../../assets/car/HYB/WhatsApp Image 2025-08-07 at 18.04.38_b58ebbb0.jpg";
+import hyb3 from "../../assets/car/HYB/WhatsApp Image 2025-08-07 at 18.04.38_c2f0000a.jpg";
+import hyb4 from "../../assets/car/HYB/WhatsApp Image 2025-08-07 at 18.04.39_0e491901.jpg";
+
+import PK1 from "../../assets/car/PK/WhatsApp Image 2025-08-07 at 18.04.13_9e22c1bf.jpg";
+import PK2 from "../../assets/car/PK/WhatsApp Image 2025-08-07 at 18.04.13_cbc79d7d.jpg";
+import PK3 from "../../assets/car/PK/WhatsApp Image 2025-08-07 at 18.04.14_16dc8ccc.jpg";
+import PK4 from "../../assets/car/PK/WhatsApp Image 2025-08-07 at 18.04.14_e3de73a9.jpg";
+
+import PH1 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.45_11be5029.jpg";
+import PH2 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.46_34792509.jpg";
+import PH3 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.46_7ef343ff.jpg";
+import PH4 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.47_2d5795fe.jpg";
+import PH5 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.47_57fef88f.jpg";
+import PH6 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.47_a2a869e2.jpg";
+
+import W_B1 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.11_29d9893c.jpg";
+import W_B2 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.12_5a766a99.jpg";
+import W_B3 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.12_8723273a.jpg";
+import W_B4 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.12_d9f27e89.jpg";
+import W_B5 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.23_64a7244a.jpg";
+
+import W_R1 from "../../assets/car/WRED/WhatsApp Image 2025-08-07 at 18.04.18_7073947c.jpg";
+import W_R2 from "../../assets/car/WRED/WhatsApp Image 2025-08-07 at 18.04.18_c30f69f5.jpg";
+import W_R3 from "../../assets/car/WRED/WhatsApp Image 2025-08-07 at 18.04.18_cf0eaf1b.jpg";
+import W_R4 from "../../assets/car/WRED/WhatsApp Image 2025-08-07 at 18.04.19_d9aa7b06.jpg";
+
+// Buses
+import NB1 from "../../assets/bus/NB/WhatsApp Image 2025-08-07 at 18.04.09_cf33d57d.jpg";
+import NB2 from "../../assets/bus/NB/WhatsApp Image 2025-08-07 at 18.04.20_5cf13add.jpg";
+
+import NC1 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.10_d7638fcf.jpg";
+import NC2 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.10_e609161d.jpg";
+import NC3 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.11_2760e859.jpg";
+import NC4 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.11_4d400cfd.jpg";
+import NC5 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.23_27c70f87.jpg";
+
+import NDB1 from "../../assets/bus/NDB/WhatsApp Image 2025-08-07 at 18.04.13_3b5f75b7.jpg";
+import NDB2 from "../../assets/bus/NDB/WhatsApp Image 2025-08-07 at 18.04.28_c10e979a.jpg";
+
+import NDY1 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.15_25a645f1.jpg";
+import NDY2 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.15_1cd4ff09.jpg";
+import NDY3 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.29_ad3d2288.jpg";
+import NDY4 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.29_f8370432.jpg";
+import NDY5 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.30_45861e33.jpg";
+import NDY6 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.30_f0fbf077.jpg";
+
+// Vans
+import PB1 from "../../assets/van/PB/WhatsApp Image 2025-08-07 at 18.04.32_87706bbf.jpg";
+import PB2 from "../../assets/van/PB/WhatsApp Image 2025-08-07 at 18.04.33_16b0f1ea.jpg";
+import PB3 from "../../assets/van/PB/WhatsApp Image 2025-08-07 at 18.04.34_8584efdc.jpg";
+
+import PC1 from "../../assets/van/PC/WhatsApp Image 2025-08-07 at 18.04.22_c6909b8c.jpg";
+import PC2 from "../../assets/van/PC/WhatsApp Image 2025-08-07 at 18.04.32_52a49ca1.jpg";
+
+import PD1 from "../../assets/van/PD/WhatsApp Image 2025-08-07 at 18.04.34_66afb912.jpg";
+import PD2 from "../../assets/van/PD/WhatsApp Image 2025-08-07 at 18.04.34_8b963c69.jpg";
+import PD3 from "../../assets/van/PD/WhatsApp Image 2025-08-07 at 18.04.36_3fb9c1a6.jpg";
+import PD4 from "../../assets/van/PD/WhatsApp Image 2025-08-07 at 18.04.36_774e9aa1.jpg";
+
+import PE1 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.15_b4ecf4b4.jpg";
+import PE2 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.16_02e42633.jpg";
+import PE3 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.16_5219d9ec.jpg";
+import PE4 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.16_d254f2c6.jpg";
+import PE5 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.17_f5f7f740.jpg";
+import PE6 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.30_d3c581ac.jpg";
+
+import PJ1 from "../../assets/van/PJ/WhatsApp Image 2025-08-07 at 18.04.17_8dd58e8f.jpg";
+import PJ2 from "../../assets/van/PJ/WhatsApp Image 2025-08-07 at 18.04.17_cef54a6d.jpg";
+import PJ3 from "../../assets/van/PJ/WhatsApp Image 2025-08-07 at 18.04.31_ad2e8eaf.jpg";
+
+import Drawer from "@/components/ui/Drawer";
 import Button from "@/components/ui/Button";
 import Loading from "@/components/ui/Loading";
+import PopupSlider from "./PopupSlider";
 
 const RentVehicles = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,6 +112,18 @@ const RentVehicles = () => {
 
     return () => clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isDrawerOpen]);
 
   useEffect(() => {
     if (isLoading) return;
@@ -186,9 +284,8 @@ const RentVehicles = () => {
       category: "Cars",
       items: [
         {
-          name: "BMW M5",
-          image:
-            "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mikebirdy-170811.jpg&fm=jpg",
+          name: "Toyota Prius c",
+          images: [aqua1, aqua2, aqua3, aqua4, aqua5, aqua6],
           seats: 5,
           luggage: 2,
           transmission: "Manual",
@@ -196,8 +293,8 @@ const RentVehicles = () => {
           price: "LKR 10,000/day",
         },
         {
-          name: "Mercedes Benz CLK",
-          image: "https://cdn.jdpower.com/Average%20Weight%20Of%20A%20Car.jpg",
+          name: "BMW 320i",
+          images: [bmw1, bmw2, bmw3, bmw4, bmw5],
           seats: 5,
           luggage: 2,
           transmission: "Automatic",
@@ -205,9 +302,8 @@ const RentVehicles = () => {
           price: "LKR 11,000/day",
         },
         {
-          name: "Hyundai i20",
-          image:
-            "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png",
+          name: "Honda Fit Shuttle Hybrid",
+          images: [hyb1, hyb2, hyb3, hyb4],
           seats: 5,
           luggage: 2,
           transmission: "Manual",
@@ -215,9 +311,8 @@ const RentVehicles = () => {
           price: "LKR 9,500/day",
         },
         {
-          name: "Toyota Corolla",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/2019_Toyota_Corolla_Icon_Tech_VVT-i_Hybrid_1.8.jpg/1200px-2019_Toyota_Corolla_Icon_Tech_VVT-i_Hybrid_1.8.jpg",
+          name: "Suzuki Every",
+          images: [PH1, PH2, PH3, PH4, PH5, PH6],
           seats: 5,
           luggage: 2,
           transmission: "Automatic",
@@ -225,9 +320,8 @@ const RentVehicles = () => {
           price: "LKR 12,000/day",
         },
         {
-          name: "Ford Mustang",
-          image:
-            "https://www.vdm.ford.com/content/dam/brand_ford/en_us/brand/electrification/desktop/2024-Mustang-06_43.jpg/jcr:content/renditions/cq5dam.web.768.768.jpeg",
+          name: "Suzuki Every",
+          images: [PK1, PK2, PK3, PK4],
           seats: 4,
           luggage: 1,
           transmission: "Automatic",
@@ -235,79 +329,22 @@ const RentVehicles = () => {
           price: "LKR 18,000/day",
         },
         {
-          name: "Mercedes-AMG GT",
-          image:
-            "https://www.mbusa.com/content/dam/mb-nafta/us/myco/my24/amg-gt-class/2-door/all-vehicles/2024-AMG-GT55-COUPE-AVP-DR.png",
+          name: "Suzuki Stingray",
+          images: [W_B1, W_B2, W_B3, W_B4, W_B5],
           seats: 4,
           luggage: 1,
           transmission: "Automatic",
           fuel: "Petrol",
           price: "LKR 25,000/day",
         },
-      ],
-    },
-    {
-      category: "SUVs",
-      items: [
         {
-          name: "Renault Scenic",
-          image:
-            "https://car-images.bauersecure.com/wp-images/2697/best-electric-cars-2025-renault-scenic-white-front-driving.jpg",
-          seats: 5,
-          luggage: 4,
-          transmission: "Automatic",
-          fuel: "Electric",
-          price: "LKR 15,000/day",
-        },
-        {
-          name: "Nissan Qashqai",
-          image:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSExUlWBZy1sjH6N4-ai4oZ2U7ycqhl8iKXrscI2x_OfDuGUc7pNw7j5UfQ2m8A2TpQJxM&usqp=CAU",
-          seats: 5,
-          luggage: 4,
+          name: "Suzuki Wagon R",
+          images: [W_R1, W_R2, W_R3, W_R4],
+          seats: 4,
+          luggage: 1,
           transmission: "Automatic",
           fuel: "Petrol",
-          price: "LKR 14,500/day",
-        },
-        {
-          name: "Nissan Ariya",
-          image:
-            "https://www.usnews.com/cmsmedia/e4/66/c32525ba4ccdbddfcaa5aaf9eb18/2025ariyamain.jpg",
-          seats: 5,
-          luggage: 4,
-          transmission: "Automatic",
-          fuel: "Electric",
-          price: "LKR 16,000/day",
-        },
-        {
-          name: "Nissan X-Trail",
-          image:
-            "https://auto.hindustantimes.com/htmobile1/nissan_xtrail/images/exterior_nissan-x-trail_front-left-side_600x400.jpg?imwidth=420",
-          seats: 7,
-          luggage: 5,
-          transmission: "Automatic",
-          fuel: "Petrol",
-          price: "LKR 17,000/day",
-        },
-        {
-          name: "BMW X5",
-          image:
-            "https://static.motorway.co.uk/static/assets_seller/hero-bmw-blue.b05b6c811a4915f7813d.png",
-          seats: 5,
-          luggage: 4,
-          transmission: "Automatic",
-          fuel: "Petrol",
-          price: "LKR 20,000/day",
-        },
-        {
-          name: "Hyundai Creta",
-          image:
-            "https://img.autocarindia.com/ExtraImages/20241205062334_20240606032223_Creta%20showroom%20shot%20_1_.jpg",
-          seats: 5,
-          luggage: 4,
-          transmission: "Manual",
-          fuel: "Petrol",
-          price: "LKR 13,500/day",
+          price: "LKR 25,000/day",
         },
       ],
     },
@@ -315,135 +352,98 @@ const RentVehicles = () => {
       category: "Vans",
       items: [
         {
-          name: "Toyota HiAce",
-          image: "https://deyotours.com/wp-content/uploads/2022/09/Big-Van.jpg",
+          name: "Toyota HiAce Super GL",
+          images: [PB1, PB2, PB3],
           seats: 12,
           luggage: 6,
-          transmission: "Manual",
+          transmission: "Automatic",
           fuel: "Diesel",
-          price: "LKR 20,000/day",
+          price: "LKR 15,000/day",
         },
         {
-          name: "Nissan Caravan",
-          image:
-            "https://cdn-cmaji.nitrocdn.com/KIFZgOjkuClQKBjYuclpHfqgfzwfBwhH/assets/images/optimized/rev-f894972/mysltravel.com/wp-content/uploads/2022/08/download-8-1.jpg",
-          seats: 10,
-          luggage: 5,
-          transmission: "Manual",
-          fuel: "Diesel",
-          price: "LKR 18,000/day",
-        },
-        {
-          name: "Ford Transit",
-          image:
-            "https://m.atcdn.co.uk/ect/media/w600/257ab3687b2c4c0bbeda6df951f5fc65.jpg",
+          name: "Toyota HiAce Commuter",
+          images: [PC1, PC2],
           seats: 15,
           luggage: 8,
           transmission: "Manual",
           fuel: "Diesel",
-          price: "LKR 22,000/day",
-        },
-        {
-          name: "Explorer Van",
-          image:
-            "https://www.explorervan.com/wp-content/uploads/2025/05/20250502_1140_Van-on-Highway-Sunrise_remix_01jt8tdqc8efza0cz0fcvn77qb-1024x683.png",
-          seats: 12,
-          luggage: 6,
-          transmission: "Automatic",
-          fuel: "Diesel",
-          price: "LKR 21,000/day",
-        },
-        {
-          name: "Maruti Suzuki Ecco",
-          image:
-            "https://5.imimg.com/data5/SELLER/Default/2022/9/FG/PL/LB/159526868/maruti-suzuki-ecco-van.jpg",
-          seats: 8,
-          luggage: 4,
-          transmission: "Manual",
-          fuel: "Petrol",
           price: "LKR 16,000/day",
         },
         {
-          name: "Toyota Commuter",
-          image:
-            "https://www.casons.lk/thumbnailer.php?url=https://lrnawbodbhe5.objectstorage.uk-london-1.oci.customer-oci.com/p/wu2xha0pJLtGGKV3DjZMer1qsOsjrkKx5tWZK2krsza1dvQdDoOZvqNSQLjcG8sk/n/lrnawbodbhe5/b/ImageStorage/o/casons.lk/VehicleModelmodel/27/thumbnail.png",
+          name: "Nissan Caravan",
+          images: [PD1, PD2, PD3, PD4],
+          seats: 10,
+          luggage: 5,
+          transmission: "Automatic",
+          fuel: "Petrol",
+          price: "LKR 14,000/day",
+        },
+        {
+          name: "Toyota HiAce KDH",
+          images: [PE1, PE2, PE3, PE4, PE5, PE6],
           seats: 14,
           luggage: 7,
           transmission: "Manual",
           fuel: "Diesel",
-          price: "LKR 19,500/day",
+          price: "LKR 15,500/day",
+        },
+        {
+          name: "Ford Transit",
+          images: [PJ1, PJ2, PJ3],
+          seats: 15,
+          luggage: 8,
+          transmission: "Manual",
+          fuel: "Diesel",
+          price: "LKR 16,500/day",
         },
       ],
     },
     {
-      category: "Strong Vehicles",
+      category: "Buses",
       items: [
         {
-          name: "Toyota Land Cruiser",
-          image:
-            "https://gst-contracts.s3.ap-southeast-1.amazonaws.com/uploads/bcc/cms/asset/avatar/324800/banner6.jpg",
-          seats: 7,
-          luggage: 5,
-          transmission: "Automatic",
+          name: "King Long",
+          images: [NB1, NB2],
+          seats: 22,
+          luggage: 12,
+          transmission: "Manual",
           fuel: "Diesel",
           price: "LKR 25,000/day",
         },
         {
-          name: "Volvo Coach",
-          image:
-            "https://www.volvobuses.com/content/dam/volvo-buses/markets/global/classic/news/2020/1860x1050-9400-Intercity-coach-BS4-2020.jpg",
-          seats: 40,
+          name: "Hino Bus",
+          images: [NC1, NC2, NC3, NC4, NC5],
+          seats: 35,
+          luggage: 20,
+          transmission: "Automatic",
+          fuel: "Diesel",
+          price: "LKR 30,000/day",
+        },
+        {
+          name: "Hino Liesse II",
+          images: [NDB1, NDB2],
+          seats: 29,
           luggage: 15,
           transmission: "Manual",
           fuel: "Diesel",
-          price: "LKR 35,000/day",
+          price: "LKR 28,000/day",
         },
         {
-          name: "Tata Bus",
-          image: "https://gos3.ibcdn.com/img-1713444352.jpg",
-          seats: 35,
-          luggage: 12,
-          transmission: "Manual",
-          fuel: "Diesel",
-          price: "LKR 32,000/day",
-        },
-        {
-          name: "JCBL School Bus",
-          image:
-            "https://jcbl.com/jcbl-images/products/school-bus/school-bus-front-1.jpg",
-          seats: 50,
-          luggage: 20,
-          transmission: "Manual",
-          fuel: "Diesel",
-          price: "LKR 40,000/day",
-        },
-        {
-          name: "Luxury Coach",
-          image:
-            "https://www.bus.com/wp-content/themes/redesign/assets/images/home/hero-800.webp",
-          seats: 45,
+          name: "Toyota Coaster",
+          images: [NDY1, NDY2, NDY3, NDY4, NDY5, NDY6],
+          seats: 30,
           luggage: 18,
-          transmission: "Automatic",
-          fuel: "Diesel",
-          price: "LKR 38,000/day",
-        },
-        {
-          name: "Mitsubishi Rosa",
-          image:
-            "https://lesscarmorelife.com/wp-content/uploads/2023/03/img_6042-1.jpg?w=1024",
-          seats: 25,
-          luggage: 10,
           transmission: "Manual",
           fuel: "Diesel",
-          price: "LKR 30,000/day",
+          price: "LKR 29,500/day",
         },
       ],
     },
   ];
 
-  const openModal = (vehicle) => {
+  const openDrawer = (vehicle) => {
     setSelectedVehicle(vehicle);
-    setIsModalOpen(true);
+    setIsDrawerOpen(true);
   };
 
   return (
@@ -460,7 +460,7 @@ const RentVehicles = () => {
             Discover the freedom of the road with our wide range of rental
             vehicles tailored to suit your every need. Whether you're planning a
             weekend getaway, a business trip, or simply need a temporary ride,
-            we offer reliable and well-maintained cars, vans, and SUVs at
+            we offer reliable and well-maintained cars, vans, and buses at
             competitive rates.
           </p>
         </section>
@@ -483,7 +483,10 @@ const RentVehicles = () => {
                   onMouseLeave={(e) => handleCardHoverLeave(e.currentTarget)}
                 >
                   <img
-                    src={vehicle.image}
+                    src={
+                      vehicle.images[0] ||
+                      "https://via.placeholder.com/300x200?text=Vehicle+Image"
+                    }
                     alt={vehicle.name}
                     className="w-full h-48 object-cover"
                     onError={(e) => {
@@ -502,7 +505,7 @@ const RentVehicles = () => {
                     <p className="text-gray-600">Price: {vehicle.price}</p>
                     <Button
                       text="View"
-                      onClick={() => openModal(vehicle)}
+                      onClick={() => openDrawer(vehicle)}
                       className="mt-4 bg-[#f4d35e] text-[#5c3d2e] font-bold py-2 px-4 rounded-4xl hover:bg-[#e0c250] transition"
                     />
                   </div>
@@ -512,43 +515,12 @@ const RentVehicles = () => {
           </section>
         ))}
         {selectedVehicle && (
-          <Modal
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
+          <PopupSlider
+            isOpen={isDrawerOpen}
+            onClose={() => setIsDrawerOpen(false)}
             title={selectedVehicle.name}
-          >
-            <div className="p-4">
-              <img
-                src={selectedVehicle.image}
-                alt={selectedVehicle.name}
-                className="w-full h-64 object-cover rounded-lg mb-4"
-                onError={(e) => {
-                  e.target.src =
-                    "https://via.placeholder.com/300x200?text=Vehicle+Image";
-                }}
-              />
-              <p className="text-gray-600 mb-2">
-                <strong>Seats:</strong> {selectedVehicle.seats}
-              </p>
-              <p className="text-gray-600 mb-2">
-                <strong>Luggage:</strong> {selectedVehicle.luggage} bags
-              </p>
-              <p className="text-gray-600 mb-2">
-                <strong>Transmission:</strong> {selectedVehicle.transmission}
-              </p>
-              <p className="text-gray-600 mb-2">
-                <strong>Fuel:</strong> {selectedVehicle.fuel}
-              </p>
-              <p className="text-gray-600 mb-4">
-                <strong>Price:</strong> {selectedVehicle.price}
-              </p>
-              <Button
-                text="Book Now"
-                onClick={() => navigate("/payments")}
-                className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-4 bg-[#006D5B]"
-              />
-            </div>
-          </Modal>
+            images={selectedVehicle.images || []}
+          />
         )}
         <section ref={ctaRef} className="py-16 text-center">
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
