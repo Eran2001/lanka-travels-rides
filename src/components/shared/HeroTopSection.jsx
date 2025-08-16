@@ -77,7 +77,7 @@ const HeroTopSection = () => {
         ref={textRef}
         className="w-full max-xl:w-3/4 xl:w-3/8 max-md:w-7/8 text-center md:text-left"
       >
-        <h1 className="max-xl:text-5xl xl:text-6xl max-lg:text-3xl max-md:text-6xl text-[#5c3d2e] font-bold mb-6 leading-tight">
+        <h1 className="max-xl:text-5xl xl:text-6xl max-lg:text-6xl max-md:text-6xl text-[#5c3d2e] font-bold mb-6 leading-tight">
           EXCLUSIVE CARS <br />
           RENTAL IN SRI LANKA
         </h1>
@@ -95,7 +95,7 @@ const HeroTopSection = () => {
       </div>
 
       {/* Car Image */}
-      <div className="w-full max-xl:w-5/8 xl:w-5/8 max-md:w-7/8 max-md:hidden">
+      <div className="w-full max-xl:w-5/8 xl:w-5/8 max-md:w-7/8 max-lg:hidden">
         <div className="relative w-full h-[65vh] flex items-center justify-center overflow-hidden">
           {carImages.map((img, idx) => (
             <img

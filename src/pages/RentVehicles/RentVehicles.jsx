@@ -469,10 +469,14 @@ const RentVehicles = () => {
           <section
             key={index}
             ref={(el) => (vehicleSectionsRef.current[index] = el)}
-            className="mb-42"
+            className="mb-20"
           >
-            <h2 className="text-3xl font-semibold text-[#5c3d2e] text-start mb-6">
+            <h2 className="text-4xl font-semibold text-[#5c3d2e] text-center mb-6">
               {category.category}
+              <span
+                className="block w-24 h-1 bg-[#006D5B] mx-auto mt-3 rounded-full"
+                aria-hidden="true"
+              ></span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {category.items.map((vehicle, idx) => (
@@ -532,7 +536,7 @@ const RentVehicles = () => {
           </p>
           <Button
             text="Get in Touch"
-            onClick={() => navigate("/contact")}
+            onClick={() => navigate("/contact-us")}
             className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-4 bg-[#006D5B]"
           />
         </section>

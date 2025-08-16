@@ -406,7 +406,7 @@ const About = () => {
           </p>
           <Button
             text="Contact Us"
-            onClick={() => navigate("/contact")}
+            onClick={() => navigate("/contact-us")}
             className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-4"
           />
         </section>

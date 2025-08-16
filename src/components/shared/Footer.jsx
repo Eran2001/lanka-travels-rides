@@ -6,8 +6,10 @@ import {
   FaFacebookF,
   FaTwitter,
   FaYoutube,
+  FaXTwitter,
   FaLinkedinIn,
   FaPhone,
+  FaInstagram,
 } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 
@@ -127,21 +129,21 @@ const Footer = () => {
               ref={logoRef}
               className="mb-10 w-full rounded-xl bg-white/5 p-4 backdrop-blur-sm hover:shadow-lg transition-shadow duration-300"
             >
-              <Link to="/" className="mb-6 inline-block max-w-[160px]">
+              <Link to="/" className="mb-6 inline-block max-w-[160px] ">
                 <img
                   src={logoImg}
                   alt="logo"
-                  className="max-w-full dark:hidden"
+                  className="max-w-full dark:hidden rounded-md"
                 />
                 <img
                   src={logoImg}
                   alt="logo"
-                  className="max-w-full hidden dark:block"
+                  className="max-w-full hidden dark:block rounded-md"
                 />
               </Link>
               <p className="mb-7 text-base text-light text-body-color dark:text-dark-6">
-                Sed ut perspiciatis undmnis is iste natus error sit amet
-                voluptatem totam rem aperiam.
+                We are Lanka Travel Rides, contact with us we have Exclusive
+                cars waiting for your call.
               </p>
               <p className="flex flex-col text-sm font-medium text-dark dark:text-white space-y-1">
                 <span className="flex items-center">
@@ -166,26 +168,26 @@ const Footer = () => {
             refCallback={(el) => (linkGroupsRef.current[0] = el)}
           >
             <NavLink
-              link="/#"
-              label="SaaS Development"
+              link="/blogs"
+              label="Blogs"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/#"
-              label="Our Products"
+              link="/clients"
+              label="Clients"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/#"
-              label="User Flow"
+              link="/rent-with-driver"
+              label="Rent with Driver"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/#"
-              label="User Strategy"
+              link="/self-drive"
+              label="Self Drive"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
@@ -196,26 +198,26 @@ const Footer = () => {
             refCallback={(el) => (linkGroupsRef.current[1] = el)}
           >
             <NavLink
-              link="/#"
-              label="About TailGrids"
+              link="/services"
+              label="Services"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/#"
-              label="Contact & Support"
+              link="/about-us"
+              label="About Us"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/#"
-              label="Success History"
+              link="/contact-us"
+              label="Contact Us"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/#"
-              label="Setting & Privacy"
+              link="/rent-vehicles"
+              label="Rent Vehicles"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
@@ -226,29 +228,29 @@ const Footer = () => {
             refCallback={(el) => (linkGroupsRef.current[2] = el)}
           >
             <NavLink
-              link="/#"
-              label="Premium Support"
+              link="/"
+              label="Home"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/#"
-              label="Our Services"
+              link="/payments"
+              label="Payments"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/#"
-              label="Know Our Team"
+              link="/special-offers"
+              label="Special Offers"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
-            <NavLink
+            {/* <NavLink
               link="/#"
               label="Download App"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
-            />
+            /> */}
           </LinkGroup>
 
           {/* Socials */}
@@ -262,10 +264,13 @@ const Footer = () => {
               </h4>
               <div className="mb-6 flex items-center">
                 {[
-                  { icon: <FaFacebookF />, link: "https://facebook.com" },
-                  { icon: <FaTwitter />, link: "https://twitter.com" },
-                  { icon: <FaYoutube />, link: "https://youtube.com" },
-                  { icon: <FaLinkedinIn />, link: "https://linkedin.com" },
+                  { icon: <FaFacebookF /> },
+                  { icon: <FaXTwitter /> },
+                  {
+                    icon: <FaInstagram />,
+                    link: "https://www.instagram.com/lankatravelrides?igsh=aDlobXhwdjg5aW1t",
+                  },
+                  { icon: <FaLinkedinIn /> },
                 ].map((social, idx) => (
                   <a
                     key={idx}

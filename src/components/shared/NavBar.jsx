@@ -121,7 +121,7 @@ const NavBar = () => {
               />
               <span>Lankatravelrides@gmail.com</span>
             </li>
-            <li className="nav-icon">
+            {/* <li className="nav-icon">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -133,7 +133,7 @@ const NavBar = () => {
                   onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
                 />
               </a>
-            </li>
+            </li> */}
             <li className="nav-icon">
               <a
                 href="https://www.instagram.com/lankatravelrides?igsh=aDlobXhwdjg5aW1t"

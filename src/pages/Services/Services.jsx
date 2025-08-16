@@ -280,7 +280,7 @@ const Services = () => {
                 title: "Rent with Driver",
                 description:
                   "Enjoy a hassle-free journey with our professional drivers who know Sri Lanka inside out. Perfect for tourists and business travelers seeking comfort and convenience.",
-                path: "/with-driver",
+                path: "/rent-with-driver",
                 buttonText: "Learn More",
               },
               {
@@ -294,28 +294,28 @@ const Services = () => {
                 title: "Corporate Rentals",
                 description:
                   "Tailored solutions for businesses, including long-term rentals and fleet management. Reliable vehicles to keep your operations running smoothly.",
-                path: "/contact",
+                path: "/contact-us",
                 buttonText: "Contact Us",
               },
               {
                 title: "Event Transportation",
                 description:
                   "Whether it's a wedding, conference, or special gathering, we offer stylish and punctual transportation solutions to ensure your event runs smoothly and guests arrive in comfort.",
-                path: "/contact",
+                path: "/contact-us",
                 buttonText: "Rent Now",
               },
               {
                 title: "Tour Packages",
                 description:
                   "Discover Sri Lanka with our curated tour packages. From cultural sites to scenic beaches, we provide vehicles and guides for an unforgettable experience.",
-                path: "/special-offers",
+                path: "/contact-us",
                 buttonText: "Explore Tours",
               },
               {
                 title: "Special Events",
                 description:
                   "Make your events memorable with our luxury vehicles for weddings, parties, and more. Customized transport solutions for your special occasions.",
-                path: "/contact",
+                path: "/contact-us",
                 buttonText: "Get a Quote",
               },
             ].map((service, index) => (

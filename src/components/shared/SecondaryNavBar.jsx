@@ -152,19 +152,13 @@ const SecondaryNavBar = () => {
         `}
       </style>
 
-      <nav className="w-full fixed top-14 max-xl:top-[28px] xl:top-[36px] z-[9999] bg-[#f4d35e] text-[#5c3d2e] shadow-md">
+      <nav className="w-full fixed top-14 max-xl:top-[28px] xl:top-[36px] z-[9999] bg-[#f4d35e] text-[#5c3d2e] shadow-md h-16 flex items-center">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-around max-xl:justify-between">
-          <NavLink
-            to="/"
-            ref={logoRef}
-            className="font-bold text-xl relative"
-            onMouseEnter={(e) => handleHover(e.currentTarget)}
-            onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-          >
+          <NavLink to="/" ref={logoRef} className="font-bold text-xl relative">
             <img
               src={logoImg}
               alt="Drive Lanka Logo"
-              className="relative h-8 w-auto"
+              className="h-12 w-auto object-contain"
             />
           </NavLink>
 
