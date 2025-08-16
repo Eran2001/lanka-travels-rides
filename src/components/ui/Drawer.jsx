@@ -43,9 +43,7 @@ const Drawer = ({
         </div>
 
         {/* Content */}
-        <div className="p-4 overflow-y-auto h-[calc(100%-64px)]">
-          {children}
-        </div>
+        <div className="p-4 h-[calc(100%-64px)]">{children}</div>
       </div>
     </div>
   );

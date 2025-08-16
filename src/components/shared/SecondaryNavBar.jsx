@@ -79,7 +79,7 @@ const SecondaryNavBar = () => {
     if (isDrawerOpen && drawerContentRef.current) {
       anime({
         targets: drawerContentRef.current,
-        translateX: ["100%", 0],
+        translateX: ["100%", "0%"],
         opacity: [0, 1],
         duration: 600,
         easing: "easeOutExpo",
@@ -222,7 +222,7 @@ const SecondaryNavBar = () => {
       >
         <div
           ref={drawerContentRef}
-          className="flex flex-col space-y-3 text-[#5c3d2e] overflow-x-hidden"
+          className="flex flex-col space-y-3 text-[#5c3d2e] max-w-full overflow-x-hidden"
         >
           {[
             "Home",
