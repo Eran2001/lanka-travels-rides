@@ -7,7 +7,9 @@ import {
   FaTwitter,
   FaYoutube,
   FaLinkedinIn,
+  FaPhone,
 } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
 
 const Footer = () => {
   const sectionRef = useRef(null);
@@ -82,7 +84,7 @@ const Footer = () => {
       targets: el,
       scale: [1, 1.05],
       translateY: [0, -4],
-      color: ["#000000", "#f9f5e3"],
+      color: ["#f9f5e3", "#f4d35e"],
       duration: 300,
       easing: "easeOutQuad",
     });
@@ -93,7 +95,7 @@ const Footer = () => {
       targets: el,
       scale: [1.05, 1],
       translateY: [-4, 0],
-      color: ["#f9f5e3", "#000000"],
+      color: ["#f4d35e", "#f9f5e3"],
       duration: 300,
       easing: "easeOutQuad",
     });
@@ -103,12 +105,12 @@ const Footer = () => {
     <>
       <footer
         ref={sectionRef}
-        className="flex justify-center bg-accent pb-10 pt-10 lg:pb-10 lg:pt-10"
+        className="flex justify-center bg-primary pb-2 pt-8 lg:pb-10 lg:pt-10 border-t border-white/10 shadow-inner"
       >
         <div className="container -mx-4 flex flex-wrap">
           {/* Logo + Description */}
           <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
-            <div className="mb-10 w-full">
+            <div className="mb-10 w-full rounded-xl bg-white/5 p-4 backdrop-blur-sm hover:shadow-lg transition-shadow duration-300">
               <Link to="/" className="mb-6 inline-block max-w-[160px]">
                 <img
                   src={logoImg}
@@ -121,13 +123,23 @@ const Footer = () => {
                   className="max-w-full hidden dark:block"
                 />
               </Link>
-              <p className="mb-7 text-base text-body-color dark:text-dark-6">
+              <p className="mb-7 text-base text-light text-body-color dark:text-dark-6">
                 Sed ut perspiciatis undmnis is iste natus error sit amet
                 voluptatem totam rem aperiam.
               </p>
-              <p className="flex items-center text-sm font-medium text-dark dark:text-white">
-                <span className="mr-3 text-primary">📞</span>
-                <span>+012 (345) 678 99</span>
+              <p className="flex flex-col text-sm font-medium text-dark dark:text-white space-y-1">
+                <span className="flex items-center">
+                  <FaPhone className="mr-2 text-accent" />
+                  +94 77 790 0734
+                </span>
+                <span className="flex items-center">
+                  <FaPhone className="mr-2 text-accent" />
+                  +94 77 790 0720
+                </span>
+                <span className="flex items-center">
+                  <IoMail className="mr-2 text-accent" />
+                  Lankatravelrides@gmail.com
+                </span>
               </p>
             </div>
           </div>
@@ -228,8 +240,8 @@ const Footer = () => {
             ref={(el) => (linkGroupsRef.current[3] = el)}
             className="w-full px-4 sm:w-1/2 lg:w-3/12"
           >
-            <div className="mb-10 w-full">
-              <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
+            <div className="mb-10 w-full rounded-xl bg-white/5 p-4 backdrop-blur-sm hover:shadow-lg transition-shadow duration-300">
+              <h4 className="mb-6 text-lg font-semibold text-dark dark:text-white border-b border-white/20 pb-2">
                 Follow Us On
               </h4>
               <div className="mb-6 flex items-center">
@@ -249,16 +261,16 @@ const Footer = () => {
                     onMouseLeave={(e) =>
                       handleSocialHoverLeave(e.currentTarget)
                     }
-                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke 
-                 text-dark dark:text-white dark:border-dark-3 
-                 hover:border-primary hover:bg-primary hover:text-white 
-                 sm:mr-4 lg:mr-3 xl:mr-4"
+                    className="mr-3 flex h-9 w-9 items-center justify-center rounded-full border border-stroke 
+          text-dark dark:text-white dark:border-dark-3 
+          hover:border-primary hover:bg-gradient-to-r hover:from-accent hover:to-accent/70 hover:text-dark 
+          sm:mr-4 lg:mr-3 xl:mr-4 transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     {social.icon}
                   </a>
                 ))}
               </div>
-              <p className="text-base text-body-color dark:text-dark-6">
+              <p className="text-base text-accent text-body-color dark:text-dark-6">
                 &copy; {new Date().getFullYear()} Drive Lanka
               </p>
             </div>
@@ -273,8 +285,8 @@ export default Footer;
 
 const LinkGroup = ({ children, header, refCallback }) => (
   <div ref={refCallback} className="w-full px-4 sm:w-1/2 lg:w-2/12">
-    <div className="mb-10 w-full">
-      <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
+    <div className="mb-10 w-full rounded-xl bg-white/5 p-4 backdrop-blur-sm hover:shadow-lg transition-shadow duration-300">
+      <h4 className="mb-6 text-lg font-semibold text-dark dark:text-white border-b border-white pb-2">
         {header}
       </h4>
       <ul className="space-y-3">{children}</ul>
@@ -288,7 +300,9 @@ const NavLink = ({ link, label, onHover, onLeave }) => (
       href={link}
       onMouseEnter={(e) => onHover(e.currentTarget)}
       onMouseLeave={(e) => onLeave(e.currentTarget)}
-      className="inline-block text-base leading-loose text-body-color dark:text-dark-6 hover:text-primary"
+      className="inline-block text-base leading-loose text-light dark:text-dark-6 hover:text-primary relative 
+  after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-light after:transition-all after:duration-300 
+  hover:after:w-full"
     >
       {label}
     </a>

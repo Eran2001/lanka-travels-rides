@@ -7,37 +7,43 @@ import logoImg from "../../assets/images/logoOriginal.png";
 const SecondaryNavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const logoRef = useRef(null);
-  const linksRef = useRef([]);
+  const navLinksRef = useRef([]);
+  const drawerLinksRef = useRef([]);
   const hamburgerRef = useRef(null);
   const drawerContentRef = useRef(null);
 
   useEffect(() => {
+    // Logo animation - bounce in
     anime({
       targets: logoRef.current,
-      translateY: [50, 0],
-      scale: [0.8, 1],
+      translateY: [-40, 0],
+      scale: [0.6, 1],
+      rotate: [-10, 0],
       opacity: [0, 1],
-      duration: 800,
-      easing: "easeOutElastic(1, 0.8)",
-    });
-
-    anime({
-      targets: linksRef.current.slice(0, 5),
-      translateY: [50, 0],
-      scale: [0.85, 1],
-      opacity: [0, 1],
-      delay: anime.stagger(100, { start: 400 }),
-      duration: 800,
+      duration: 1200,
       easing: "easeOutElastic(1, 0.6)",
     });
 
+    // Navbar links - stagger cascade
+    anime({
+      targets: navLinksRef.current.filter(Boolean),
+      translateY: [-60, 0],
+      opacity: [0, 1],
+      scale: [0.8, 1],
+      rotate: [-5, 0],
+      delay: anime.stagger(150, { start: 500 }), // smoother cascade
+      duration: 900,
+      easing: "easeOutBack", // softer bounce
+    });
+
+    // Hamburger - pop in
     anime({
       targets: hamburgerRef.current,
-      translateY: [30, 0],
-      scale: [0.9, 1],
+      scale: [0, 1],
       opacity: [0, 1],
-      duration: 600,
-      easing: "easeOutElastic(1, 0.6)",
+      duration: 700,
+      delay: 1200,
+      easing: "easeOutElastic(1, 0.7)",
     });
   }, []);
 
@@ -47,16 +53,17 @@ const SecondaryNavBar = () => {
         targets: drawerContentRef.current,
         translateX: ["100%", 0],
         opacity: [0, 1],
-        duration: 500,
-        easing: "easeOutQuad",
-      });
-      anime({
-        targets: drawerContentRef.current.children,
-        translateY: [40, 0],
-        opacity: [0, 1],
-        delay: anime.stagger(100, { start: 200 }),
         duration: 600,
-        easing: "easeOutElastic(1, 0.6)",
+        easing: "easeOutExpo",
+      });
+
+      anime({
+        targets: drawerLinksRef.current.filter(Boolean),
+        translateX: [40, 0],
+        opacity: [0, 1],
+        delay: anime.stagger(120, { start: 200 }),
+        duration: 800,
+        easing: "easeOutBack",
       });
     }
   }, [isDrawerOpen]);
@@ -158,7 +165,7 @@ const SecondaryNavBar = () => {
                       : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
                   }`
                 }
-                ref={(el) => (linksRef.current[index] = el)}
+                ref={(el) => (navLinksRef.current[index] = el)}
                 onMouseEnter={(e) => handleHover(e.currentTarget)}
                 onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
               >
@@ -214,7 +221,7 @@ const SecondaryNavBar = () => {
                     : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
                 }`
               }
-              ref={(el) => (linksRef.current[index + 5] = el)}
+              ref={(el) => (drawerLinksRef.current[index] = el)}
               onMouseEnter={(e) => handleHover(e.currentTarget)}
               onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
             >
