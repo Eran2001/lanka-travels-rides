@@ -456,7 +456,7 @@ const RentVehicles = () => {
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             Rent Vehicles
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto p-4">
             Discover the freedom of the road with our wide range of rental
             vehicles tailored to suit your every need. Whether you're planning a
             weekend getaway, a business trip, or simply need a temporary ride,

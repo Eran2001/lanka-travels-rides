@@ -259,7 +259,7 @@ const SelfDrive = () => {
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             Drive Your Adventure
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto p-4">
             Our Self Drive service gives you the freedom to explore Sri Lanka at
             your own pace. Choose from our diverse fleet and hit the road with
             confidence.

@@ -252,9 +252,9 @@ const Contact = () => {
           aria-label="Contact intro"
         >
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
-            Connect with Drive Lanka
+            Connect with Lanka Travel Rides
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto p-4">
             We’re here to help you plan your perfect journey. Reach out via
             WhatsApp or email, and our team will get back to you promptly.
           </p>

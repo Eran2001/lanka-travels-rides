@@ -259,7 +259,7 @@ const RentWithDriver = () => {
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             Explore Sri Lanka with Ease
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto p-4">
             Our Rent with Driver service offers a stress-free way to explore Sri
             Lanka. Our experienced drivers are not only skilled behind the wheel
             but also knowledgeable about the best routes, attractions, and
