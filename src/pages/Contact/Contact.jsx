@@ -436,7 +436,8 @@ const Contact = () => {
             Ready to Start Your Journey?
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Book your vehicle today and explore Sri Lanka with Drive Lanka.
+            Book your vehicle today and explore Sri Lanka with Lanka Travel
+            Rides.
           </p>
           <Button
             text="Choose Your Vehicle"

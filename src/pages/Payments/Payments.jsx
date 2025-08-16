@@ -186,9 +186,9 @@ const Payments = () => {
             Pricing & Payments
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            At Drive Lanka, we offer flexible and secure payment options to make
-            your vehicle rental experience seamless. Choose the method that
-            suits you best and start your journey with ease.
+            At Lanka Travel Rides, we offer flexible and secure payment options
+            to make your vehicle rental experience seamless. Choose the method
+            that suits you best and start your journey with ease.
           </p>
         </section>
 

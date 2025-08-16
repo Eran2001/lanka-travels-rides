@@ -157,7 +157,7 @@ const SecondaryNavBar = () => {
           <NavLink to="/" ref={logoRef} className="font-bold text-xl relative">
             <img
               src={logoImg}
-              alt="Drive Lanka Logo"
+              alt="Lanka Travel Rides Logo"
               className="h-12 w-auto object-contain max-md:pt-1"
             />
           </NavLink>
@@ -212,7 +212,7 @@ const SecondaryNavBar = () => {
       <Drawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
-        title="Drive Lanka"
+        title="Lanka Travel Rides"
         width="w-72"
       >
         <div

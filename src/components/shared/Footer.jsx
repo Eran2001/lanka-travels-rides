@@ -292,7 +292,7 @@ const Footer = () => {
                 ))}
               </div>
               <p className="text-base text-accent text-body-color dark:text-dark-6">
-                &copy; {new Date().getFullYear()} Drive Lanka
+                &copy; {new Date().getFullYear()} Lanka Travel Rides
               </p>
             </div>
           </div>

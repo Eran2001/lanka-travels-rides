@@ -280,10 +280,10 @@ const About = () => {
           className="text-center py-16 bg-[#f4d35e] rounded-lg"
         >
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
-            About Drive Lanka
+            About Lanka Travel Rides
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            At <span className="font-semibold">Drive Lanka</span>, we are
+            At <span className="font-semibold">Lanka Travel Rides</span>, we are
             dedicated to providing reliable, affordable, and high-quality
             transportation solutions across Sri Lanka. Whether you're a tourist
             exploring our vibrant island or a local seeking convenient travel,
@@ -336,7 +336,7 @@ const About = () => {
           className="py-16 bg-[#5c3d2e] text-white rounded-lg"
         >
           <h2 className="text-3xl font-semibold text-center mb-12">
-            Why Choose Drive Lanka?
+            Why Choose Lanka Travel Rides?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
@@ -398,7 +398,7 @@ const About = () => {
         {/* Call to Action */}
         <section ref={ctaSectionRef} className="py-16 text-center">
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
-            Join the Drive Lanka Experience
+            Join the Lanka Travel Rides Experience
           </h2>
           <p className="text-lg text-gray-600 mb-8">
             Ready to explore Sri Lanka with us? Contact us today to start your

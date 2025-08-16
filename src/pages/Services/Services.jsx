@@ -262,10 +262,10 @@ const Services = () => {
             Our Services
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            At Drive Lanka, we provide premium vehicle rental services tailored
-            to your needs. Whether you're exploring Sri Lanka or need reliable
-            transportation, our diverse fleet and flexible options ensure a
-            seamless experience.
+            At Lanka Travel Rides, we provide premium vehicle rental services
+            tailored to your needs. Whether you're exploring Sri Lanka or need
+            reliable transportation, our diverse fleet and flexible options
+            ensure a seamless experience.
           </p>
         </section>
 
@@ -346,7 +346,7 @@ const Services = () => {
           className="py-16 bg-[#5c3d2e] text-white rounded-lg"
         >
           <h2 className="text-3xl font-semibold text-center mb-12">
-            Why Choose Drive Lanka?
+            Why Choose Lanka Travel Rides?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
@@ -407,7 +407,7 @@ const Services = () => {
           </h2>
           <p className="text-lg text-gray-600 mb-2">
             Book your vehicle today and experience the freedom of the open road
-            with Drive Lanka.
+            with Lanka Travel Rides.
           </p>
           <Button
             text="Rent Now"
