@@ -178,6 +178,7 @@ const SecondaryNavBar = () => {
               "Rent Vehicles",
               "Rent with Driver",
               "Self Drive",
+              "Payments",
             ].map((item, index) => (
               <NavLink
                 key={item}
@@ -233,6 +234,7 @@ const SecondaryNavBar = () => {
             "Rent Vehicles",
             "Rent with Driver",
             "Self Drive",
+            "Payments",
           ].map((item, index) => (
             <NavLink
               key={item}

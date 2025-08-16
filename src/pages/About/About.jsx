@@ -4,7 +4,6 @@ import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
 import Button from "@/components/ui/Button";
 import Loading from "@/components/ui/Loading";
-
 import OurTeam from "../Home/OurTeam";
 
 const About = () => {
@@ -12,9 +11,10 @@ const About = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Refs for sections & items
-  const aboutSectionRef = useRef(null);
+  const introRef = useRef(null);
   const missionSectionRef = useRef(null);
   const benefitsSectionRef = useRef(null);
+  const teamSectionRef = useRef(null);
   const ctaSectionRef = useRef(null);
 
   const missionCardRefs = useRef([]);
@@ -71,9 +71,10 @@ const About = () => {
   // Scroll-triggered animations
   useEffect(() => {
     const sections = [
-      { ref: aboutSectionRef, bg: "#f4d35e" },
+      { ref: introRef, bg: "#f4d35e" },
       { ref: missionSectionRef, bg: "#f3f4f6" },
       { ref: benefitsSectionRef, bg: "#5c3d2e" },
+      { ref: teamSectionRef, bg: "#f3f4f6" },
       { ref: ctaSectionRef, bg: "#f3f4f6" },
     ];
 
@@ -130,7 +131,9 @@ const About = () => {
       const cards =
         sectionRef === missionSectionRef
           ? missionCardRefs.current
-          : benefitsItemRefs.current;
+          : sectionRef === benefitsSectionRef
+          ? benefitsItemRefs.current
+          : [];
       if (cards && cards.length > 0) {
         anime({
           targets: cards,
@@ -158,6 +161,22 @@ const About = () => {
           });
         }
       }
+
+      // Team section animation
+      if (sectionRef === teamSectionRef) {
+        const teamMembers = sectionRef.current.querySelectorAll(".team-member");
+        if (teamMembers.length > 0) {
+          anime({
+            targets: teamMembers,
+            translateY: [100, 0],
+            scale: [0.85, 1],
+            opacity: [0, 1],
+            delay: anime.stagger(120, { start: 600 }),
+            duration: 900,
+            easing: "easeOutElastic(1, 0.6)",
+          });
+        }
+      }
     };
 
     const observers = sections.map(({ ref, bg }) => {
@@ -181,7 +200,7 @@ const About = () => {
         if (ref.current) observer.unobserve(ref.current);
       });
     };
-  }, []);
+  }, [isLoading]);
 
   // Hover animations for mission cards
   const handleCardHover = (el) => {
@@ -211,7 +230,7 @@ const About = () => {
     });
   };
 
-  // Hover animations for benefits items & icons (optional, simplified)
+  // Hover animations for benefits items & icons
   const handleItemHover = (el) => {
     anime({
       targets: el,
@@ -257,7 +276,7 @@ const About = () => {
       <div className="container mx-auto px-4">
         {/* About Intro */}
         <section
-          ref={aboutSectionRef}
+          ref={introRef}
           className="text-center py-16 bg-[#f4d35e] rounded-lg"
         >
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
@@ -372,7 +391,7 @@ const About = () => {
         </section>
 
         {/* Our Team */}
-        <section className="py-16 text-center">
+        <section ref={teamSectionRef} className="py-16 text-center">
           <OurTeam />
         </section>
 

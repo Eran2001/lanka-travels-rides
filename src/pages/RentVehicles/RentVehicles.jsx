@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
@@ -12,11 +13,13 @@ const RentVehicles = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document.title = "Lanka Travels Rides | Rent Vehicles";
-  }, []);
+  const introRef = useRef(null);
+  const vehicleSectionsRef = useRef([]);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
+    document.title = "Lanka Travels Rides | Rent Vehicles";
+
     const timeout = setTimeout(() => {
       setIsLoading(false);
     }, 200);
@@ -24,7 +27,159 @@ const RentVehicles = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  if (isLoading) return <Loading />;
+  useEffect(() => {
+    if (isLoading) return;
+
+    // Animate vehicle cards on load
+    vehicleSectionsRef.current.forEach((section) => {
+      const cards = section.querySelectorAll(".vehicle-card");
+      anime({
+        targets: cards,
+        translateY: [100, 0],
+        opacity: [0, 1],
+        scale: [0.9, 1],
+        delay: anime.stagger(150, { start: 200 }),
+        duration: 900,
+        easing: "easeOutBounce",
+      });
+    });
+
+    // Animate Call to Action button fade + pop in
+    const ctaBtn = ctaRef.current?.querySelector("button");
+    if (ctaBtn) {
+      anime({
+        targets: ctaBtn,
+        scale: [0.8, 1],
+        opacity: [0, 1],
+        duration: 800,
+        easing: "easeOutElastic(1, .7)",
+        delay: 600,
+      });
+    }
+  }, [isLoading]);
+
+  // Scroll-triggered animations
+  useEffect(() => {
+    const sections = [
+      { ref: introRef, bg: "#f4d35e" },
+      ...vehicleSectionsRef.current.map((ref) => ({ ref, bg: "#f3f4f6" })),
+      { ref: ctaRef, bg: "#f3f4f6" },
+    ];
+
+    const playAnimations = (sectionRef, bg) => {
+      if (!sectionRef.current) return;
+
+      // Background fade-in
+      anime({
+        targets: sectionRef.current,
+        backgroundColor: [
+          `rgba(${
+            bg === "#f4d35e"
+              ? "244,211,94"
+              : bg === "#5c3d2e"
+              ? "92,61,46"
+              : "243,244,246"
+          }, 0)`,
+          bg,
+        ],
+        duration: 1000,
+        easing: "easeOutQuad",
+      });
+
+      // Animate header and paragraph
+      const header = sectionRef.current.querySelector("h2, h3");
+      const paragraph = sectionRef.current.querySelector("p");
+      if (header || paragraph) {
+        anime({
+          targets: [header, paragraph].filter(Boolean),
+          translateY: [80, 0],
+          scale: [0.8, 1],
+          opacity: [0, 1],
+          delay: anime.stagger(150, { start: 200 }),
+          duration: 900,
+          easing: "easeOutElastic(1, 0.6)",
+        });
+      }
+
+      // Button animation
+      const button = sectionRef.current.querySelector("button");
+      if (button) {
+        anime({
+          targets: button,
+          translateY: [50, 0],
+          scale: [0.9, 1],
+          opacity: [0, 1],
+          duration: 700,
+          easing: "easeOutElastic(1, 0.8)",
+          delay: 500,
+        });
+      }
+
+      // Vehicle cards animation
+      const cards = sectionRef.current.querySelectorAll(".vehicle-card");
+      if (cards && cards.length > 0) {
+        anime({
+          targets: cards,
+          translateY: [100, 0],
+          scale: [0.85, 1],
+          opacity: [0, 1],
+          delay: anime.stagger(120, { start: 600 }),
+          duration: 900,
+          easing: "easeOutElastic(1, 0.6)",
+        });
+      }
+    };
+
+    const observers = sections.map(({ ref, bg }) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            playAnimations(ref, bg);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+
+      if (ref.current) observer.observe(ref.current);
+
+      return { observer, ref };
+    });
+
+    return () => {
+      observers.forEach(({ observer, ref }) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
+    };
+  }, [isLoading]);
+
+  // Hover animations for vehicle cards
+  const handleCardHover = (el) => {
+    anime({
+      targets: el,
+      scale: [1, 1.07],
+      translateY: [0, -15],
+      boxShadow: [
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
+      ],
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+    });
+  };
+  const handleCardHoverLeave = (el) => {
+    anime({
+      targets: el,
+      scale: [1.07, 1],
+      translateY: [-15, 0],
+      boxShadow: [
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+      ],
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+    });
+  };
 
   const vehicles = [
     {
@@ -294,7 +449,10 @@ const RentVehicles = () => {
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-16 mt-27">
       <div className="container mx-auto px-4">
-        <section className="text-center py-8 bg-[#f4d35e] rounded-lg mb-24">
+        <section
+          ref={introRef}
+          className="text-center py-8 bg-[#f4d35e] rounded-lg mb-24"
+        >
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             Rent Vehicles
           </h2>
@@ -308,7 +466,11 @@ const RentVehicles = () => {
         </section>
 
         {vehicles.map((category, index) => (
-          <section key={index} className="mb-42">
+          <section
+            key={index}
+            ref={(el) => (vehicleSectionsRef.current[index] = el)}
+            className="mb-42"
+          >
             <h2 className="text-3xl font-semibold text-[#5c3d2e] text-start mb-6">
               {category.category}
             </h2>
@@ -316,7 +478,9 @@ const RentVehicles = () => {
               {category.items.map((vehicle, idx) => (
                 <div
                   key={idx}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden"
+                  className="bg-white rounded-lg shadow-lg overflow-hidden vehicle-card"
+                  onMouseEnter={(e) => handleCardHover(e.currentTarget)}
+                  onMouseLeave={(e) => handleCardHoverLeave(e.currentTarget)}
                 >
                   <img
                     src={vehicle.image}
@@ -336,16 +500,9 @@ const RentVehicles = () => {
                       Luggage: {vehicle.luggage} bags
                     </p>
                     <p className="text-gray-600">Price: {vehicle.price}</p>
-                    {/* <button
-                      onClick={() => openModal(vehicle)}
-                      className="mt-4 bg-[#f4d35e] text-[#5c3d2e] font-bold py-2 px-4 rounded-full hover:bg-[#e0c250] transition"
-                    >
-                      View
-                    </button> */}
                     <Button
                       text="View"
                       onClick={() => openModal(vehicle)}
-                      // className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-8 opacity-0 group-hover:opacity-100 rounded-4xl"
                       className="mt-4 bg-[#f4d35e] text-[#5c3d2e] font-bold py-2 px-4 rounded-4xl hover:bg-[#e0c250] transition"
                     />
                   </div>
@@ -385,12 +542,6 @@ const RentVehicles = () => {
               <p className="text-gray-600 mb-4">
                 <strong>Price:</strong> {selectedVehicle.price}
               </p>
-              {/* <Link
-                to="/payments"
-                className="bg-[#f4d35e] text-[#5c3d2e] font-bold py-2 px-6 rounded-full hover:bg-[#e0c250] transition"
-              >
-                Book Now
-              </Link> */}
               <Button
                 text="Book Now"
                 onClick={() => navigate("/payments")}
@@ -399,7 +550,7 @@ const RentVehicles = () => {
             </div>
           </Modal>
         )}
-        <section className="py-16 text-center">
+        <section ref={ctaRef} className="py-16 text-center">
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             Ready to Rent?
           </h2>
@@ -407,12 +558,6 @@ const RentVehicles = () => {
             Contact us to book your vehicle and start your journey with Drive
             Lanka.
           </p>
-          {/* <Link
-            to="/contact"
-            className="bg-[#f4d35e] text-[#5c3d2e] font-bold py-3 px-6 rounded-full hover:bg-[#e0c250] transition"
-          >
-            Get in Touch
-          </Link> */}
           <Button
             text="Get in Touch"
             onClick={() => navigate("/contact")}

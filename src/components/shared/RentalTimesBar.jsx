@@ -7,13 +7,56 @@ const RentalTimesBar = () => {
   const rentalTimesRef = useRef(null);
 
   useEffect(() => {
+    const items = rentalTimesRef.current.children;
+
+    // Animate each item with a sequential flip-in effect
     anime({
-      targets: rentalTimesRef.current.children,
-      translateY: [20, 0],
+      targets: items,
+      translateY: [100, 0],
+      rotateX: [90, 0],
       opacity: [0, 1],
-      delay: anime.stagger(100),
-      duration: 500,
-      easing: "easeOutCubic",
+      delay: anime.stagger(200, { start: 300 }),
+      duration: 1200,
+      easing: "easeOutElastic(1, 0.5)",
+    });
+
+    // Animate icons with a rotating entrance and scale
+    anime({
+      targets: rentalTimesRef.current.querySelectorAll("svg"),
+      scale: [0, 1.2, 1],
+      rotate: [360, 0],
+      opacity: [0, 1],
+      delay: anime.stagger(200, { start: 500 }),
+      duration: 1000,
+      easing: "easeOutElastic(1, 0.6)",
+    });
+
+    // Animate text with a typewriter-like reveal
+    anime({
+      targets: rentalTimesRef.current.querySelectorAll("span"),
+      translateX: [-50, 0],
+      opacity: [0, 1],
+      delay: anime.stagger(200, { start: 700 }),
+      duration: 800,
+      easing: "easeOutSine",
+      begin: () => {
+        // Split text into spans for character-by-character animation
+        rentalTimesRef.current.querySelectorAll("span").forEach((span) => {
+          const text = span.textContent;
+          span.innerHTML = text
+            .split("")
+            .map((char) => `<span>${char}</span>`)
+            .join("");
+          anime({
+            targets: span.querySelectorAll("span"),
+            translateY: [20, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(50),
+            duration: 600,
+            easing: "easeOutCubic",
+          });
+        });
+      },
     });
   }, []);
 
@@ -24,31 +67,31 @@ const RentalTimesBar = () => {
           ref={rentalTimesRef}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-white text-center"
         >
-          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md hover:bg-white/20 transition">
+          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md">
             <MdSupportAgent size={28} className="text-white" />
             <span className="text-sm font-semibold">24/7 Support</span>
           </div>
-          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md hover:bg-white/20 transition">
+          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md">
             <MdCarRepair size={28} className="text-white" />
             <span className="text-sm font-semibold">
               Well-Maintained Vehicles
             </span>
           </div>
-          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md hover:bg-white/20 transition">
+          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md">
             <MdAttachMoney size={28} className="text-white" />
             <span className="text-sm font-semibold">Affordable Pricing</span>
           </div>
-          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md hover:bg-white/20 transition">
+          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md">
             <FaExchangeAlt size={24} className="text-white" />
             <span className="text-sm font-semibold">Immediate Replacement</span>
           </div>
-          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md hover:bg-white/20 transition">
+          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md">
             <FaShieldAlt size={24} className="text-white" />
             <span className="text-sm font-semibold">
               Comprehensive Insurance
             </span>
           </div>
-          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md hover:bg-white/20 transition">
+          <div className="flex flex-col items-center gap-2 p-4 bg-white/10 rounded-xl shadow-md">
             <FaCarSide size={24} className="text-white" />
             <span className="text-sm font-semibold">Trusted Car Brands</span>
           </div>

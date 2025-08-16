@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 import Loading from "@/components/ui/Loading";
 import Button from "@/components/ui/Button";
-import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
 const Services = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-  const servicesSectionRef = useRef(null);
+  const introRef = useRef(null);
   const overviewSectionRef = useRef(null);
   const whyChooseUsSectionRef = useRef(null);
   const ctaSectionRef = useRef(null);
@@ -37,7 +37,7 @@ const Services = () => {
       easing: "easeOutBounce",
     });
 
-    // Animate Why Choose Us items on page load similarly
+    // Animate Why Choose Us items on page load
     anime({
       targets: whyChooseUsItemRefs.current,
       translateY: [100, 0],
@@ -65,35 +65,35 @@ const Services = () => {
   // Scroll-triggered animations
   useEffect(() => {
     const sections = [
-      { ref: servicesSectionRef, bg: "#f4d35e" },
+      { ref: introRef, bg: "#f4d35e" },
       { ref: overviewSectionRef, bg: "#f3f4f6" },
       { ref: whyChooseUsSectionRef, bg: "#5c3d2e" },
       { ref: ctaSectionRef, bg: "#f3f4f6" },
     ];
 
     const playAnimations = (sectionRef, bg) => {
+      if (!sectionRef.current) return;
+
       // Section background fade-in
-      if (sectionRef.current) {
-        anime({
-          targets: sectionRef.current,
-          backgroundColor: [
-            `rgba(${
-              bg === "#f4d35e"
-                ? "244,211,94"
-                : bg === "#5c3d2e"
-                ? "92,61,46"
-                : "243,244,246"
-            }, 0)`,
-            bg,
-          ],
-          duration: 1000,
-          easing: "easeOutQuad",
-        });
-      }
+      anime({
+        targets: sectionRef.current,
+        backgroundColor: [
+          `rgba(${
+            bg === "#f4d35e"
+              ? "244,211,94"
+              : bg === "#5c3d2e"
+              ? "92,61,46"
+              : "243,244,246"
+          }, 0)`,
+          bg,
+        ],
+        duration: 1000,
+        easing: "easeOutQuad",
+      });
 
       // Header and paragraph animation
-      const header = sectionRef.current?.querySelector("h2");
-      const paragraph = sectionRef.current?.querySelector("p");
+      const header = sectionRef.current.querySelector("h2");
+      const paragraph = sectionRef.current.querySelector("p");
       if (header || paragraph) {
         anime({
           targets: [header, paragraph].filter(Boolean),
@@ -106,8 +106,8 @@ const Services = () => {
         });
       }
 
-      // Button animation (handled by Button component, but enhance pop)
-      const button = sectionRef.current?.querySelector("button");
+      // Button animation
+      const button = sectionRef.current.querySelector("button");
       if (button) {
         anime({
           targets: button,
@@ -139,7 +139,7 @@ const Services = () => {
 
       // Icons in Why Choose Us
       if (sectionRef === whyChooseUsSectionRef) {
-        const icons = sectionRef.current?.querySelectorAll("svg");
+        const icons = sectionRef.current.querySelectorAll("svg");
         if (icons.length > 0) {
           anime({
             targets: icons,
@@ -154,21 +154,18 @@ const Services = () => {
       }
     };
 
-    // Intersection Observer for each section
     const observers = sections.map(({ ref, bg }) => {
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {
             playAnimations(ref, bg);
-            observer.disconnect(); // Run animations only once
+            observer.disconnect();
           }
         },
-        { threshold: 0.3 } // Trigger when 30% of the section is visible
+        { threshold: 0.3 }
       );
 
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
+      if (ref.current) observer.observe(ref.current);
 
       return { observer, ref };
     });
@@ -178,7 +175,7 @@ const Services = () => {
         if (ref.current) observer.unobserve(ref.current);
       });
     };
-  }, []);
+  }, [isLoading]);
 
   // Hover animation for cards
   const handleCardHover = (el) => {
@@ -258,7 +255,7 @@ const Services = () => {
       <div className="container mx-auto px-4">
         {/* Services Section */}
         <section
-          ref={servicesSectionRef}
+          ref={introRef}
           className="text-center py-16 bg-[#f4d35e] rounded-lg"
         >
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">

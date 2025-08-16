@@ -7,56 +7,79 @@ const Services = () => {
   const serviceRefs = useRef([]);
   const svgRefs = useRef([]);
 
-  // Initial animations
+  // Scroll-triggered animations
   useEffect(() => {
-    // Section background fade-in
+    const playAnimations = () => {
+      // Section background fade-in
+      if (sectionRef.current) {
+        anime({
+          targets: sectionRef.current,
+          backgroundColor: ["rgba(249, 245, 227, 0)", "#f9f5e3"],
+          duration: 1000,
+          easing: "easeOutQuad",
+        });
+      }
+
+      // Header animation (title and subtitle)
+      if (headerRef.current) {
+        anime({
+          targets: headerRef.current.children,
+          translateY: [60, 0],
+          scale: [0.8, 1],
+          opacity: [0, 1],
+          delay: anime.stagger(150, { start: 200 }),
+          duration: 800,
+          easing: "easeOutElastic(1, 0.7)",
+        });
+      }
+
+      // Service cards animation (staggered)
+      if (serviceRefs.current.length > 0) {
+        anime({
+          targets: serviceRefs.current,
+          translateY: [60, 0],
+          scale: [0.85, 1],
+          opacity: [0, 1],
+          delay: anime.stagger(120, { start: 600 }),
+          duration: 800,
+          easing: "easeOutElastic(1, 0.8)",
+        });
+      }
+
+      // SVG animations (staggered scale and rotate)
+      if (svgRefs.current.length > 0) {
+        anime({
+          targets: svgRefs.current,
+          scale: [0.7, 1],
+          rotate: ["-10deg", "0deg"],
+          opacity: [0, 1],
+          delay: anime.stagger(120, { start: 800 }),
+          duration: 700,
+          easing: "easeOutElastic(1, 0.9)",
+        });
+      }
+    };
+
+    // Intersection Observer to trigger animations when section is visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          playAnimations();
+          observer.disconnect(); // Run animations only once
+        }
+      },
+      { threshold: 0.3 } // Trigger when 30% of the section is visible
+    );
+
     if (sectionRef.current) {
-      anime({
-        targets: sectionRef.current,
-        backgroundColor: ["rgba(249, 245, 227, 0)", "#f9f5e3"],
-        duration: 1000,
-        easing: "easeOutQuad",
-      });
+      observer.observe(sectionRef.current);
     }
 
-    // Header animation (title and subtitle)
-    if (headerRef.current) {
-      anime({
-        targets: headerRef.current.children,
-        translateY: [60, 0],
-        scale: [0.8, 1],
-        opacity: [0, 1],
-        delay: anime.stagger(150, { start: 200 }),
-        duration: 800,
-        easing: "easeOutElastic(1, 0.7)",
-      });
-    }
-
-    // Service cards animation (staggered)
-    if (serviceRefs.current.length > 0) {
-      anime({
-        targets: serviceRefs.current,
-        translateY: [60, 0],
-        scale: [0.85, 1],
-        opacity: [0, 1],
-        delay: anime.stagger(120, { start: 600 }),
-        duration: 800,
-        easing: "easeOutElastic(1, 0.8)",
-      });
-    }
-
-    // SVG animations (staggered scale and rotate)
-    if (svgRefs.current.length > 0) {
-      anime({
-        targets: svgRefs.current,
-        scale: [0.7, 1],
-        rotate: ["-10deg", "0deg"],
-        opacity: [0, 1],
-        delay: anime.stagger(120, { start: 800 }),
-        duration: 700,
-        easing: "easeOutElastic(1, 0.9)",
-      });
-    }
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   // Hover animation for service cards

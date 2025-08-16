@@ -14,8 +14,8 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Refs for animation
+  const introRef = useRef(null);
   const whatsappCardsRefs = useRef([]);
-  const contactSectionRef = useRef(null);
   const whatsappSectionRef = useRef(null);
   const emailSectionRef = useRef(null);
   const ctaSectionRef = useRef(null);
@@ -58,18 +58,18 @@ const Contact = () => {
   useEffect(() => {
     if (isLoading) return;
 
-    // Animate WhatsApp cards
+    // Animate WhatsApp cards on load
     anime({
       targets: whatsappCardsRefs.current,
-      translateY: [50, 0],
+      translateY: [100, 0],
       opacity: [0, 1],
       scale: [0.9, 1],
-      delay: anime.stagger(200, { start: 300 }),
+      delay: anime.stagger(150, { start: 200 }),
       duration: 900,
-      easing: "easeOutElastic(1, 0.7)",
+      easing: "easeOutBounce",
     });
 
-    // Animate CTA button on load
+    // Animate Call to Action button fade + pop in
     const ctaBtn = ctaSectionRef.current?.querySelector("button");
     if (ctaBtn) {
       anime({
@@ -77,8 +77,8 @@ const Contact = () => {
         scale: [0.8, 1],
         opacity: [0, 1],
         duration: 800,
-        easing: "easeOutElastic(1, 0.7)",
-        delay: 500,
+        easing: "easeOutElastic(1, .7)",
+        delay: 600,
       });
     }
   }, [isLoading]);
@@ -86,6 +86,7 @@ const Contact = () => {
   // Scroll-triggered animations
   useEffect(() => {
     const sections = [
+      { ref: introRef, bg: "#f4d35e" },
       { ref: whatsappSectionRef, bg: "#ffffff" },
       { ref: emailSectionRef, bg: "#5c3d2e" },
       { ref: ctaSectionRef, bg: "#f3f4f6" },
@@ -94,11 +95,14 @@ const Contact = () => {
     const playAnimations = (sectionRef, bg) => {
       if (!sectionRef.current) return;
 
+      // Background fade-in
       anime({
         targets: sectionRef.current,
         backgroundColor: [
           `rgba(${
-            bg === "#5c3d2e"
+            bg === "#f4d35e"
+              ? "244,211,94"
+              : bg === "#5c3d2e"
               ? "92,61,46"
               : bg === "#ffffff"
               ? "255,255,255"
@@ -110,29 +114,60 @@ const Contact = () => {
         easing: "easeOutQuad",
       });
 
-      const headers = sectionRef.current.querySelectorAll("h2, h3");
-      const paragraphs = sectionRef.current.querySelectorAll("p");
-      anime({
-        targets: [...headers, ...paragraphs],
-        translateY: [50, 0],
-        opacity: [0, 1],
-        scale: [0.8, 1],
-        delay: anime.stagger(150),
-        duration: 900,
-        easing: "easeOutElastic(1, 0.7)",
-      });
+      // Animate header and paragraph
+      const header = sectionRef.current.querySelector("h2, h3");
+      const paragraph = sectionRef.current.querySelector("p");
+      if (header || paragraph) {
+        anime({
+          targets: [header, paragraph].filter(Boolean),
+          translateY: [80, 0],
+          scale: [0.8, 1],
+          opacity: [0, 1],
+          delay: anime.stagger(150, { start: 200 }),
+          duration: 900,
+          easing: "easeOutElastic(1, 0.6)",
+        });
+      }
 
-      // Animate whatsapp cards if section is whatsappSectionRef
+      // Button animation
+      const button = sectionRef.current.querySelector("button");
+      if (button) {
+        anime({
+          targets: button,
+          translateY: [50, 0],
+          scale: [0.9, 1],
+          opacity: [0, 1],
+          duration: 700,
+          easing: "easeOutElastic(1, 0.8)",
+          delay: 500,
+        });
+      }
+
+      // Animate WhatsApp cards if section is whatsappSectionRef
       if (sectionRef === whatsappSectionRef) {
         anime({
           targets: whatsappCardsRefs.current,
-          translateY: [80, 0],
-          opacity: [0, 1],
+          translateY: [100, 0],
           scale: [0.85, 1],
-          delay: anime.stagger(150, { start: 600 }),
+          opacity: [0, 1],
+          delay: anime.stagger(120, { start: 600 }),
           duration: 900,
-          easing: "easeOutElastic(1, 0.7)",
+          easing: "easeOutElastic(1, 0.6)",
         });
+
+        // Animate QR code
+        const qrCode = sectionRef.current.querySelector("svg");
+        if (qrCode) {
+          anime({
+            targets: qrCode,
+            scale: [0, 1],
+            translateY: [30, 0],
+            opacity: [0, 1],
+            delay: 800,
+            duration: 600,
+            easing: "easeOutElastic(1, 0.8)",
+          });
+        }
       }
 
       // Animate form inputs in email section
@@ -140,27 +175,15 @@ const Contact = () => {
         const inputs = sectionRef.current.querySelectorAll(
           "input, textarea, button"
         );
-        anime({
-          targets: inputs,
-          translateY: [50, 0],
-          opacity: [0, 1],
-          delay: anime.stagger(120, { start: 600 }),
-          duration: 800,
-          easing: "easeOutElastic(1, 0.7)",
-        });
-      }
-
-      // Animate CTA button if present
-      if (sectionRef === ctaSectionRef) {
-        const btn = sectionRef.current.querySelector("button");
-        if (btn) {
+        if (inputs.length > 0) {
           anime({
-            targets: btn,
-            scale: [0.8, 1],
+            targets: inputs,
+            translateY: [100, 0],
+            scale: [0.85, 1],
             opacity: [0, 1],
-            duration: 700,
-            easing: "easeOutElastic(1, 0.7)",
-            delay: 500,
+            delay: anime.stagger(120, { start: 600 }),
+            duration: 900,
+            easing: "easeOutElastic(1, 0.6)",
           });
         }
       }
@@ -187,33 +210,33 @@ const Contact = () => {
         if (ref.current) observer.unobserve(ref.current);
       });
     };
-  }, []);
+  }, [isLoading]);
 
   // Hover animations for WhatsApp cards
   const handleCardHover = (el) => {
     anime({
       targets: el,
-      scale: [1, 1.05],
-      translateY: [0, -10],
+      scale: [1, 1.07],
+      translateY: [0, -15],
       boxShadow: [
-        "0 10px 15px rgba(0,0,0,0.1)",
-        "0 25px 40px rgba(0,0,0,0.25)",
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
       ],
-      duration: 350,
-      easing: "easeOutQuad",
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
     });
   };
   const handleCardHoverLeave = (el) => {
     anime({
       targets: el,
-      scale: [1.05, 1],
-      translateY: [-10, 0],
+      scale: [1.07, 1],
+      translateY: [-15, 0],
       boxShadow: [
-        "0 25px 40px rgba(0,0,0,0.25)",
-        "0 10px 15px rgba(0,0,0,0.1)",
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
       ],
-      duration: 350,
-      easing: "easeOutQuad",
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
     });
   };
 
@@ -221,9 +244,10 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-1 mt-27">
-      <div className="container mx-auto px-4" ref={contactSectionRef}>
+      <div className="container mx-auto px-4">
         {/* Intro */}
         <section
+          ref={introRef}
           className="text-center py-16 bg-[#f4d35e] rounded-lg"
           aria-label="Contact intro"
         >

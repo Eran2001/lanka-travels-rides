@@ -30,100 +30,221 @@ const RentWithDriver = () => {
   useEffect(() => {
     if (isLoading) return;
 
-    const animateSection = (ref, bgColor) => {
-      anime({
-        targets: ref.current,
-        backgroundColor: [`rgba(0,0,0,0)`, bgColor],
-        duration: 1000,
-        easing: "easeOutQuad",
-      });
+    // Animate process cards on load
+    anime({
+      targets: processCards.current,
+      translateY: [100, 0],
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      delay: anime.stagger(150, { start: 200 }),
+      duration: 900,
+      easing: "easeOutBounce",
+    });
 
-      const header = ref.current.querySelector("h2");
-      const paragraph = ref.current.querySelector("p");
+    // Animate benefits items on load
+    anime({
+      targets: benefitItems.current,
+      translateY: [100, 0],
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      delay: anime.stagger(150, { start: 300 }),
+      duration: 900,
+      easing: "easeOutBounce",
+    });
 
+    // Animate Call to Action button fade + pop in
+    const ctaBtn = ctaRef.current?.querySelector("button");
+    if (ctaBtn) {
       anime({
-        targets: [header, paragraph].filter(Boolean),
-        translateY: [80, 0],
-        opacity: [0, 1],
+        targets: ctaBtn,
         scale: [0.8, 1],
-        delay: anime.stagger(150, { start: 200 }),
+        opacity: [0, 1],
         duration: 800,
-        easing: "easeOutElastic(1, 0.7)",
+        easing: "easeOutElastic(1, .7)",
+        delay: 600,
       });
+    }
+  }, [isLoading]);
 
-      const button = ref.current.querySelector("button");
-      if (button) {
-        anime({
-          targets: button,
-          translateY: [40, 0],
-          scale: [0.85, 1],
-          opacity: [0, 1],
-          delay: 600,
-          duration: 700,
-          easing: "easeOutElastic(1, 0.8)",
-        });
-      }
-    };
-
-    const observerConfig = { threshold: 0.3 };
-    const observers = [
+  // Scroll-triggered animations
+  useEffect(() => {
+    const sections = [
       { ref: introRef, bg: "#f4d35e" },
       { ref: processRef, bg: "#f3f4f6" },
       { ref: benefitsRef, bg: "#5c3d2e" },
       { ref: ctaRef, bg: "#f3f4f6" },
-    ].map(({ ref, bg }) => {
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          animateSection(ref, bg);
+    ];
 
-          if (ref === processRef) {
-            anime({
-              targets: processCards.current,
-              translateY: [100, 0],
-              opacity: [0, 1],
-              scale: [0.9, 1],
-              delay: anime.stagger(150, { start: 300 }),
-              duration: 800,
-              easing: "easeOutBounce",
-            });
-          }
+    const playAnimations = (sectionRef, bg) => {
+      if (!sectionRef.current) return;
 
-          if (ref === benefitsRef) {
-            anime({
-              targets: benefitItems.current,
-              translateY: [100, 0],
-              opacity: [0, 1],
-              scale: [0.9, 1],
-              delay: anime.stagger(120, { start: 400 }),
-              duration: 900,
-              easing: "easeOutElastic(1, 0.6)",
-            });
+      // Background fade-in
+      anime({
+        targets: sectionRef.current,
+        backgroundColor: [
+          `rgba(${
+            bg === "#f4d35e"
+              ? "244,211,94"
+              : bg === "#5c3d2e"
+              ? "92,61,46"
+              : "243,244,246"
+          }, 0)`,
+          bg,
+        ],
+        duration: 1000,
+        easing: "easeOutQuad",
+      });
 
-            const icons = ref.current.querySelectorAll("svg");
-            anime({
-              targets: icons,
-              scale: [0, 1],
-              translateY: [30, 0],
-              opacity: [0, 1],
-              delay: anime.stagger(100, { start: 600 }),
-              duration: 600,
-              easing: "easeOutElastic(1, 0.8)",
-            });
-          }
+      // Animate header and paragraph
+      const header = sectionRef.current.querySelector("h2, h3");
+      const paragraph = sectionRef.current.querySelector("p");
+      if (header || paragraph) {
+        anime({
+          targets: [header, paragraph].filter(Boolean),
+          translateY: [80, 0],
+          scale: [0.8, 1],
+          opacity: [0, 1],
+          delay: anime.stagger(150, { start: 200 }),
+          duration: 900,
+          easing: "easeOutElastic(1, 0.6)",
+        });
+      }
 
-          observer.disconnect();
+      // Button animation
+      const button = sectionRef.current.querySelector("button");
+      if (button) {
+        anime({
+          targets: button,
+          translateY: [50, 0],
+          scale: [0.9, 1],
+          opacity: [0, 1],
+          duration: 700,
+          easing: "easeOutElastic(1, 0.8)",
+          delay: 500,
+        });
+      }
+
+      // Cards/items animation
+      const cards =
+        sectionRef === processRef ? processCards.current : benefitItems.current;
+      if (cards && cards.length > 0) {
+        anime({
+          targets: cards,
+          translateY: [100, 0],
+          scale: [0.85, 1],
+          opacity: [0, 1],
+          delay: anime.stagger(120, { start: 600 }),
+          duration: 900,
+          easing: "easeOutElastic(1, 0.6)",
+        });
+      }
+
+      // Icons in benefits section
+      if (sectionRef === benefitsRef) {
+        const icons = sectionRef.current.querySelectorAll("svg");
+        if (icons.length > 0) {
+          anime({
+            targets: icons,
+            scale: [0, 1],
+            translateY: [30, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(100, { start: 800 }),
+            duration: 600,
+            easing: "easeOutElastic(1, 0.8)",
+          });
         }
-      }, observerConfig);
+      }
+    };
+
+    const observers = sections.map(({ ref, bg }) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            playAnimations(ref, bg);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
 
       if (ref.current) observer.observe(ref.current);
 
-      return observer;
+      return { observer, ref };
     });
 
     return () => {
-      observers.forEach((observer) => observer.disconnect());
+      observers.forEach(({ observer, ref }) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
     };
   }, [isLoading]);
+
+  // Hover animations for process cards
+  const handleCardHover = (el) => {
+    anime({
+      targets: el,
+      scale: [1, 1.07],
+      translateY: [0, -15],
+      boxShadow: [
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
+      ],
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+    });
+  };
+  const handleCardHoverLeave = (el) => {
+    anime({
+      targets: el,
+      scale: [1.07, 1],
+      translateY: [-15, 0],
+      boxShadow: [
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+      ],
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+    });
+  };
+
+  // Hover animations for benefits items & icons
+  const handleItemHover = (el) => {
+    anime({
+      targets: el,
+      scale: [1, 1.05],
+      translateY: [0, -12],
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+    });
+  };
+  const handleItemHoverLeave = (el) => {
+    anime({
+      targets: el,
+      scale: [1.05, 1],
+      translateY: [-12, 0],
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+    });
+  };
+
+  const handleIconHover = (el) => {
+    anime({
+      targets: el,
+      scale: [1, 1.2],
+      translateY: [0, -6],
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+    });
+  };
+  const handleIconHoverLeave = (el) => {
+    anime({
+      targets: el,
+      scale: [1.2, 1],
+      translateY: [-6, 0],
+      duration: 400,
+      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+    });
+  };
 
   if (isLoading) return <Loading />;
 
@@ -170,6 +291,8 @@ const RentWithDriver = () => {
                 key={i}
                 className="bg-white p-6 rounded-lg shadow-lg"
                 ref={(el) => (processCards.current[i] = el)}
+                onMouseEnter={(e) => handleCardHover(e.currentTarget)}
+                onMouseLeave={(e) => handleCardHoverLeave(e.currentTarget)}
               >
                 <h3 className="text-xl font-bold text-[#5c3d2e] mb-4">
                   {item.title}
@@ -211,8 +334,14 @@ const RentWithDriver = () => {
                 key={i}
                 className="flex items-start max-lg:flex-col max-lg:items-center max-lg:gap-4"
                 ref={(el) => (benefitItems.current[i] = el)}
+                onMouseEnter={(e) => handleItemHover(e.currentTarget)}
+                onMouseLeave={(e) => handleItemHoverLeave(e.currentTarget)}
               >
-                <div className="bg-[#f4d35e] text-[#5c3d2e] p-3 rounded-full mr-4">
+                <div
+                  className="bg-[#f4d35e] text-[#5c3d2e] p-3 rounded-full mr-4"
+                  onMouseEnter={(e) => handleIconHover(e.currentTarget)}
+                  onMouseLeave={(e) => handleIconHoverLeave(e.currentTarget)}
+                >
                   <svg
                     className="w-6 h-6"
                     fill="currentColor"

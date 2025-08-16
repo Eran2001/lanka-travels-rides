@@ -35,8 +35,7 @@ const clients = [
 
 export default function Clients() {
   const [isLoading, setIsLoading] = useState(true);
-  const sectionRef = useRef(null);
-  const headerSectionRef = useRef(null);
+  const introRef = useRef(null);
   const clientRefs = useRef([]);
 
   useEffect(() => {
@@ -48,98 +47,124 @@ export default function Clients() {
     return () => clearTimeout(timeout);
   }, []);
 
+  useEffect(() => {
+    if (isLoading) return;
+
+    // Animate client cards on load
+    anime({
+      targets: clientRefs.current,
+      translateY: [100, 0],
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      delay: anime.stagger(150, { start: 200 }),
+      duration: 900,
+      easing: "easeOutBounce",
+    });
+  }, [isLoading]);
+
   // Scroll-triggered animations
   useEffect(() => {
-    const playAnimations = (ref, isHeader = false) => {
-      if (isHeader && headerSectionRef.current) {
-        // Header section background fade-in
-        anime({
-          targets: headerSectionRef.current,
-          backgroundColor: ["rgba(244, 211, 94, 0)", "#f4d35e"],
-          duration: 1000,
-          easing: "easeOutQuad",
-        });
+    const sections = [{ ref: introRef, bg: "#f4d35e" }];
 
-        // Header and paragraph
-        const header = headerSectionRef.current.querySelector("h2");
-        const paragraph = headerSectionRef.current.querySelector("p");
-        if (header || paragraph) {
-          anime({
-            targets: [header, paragraph].filter(Boolean),
-            translateY: [80, 0], // Popping upward
-            scale: [0.8, 1],
-            opacity: [0, 1],
-            delay: anime.stagger(150, { start: 200 }),
-            duration: 900,
-            easing: "easeOutElastic(1, 0.6)",
-          });
-        }
-      } else if (!isHeader && ref.current) {
-        // Client testimonial image and text
-        const image = ref.current.querySelector("img");
-        const title = ref.current.querySelector("h3");
-        const description = ref.current.querySelector("p");
+    const playAnimations = (sectionRef, bg) => {
+      if (!sectionRef.current) return;
+
+      // Background fade-in
+      anime({
+        targets: sectionRef.current,
+        backgroundColor: [
+          `rgba(${
+            bg === "#f4d35e"
+              ? "244,211,94"
+              : bg === "#5c3d2e"
+              ? "92,61,46"
+              : "243,244,246"
+          }, 0)`,
+          bg,
+        ],
+        duration: 1000,
+        easing: "easeOutQuad",
+      });
+
+      // Animate header and paragraph
+      const header = sectionRef.current.querySelector("h2");
+      const paragraph = sectionRef.current.querySelector("p");
+      if (header || paragraph) {
         anime({
-          targets: [image, title, description].filter(Boolean),
-          translateY: [100, 0], // Stronger popping upward
-          scale: [0.85, 1],
+          targets: [header, paragraph].filter(Boolean),
+          translateY: [80, 0],
+          scale: [0.8, 1],
           opacity: [0, 1],
-          delay: anime.stagger(120, { start: 600 }),
+          delay: anime.stagger(150, { start: 200 }),
           duration: 900,
           easing: "easeOutElastic(1, 0.6)",
         });
       }
     };
 
-    // Intersection Observer for header section
-    const headerObserver = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          playAnimations(headerSectionRef, true);
-          headerObserver.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    // Intersection Observer for client testimonials
-    const clientObservers = clientRefs.current.map((ref) => {
+    const observers = sections.map(({ ref, bg }) => {
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {
-            playAnimations(ref, false);
+            playAnimations(ref, bg);
             observer.disconnect();
           }
         },
         { threshold: 0.3 }
       );
+
+      if (ref.current) observer.observe(ref.current);
+
+      return { observer, ref };
+    });
+
+    // Client card animations
+    const clientObservers = clientRefs.current.map((ref) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            const image = ref.querySelector("img");
+            const title = ref.querySelector("h3");
+            const description = ref.querySelector("p");
+            anime({
+              targets: [image, title, description].filter(Boolean),
+              translateY: [100, 0],
+              scale: [0.85, 1],
+              opacity: [0, 1],
+              delay: anime.stagger(120, { start: 600 }),
+              duration: 900,
+              easing: "easeOutElastic(1, 0.6)",
+            });
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+
       if (ref) observer.observe(ref);
       return observer;
     });
 
-    if (headerSectionRef.current) {
-      headerObserver.observe(headerSectionRef.current);
-    }
-
     return () => {
-      if (headerSectionRef.current)
-        headerObserver.unobserve(headerSectionRef.current);
+      observers.forEach(({ observer, ref }) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
       clientObservers.forEach((observer, index) => {
         if (clientRefs.current[index])
           observer.unobserve(clientRefs.current[index]);
       });
     };
-  }, []);
+  }, [isLoading]);
 
   // Hover animation for images
   const handleImageHover = (el) => {
     anime({
       targets: el,
-      scale: [1, 1.05],
-      translateY: [0, -12],
+      scale: [1, 1.07],
+      translateY: [0, -15],
       boxShadow: [
-        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-        "0 20px 30px -5px rgba(0, 0, 0, 0.25), 0 8px 12px -3px rgba(0, 0, 0, 0.15)",
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
       ],
       duration: 400,
       easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
@@ -149,11 +174,11 @@ export default function Clients() {
   const handleImageHoverLeave = (el) => {
     anime({
       targets: el,
-      scale: [1.05, 1],
-      translateY: [-12, 0],
+      scale: [1.07, 1],
+      translateY: [-15, 0],
       boxShadow: [
-        "0 20px 30px -5px rgba(0, 0, 0, 0.25), 0 8px 12px -3px rgba(0, 0, 0, 0.15)",
-        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
+        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
       ],
       duration: 400,
       easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
@@ -184,13 +209,10 @@ export default function Clients() {
   if (isLoading) return <Loading />;
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-16 bg-white sm:py-20 lg:py-24 mt-27"
-    >
+    <section className="py-16 bg-white sm:py-20 lg:py-24 mt-27">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <section
-          ref={headerSectionRef}
+          ref={introRef}
           className="text-center py-16 bg-[#f4d35e] rounded-lg"
         >
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
@@ -228,6 +250,10 @@ export default function Clients() {
                   src={client.image}
                   alt={client.title}
                   className="rounded-lg shadow-lg w-full h-[350px] object-cover"
+                  onError={(e) => {
+                    e.target.src =
+                      "https://via.placeholder.com/300x200?text=Client+Image";
+                  }}
                 />
               </div>
               <div
