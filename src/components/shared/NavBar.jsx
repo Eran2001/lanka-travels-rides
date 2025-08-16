@@ -150,14 +150,14 @@ const NavBar = () => {
           </ul>
 
           <div className="hidden xl:flex items-center gap-6 shrink-0">
-            {["Home", "Services", "Clients", "blogs", "about", "contact"].map(
+            {["Home", "Services", "Clients", "About Us", "Contact Us"].map(
               (item, index) => (
                 <NavLink
                   key={item}
                   to={
                     item === "Home"
                       ? "/"
-                      : `/${item.toLowerCase().replace(" ", "")}`
+                      : `/${item.toLowerCase().replace(/ /g, "-")}`
                   }
                   className={({ isActive }) =>
                     `nav-link px-2 py-1 text-sm font-medium relative ${

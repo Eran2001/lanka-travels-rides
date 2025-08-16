@@ -3,8 +3,7 @@ import { NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Drawer from "../ui/Drawer";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
-import logoImg from "../../assets/images/logoImg.jpg";
-
+import logoImg from "../../assets/images/logoOriginal.png";
 const SecondaryNavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const logoRef = useRef(null);
@@ -127,34 +126,34 @@ const SecondaryNavBar = () => {
             onMouseEnter={(e) => handleHover(e.currentTarget)}
             onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
           >
-            <img src={logoImg} alt="Drive Lanka Logo" className="h-8 w-auto" />
+            <img
+              src={logoImg}
+              alt="Drive Lanka Logo"
+              className="relative h-8 w-auto"
+            />
           </NavLink>
 
           <ul className="hidden xl:flex gap-4 items-center">
-            {[
-              "Rent Vehicles",
-              "Rent with Driver",
-              "Self Drive",
-              "FAQs",
-              "Special Offers",
-            ].map((item, index) => (
-              <NavLink
-                key={item}
-                to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                className={({ isActive }) =>
-                  `nav-link relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? "bg-[#5c3d2e] text-[#f4d35e]"
-                      : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
-                  }`
-                }
-                ref={(el) => (linksRef.current[index] = el)}
-                onMouseEnter={(e) => handleHover(e.currentTarget)}
-                onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-              >
-                {item}
-              </NavLink>
-            ))}
+            {["Rent Vehicles", "Rent with Driver", "Self Drive"].map(
+              (item, index) => (
+                <NavLink
+                  key={item}
+                  to={`/${item.toLowerCase().replace(/ /g, "-")}`}
+                  className={({ isActive }) =>
+                    `nav-link relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                      isActive
+                        ? "bg-[#5c3d2e] text-[#f4d35e]"
+                        : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
+                    }`
+                  }
+                  ref={(el) => (linksRef.current[index] = el)}
+                  onMouseEnter={(e) => handleHover(e.currentTarget)}
+                  onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+                >
+                  {item}
+                </NavLink>
+              )
+            )}
           </ul>
 
           <div className="xl:hidden">
@@ -183,14 +182,11 @@ const SecondaryNavBar = () => {
             "Home",
             "Services",
             "Clients",
-            "Our Blog",
-            "about",
-            "contact",
+            "About Us",
+            "Contact Us",
             "Rent Vehicles",
             "Rent with Driver",
             "Self Drive",
-            "FAQs",
-            "Special Offers",
           ].map((item, index) => (
             <NavLink
               key={item}
