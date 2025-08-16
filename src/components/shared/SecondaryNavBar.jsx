@@ -134,26 +134,37 @@ const SecondaryNavBar = () => {
           </NavLink>
 
           <ul className="hidden xl:flex gap-4 items-center">
-            {["Rent Vehicles", "Rent with Driver", "Self Drive"].map(
-              (item, index) => (
-                <NavLink
-                  key={item}
-                  to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                  className={({ isActive }) =>
-                    `nav-link relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                      isActive
-                        ? "bg-[#5c3d2e] text-[#f4d35e]"
-                        : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
-                    }`
-                  }
-                  ref={(el) => (linksRef.current[index] = el)}
-                  onMouseEnter={(e) => handleHover(e.currentTarget)}
-                  onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-                >
-                  {item}
-                </NavLink>
-              )
-            )}
+            {[
+              "Home",
+              "Services",
+              "Clients",
+              "About Us",
+              "Contact Us",
+              "Rent Vehicles",
+              "Rent with Driver",
+              "Self Drive",
+            ].map((item, index) => (
+              <NavLink
+                key={item}
+                to={
+                  item === "Home"
+                    ? "/"
+                    : `/${item.toLowerCase().replace(/ /g, "-")}`
+                }
+                className={({ isActive }) =>
+                  `nav-link relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-[#5c3d2e] text-[#f4d35e]"
+                      : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
+                  }`
+                }
+                ref={(el) => (linksRef.current[index] = el)}
+                onMouseEnter={(e) => handleHover(e.currentTarget)}
+                onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
+              >
+                {item}
+              </NavLink>
+            ))}
           </ul>
 
           <div className="xl:hidden">
