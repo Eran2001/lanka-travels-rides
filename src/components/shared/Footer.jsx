@@ -1,45 +1,30 @@
 import React, { useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Button from "../ui/Button";
-import Icon from "../ui/Icon";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
+import logoImg from "../../assets/images/logoOriginal.png";
+import { Link } from "react-router-dom";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaYoutube,
+  FaLinkedinIn,
+} from "react-icons/fa6";
 
-export default function Footer() {
-  const navigate = useNavigate();
+const Footer = () => {
   const sectionRef = useRef(null);
-  const topSectionRef = useRef(null);
-  const gridRefs = useRef([]);
+  const linkGroupsRef = useRef([]);
   const socialRefs = useRef([]);
-  const hrRef = useRef(null);
-  const bottomLinksRef = useRef(null);
 
+  // Animate on scroll into view
   useEffect(() => {
     const section = sectionRef.current;
 
     const playAnimations = () => {
       anime({
-        targets: sectionRef.current,
-        backgroundColor: ["rgba(244, 211, 94, 0)", "#f4d35e"],
-        duration: 1000,
-        easing: "easeOutQuad",
-      });
-
-      anime({
-        targets: topSectionRef.current.children,
-        translateY: [60, 0],
-        scale: [0.8, 1],
-        opacity: [0, 1],
-        delay: anime.stagger(150, { start: 200 }),
-        duration: 800,
-        easing: "easeOutElastic(1, 0.7)",
-      });
-
-      anime({
-        targets: gridRefs.current,
+        targets: linkGroupsRef.current,
         translateY: [60, 0],
         scale: [0.85, 1],
         opacity: [0, 1],
-        delay: anime.stagger(120, { start: 600 }),
+        delay: anime.stagger(120, { start: 400 }),
         duration: 800,
         easing: "easeOutElastic(1, 0.8)",
       });
@@ -49,24 +34,6 @@ export default function Footer() {
         translateY: [20, 0],
         opacity: [0, 1],
         delay: anime.stagger(100, { start: 800 }),
-        duration: 600,
-        easing: "easeOutQuad",
-      });
-
-      anime({
-        targets: hrRef.current,
-        opacity: [0, 1],
-        translateY: [20, 0],
-        duration: 600,
-        easing: "easeOutQuad",
-        delay: 1000,
-      });
-
-      anime({
-        targets: bottomLinksRef.current.children,
-        translateY: [20, 0],
-        opacity: [0, 1],
-        delay: anime.stagger(100, { start: 1200 }),
         duration: 600,
         easing: "easeOutQuad",
       });
@@ -82,37 +49,14 @@ export default function Footer() {
       { threshold: 0.3 }
     );
 
-    if (section) {
-      observer.observe(section);
-    }
+    if (section) observer.observe(section);
 
     return () => {
       if (section) observer.unobserve(section);
     };
   }, []);
 
-  const handleButtonHover = (el) => {
-    anime({
-      targets: el,
-      scale: [1, 1.05],
-      translateY: [0, -8],
-      backgroundColor: ["#f9f5e3", "#ffffff"],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
-
-  const handleButtonHoverLeave = (el) => {
-    anime({
-      targets: el,
-      scale: [1.05, 1],
-      translateY: [-8, 0],
-      backgroundColor: ["#ffffff", "#f9f5e3"],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
-
+  // Hover animations
   const handleSocialHover = (el) => {
     anime({
       targets: el,
@@ -156,140 +100,197 @@ export default function Footer() {
   };
 
   return (
-    <section ref={sectionRef} className="py-6 bg-[#f4d35e] sm:pt-10 lg:pt-14">
-      <div className="px-4 mx-auto sm:px-6 lg:px-8 xl:w-5xl max-xl:w-3xl max-md:w-100">
-        {/* Title + Button */}
-        <div ref={topSectionRef} className="w-full mx-auto text-center mb-10">
-          <h5 className="text-[#5c3d2e] text-5xl max-lg:text-3xl">
-            Drop us a line or two, we are open for creative minds and
-            collaborations!
-          </h5>
-          <div className="mt-4">
-            <Button
-              text="Rent Now"
-              onClick={() => navigate("/rent-vehicles")}
-              className="px-6 py-3 max-sm:px-5 max-sm:py-2 bg-[#f9f5e3] ring-2 ring-offset-2 ring-[#5c3d2e]"
-              onMouseEnter={(e) => handleButtonHover(e.currentTarget)}
-              onMouseLeave={(e) => handleButtonHoverLeave(e.currentTarget)}
+    <>
+      <footer
+        ref={sectionRef}
+        className="flex justify-center bg-accent pb-10 pt-10 lg:pb-10 lg:pt-10"
+      >
+        <div className="container -mx-4 flex flex-wrap">
+          {/* Logo + Description */}
+          <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
+            <div className="mb-10 w-full">
+              <Link to="/" className="mb-6 inline-block max-w-[160px]">
+                <img
+                  src={logoImg}
+                  alt="logo"
+                  className="max-w-full dark:hidden"
+                />
+                <img
+                  src={logoImg}
+                  alt="logo"
+                  className="max-w-full hidden dark:block"
+                />
+              </Link>
+              <p className="mb-7 text-base text-body-color dark:text-dark-6">
+                Sed ut perspiciatis undmnis is iste natus error sit amet
+                voluptatem totam rem aperiam.
+              </p>
+              <p className="flex items-center text-sm font-medium text-dark dark:text-white">
+                <span className="mr-3 text-primary">📞</span>
+                <span>+012 (345) 678 99</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Link Groups */}
+          <LinkGroup
+            header="Resources"
+            refCallback={(el) => (linkGroupsRef.current[0] = el)}
+          >
+            <NavLink
+              link="/#"
+              label="SaaS Development"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
             />
-          </div>
-        </div>
+            <NavLink
+              link="/#"
+              label="Our Products"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+            <NavLink
+              link="/#"
+              label="User Flow"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+            <NavLink
+              link="/#"
+              label="User Strategy"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+          </LinkGroup>
 
-        <div className="grid grid-cols-3 max-md:grid-cols-3 lg:grid-cols-3 gap-10">
-          {/* Company Overview */}
-          <div ref={(el) => (gridRefs.current[0] = el)}>
-            <Link to="/">
-              <p className="text-[#5c3d2e] font-bold text-xl">Drive Lanka</p>
-            </Link>
-            <p className="text-sm text-[#006D5B] mt-4">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint.
-            </p>
-            <ul className="flex items-center space-x-3 mt-4">
-              {[
-                { icon: "facebook", color: "text-blue-600" },
-                { icon: "twitter", color: "text-blue-400" },
-                { icon: "instagram", color: "text-pink-600" },
-                { icon: "linkedin", color: "text-blue-700" },
-              ].map((social, index) => (
-                <li
-                  key={index}
-                  ref={(el) => (socialRefs.current[index] = el)}
-                  onMouseEnter={(e) => handleSocialHover(e.currentTarget)}
-                  onMouseLeave={(e) => handleSocialHoverLeave(e.currentTarget)}
-                >
-                  <Icon
-                    icon={social.icon}
-                    type="social"
-                    size="w-5 h-5"
-                    className={`${social.color} cursor-pointer`}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <LinkGroup
+            header="Company"
+            refCallback={(el) => (linkGroupsRef.current[1] = el)}
+          >
+            <NavLink
+              link="/#"
+              label="About TailGrids"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+            <NavLink
+              link="/#"
+              label="Contact & Support"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+            <NavLink
+              link="/#"
+              label="Success History"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+            <NavLink
+              link="/#"
+              label="Setting & Privacy"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+          </LinkGroup>
 
-          {/* Company Links */}
-          <div ref={(el) => (gridRefs.current[1] = el)}>
-            <p className="text-sm font-semibold tracking-widest text-[#5c3d2e] uppercase">
-              Company
-            </p>
-            <ul className="mt-4 space-y-2">
-              {[
-                { to: "/services", text: "Services" },
-                { to: "/about", text: "About Us" },
-                { to: "/contact", text: "Contact Us" },
-                { to: "/hire-vehicles", text: "Hire Vehicles" },
-              ].map((link, index) => (
-                <li key={index}>
-                  <Link
-                    to={link.to}
-                    className="text-sm text-black hover:text-[#006D5B]"
-                    onMouseEnter={(e) => handleLinkHover(e.currentTarget)}
-                    onMouseLeave={(e) => handleLinkHoverLeave(e.currentTarget)}
+          <LinkGroup
+            header="Quick Links"
+            refCallback={(el) => (linkGroupsRef.current[2] = el)}
+          >
+            <NavLink
+              link="/#"
+              label="Premium Support"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+            <NavLink
+              link="/#"
+              label="Our Services"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+            <NavLink
+              link="/#"
+              label="Know Our Team"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+            <NavLink
+              link="/#"
+              label="Download App"
+              onHover={handleLinkHover}
+              onLeave={handleLinkHoverLeave}
+            />
+          </LinkGroup>
+
+          {/* Socials */}
+          <div
+            ref={(el) => (linkGroupsRef.current[3] = el)}
+            className="w-full px-4 sm:w-1/2 lg:w-3/12"
+          >
+            <div className="mb-10 w-full">
+              <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
+                Follow Us On
+              </h4>
+              <div className="mb-6 flex items-center">
+                {[
+                  { icon: <FaFacebookF />, link: "https://facebook.com" },
+                  { icon: <FaTwitter />, link: "https://twitter.com" },
+                  { icon: <FaYoutube />, link: "https://youtube.com" },
+                  { icon: <FaLinkedinIn />, link: "https://linkedin.com" },
+                ].map((social, idx) => (
+                  <a
+                    key={idx}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ref={(el) => (socialRefs.current[idx] = el)}
+                    onMouseEnter={(e) => handleSocialHover(e.currentTarget)}
+                    onMouseLeave={(e) =>
+                      handleSocialHoverLeave(e.currentTarget)
+                    }
+                    className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke 
+                 text-dark dark:text-white dark:border-dark-3 
+                 hover:border-primary hover:bg-primary hover:text-white 
+                 sm:mr-4 lg:mr-3 xl:mr-4"
                   >
-                    {link.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Help Links */}
-          <div ref={(el) => (gridRefs.current[2] = el)}>
-            <p className="text-sm font-semibold tracking-widest text-[#5c3d2e] uppercase">
-              Help
-            </p>
-            <ul className="mt-4 space-y-2">
-              {[
-                { to: "/faqs", text: "FAQs" },
-                { to: "/special-offers", text: "Special Offers" },
-                { to: "/terms-and-conditions", text: "Terms & Conditions" },
-                { to: "/privacy-policy", text: "Privacy Policy" },
-              ].map((link, index) => (
-                <li key={index}>
-                  <Link
-                    to={link.to}
-                    className="text-sm text-black hover:text-[#006D5B]"
-                    onMouseEnter={(e) => handleLinkHover(e.currentTarget)}
-                    onMouseLeave={(e) => handleLinkHoverLeave(e.currentTarget)}
-                  >
-                    {link.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+              <p className="text-base text-body-color dark:text-dark-6">
+                &copy; {new Date().getFullYear()} Drive Lanka
+              </p>
+            </div>
           </div>
         </div>
-
-        <hr ref={hrRef} className="mt-8 mb-6 border-[#5c3d2e]" />
-
-        <div
-          ref={bottomLinksRef}
-          className="flex flex-wrap justify-between items-center gap-4 pt-4"
-        >
-          <p className="text-sm">
-            © {new Date().getFullYear()} Drive Lanka. All rights reserved.
-          </p>
-          <ul className="flex gap-6">
-            {[
-              { to: "/terms-and-conditions", text: "Terms" },
-              { to: "/privacy-policy", text: "Privacy" },
-            ].map((link, index) => (
-              <li key={index}>
-                <Link
-                  to={link.to}
-                  className="text-sm text-black hover:text-[#006D5B]"
-                  onMouseEnter={(e) => handleLinkHover(e.currentTarget)}
-                  onMouseLeave={(e) => handleLinkHoverLeave(e.currentTarget)}
-                >
-                  {link.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
+      </footer>
+    </>
   );
-}
+};
+
+export default Footer;
+
+const LinkGroup = ({ children, header, refCallback }) => (
+  <div ref={refCallback} className="w-full px-4 sm:w-1/2 lg:w-2/12">
+    <div className="mb-10 w-full">
+      <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
+        {header}
+      </h4>
+      <ul className="space-y-3">{children}</ul>
+    </div>
+  </div>
+);
+
+const NavLink = ({ link, label, onHover, onLeave }) => (
+  <li>
+    <a
+      href={link}
+      onMouseEnter={(e) => onHover(e.currentTarget)}
+      onMouseLeave={(e) => onLeave(e.currentTarget)}
+      className="inline-block text-base leading-loose text-body-color dark:text-dark-6 hover:text-primary"
+    >
+      {label}
+    </a>
+  </li>
+);
