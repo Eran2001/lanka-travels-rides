@@ -222,7 +222,7 @@ const SecondaryNavBar = () => {
       >
         <div
           ref={drawerContentRef}
-          className="flex flex-col space-y-3 text-[#5c3d2e]"
+          className="flex flex-col space-y-3 text-[#5c3d2e] overflow-x-hidden"
         >
           {[
             "Home",
