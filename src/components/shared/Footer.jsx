@@ -13,6 +13,7 @@ import { IoMail } from "react-icons/io5";
 
 const Footer = () => {
   const sectionRef = useRef(null);
+  const logoRef = useRef(null);
   const linkGroupsRef = useRef([]);
   const socialRefs = useRef([]);
 
@@ -21,6 +22,17 @@ const Footer = () => {
     const section = sectionRef.current;
 
     const playAnimations = () => {
+      // Animate Logo
+      anime({
+        targets: logoRef.current,
+        translateY: [40, 0],
+        scale: [0.9, 1],
+        opacity: [0, 1],
+        duration: 800,
+        easing: "easeOutElastic(1, 0.8)",
+      });
+
+      // Animate Link Groups
       anime({
         targets: linkGroupsRef.current,
         translateY: [60, 0],
@@ -31,6 +43,7 @@ const Footer = () => {
         easing: "easeOutElastic(1, 0.8)",
       });
 
+      // Animate Socials
       anime({
         targets: socialRefs.current,
         translateY: [20, 0],
@@ -110,7 +123,10 @@ const Footer = () => {
         <div className="container -mx-4 flex flex-wrap">
           {/* Logo + Description */}
           <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
-            <div className="mb-10 w-full rounded-xl bg-white/5 p-4 backdrop-blur-sm hover:shadow-lg transition-shadow duration-300">
+            <div
+              ref={logoRef}
+              className="mb-10 w-full rounded-xl bg-white/5 p-4 backdrop-blur-sm hover:shadow-lg transition-shadow duration-300"
+            >
               <Link to="/" className="mb-6 inline-block max-w-[160px]">
                 <img
                   src={logoImg}
