@@ -43,7 +43,7 @@ const Button = ({
     bg-primary text-light hover:bg-gradient-to-r 
     hover:from-primary hover:to-green-400 hover:ring-2 
     hover:ring-offset-2 hover:ring-green-400 
-    transition-all ease-out duration-300
+    transition-all ease-out duration-300 cursor-pointer
     ${className}
   `;
 

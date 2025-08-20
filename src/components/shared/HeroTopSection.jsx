@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import HeroSUV from "../../assets/images/11452734.png";
-import whiteSUV from "../../assets/images/11452746.png";
 import Button from "@/components/ui/Button";
-import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
+import { gsap } from "gsap";
 
 const HeroTopSection = () => {
   const navigate = useNavigate();
@@ -12,8 +10,17 @@ const HeroTopSection = () => {
   const textRef = useRef(null);
   const buttonRef = useRef(null);
 
-  const carImages = [HeroSUV, whiteSUV];
+  const carImages = ["/images/11452734.png", "/images/11452746.png"];
 
+  // Preload car images to improve performance
+  useEffect(() => {
+    carImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  // Cycle through car images every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
@@ -23,51 +30,85 @@ const HeroTopSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Animate text, paragraph, and button on component mount
   useEffect(() => {
-    // Animate text elements with a dynamic typewriter-like effect
-    anime({
-      targets: textRef.current.querySelector("h1").children,
-      translateY: [50, 0],
-      opacity: [0, 1],
-      delay: anime.stagger(200, { start: 200 }),
-      duration: 800,
-      easing: "easeOutElastic(1, 0.5)",
-      begin: () => {
+    if (!gsap) {
+      console.warn("GSAP not loaded, skipping animations");
+      return;
+    }
+
+    if (textRef.current) {
+      // Animate h1 children (split into spans for typewriter effect)
+      const h1 = textRef.current.querySelector("h1");
+      if (h1) {
         // Split text into spans for individual character animation
-        const h1 = textRef.current.querySelector("h1");
         h1.innerHTML = h1.textContent.replace(/\S/g, "<span>$&</span>");
-        anime({
-          targets: h1.querySelectorAll("span"),
-          translateX: [-20, 0],
-          opacity: [0, 1],
-          delay: anime.stagger(50),
-          duration: 600,
-          easing: "easeOutCubic",
-        });
-      },
-    });
+        const spans = h1.querySelectorAll("span");
+        if (spans.length > 0) {
+          gsap.fromTo(
+            spans,
+            { x: -20, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.6,
+              stagger: 0.05,
+              ease: "power1.out", // Matches animejs easeOutCubic
+            }
+          );
+        }
 
-    // Animate paragraph with a fade-in and slight slide
-    anime({
-      targets: textRef.current.querySelector("p"),
-      translateY: [30, 0],
-      opacity: [0, 1],
-      duration: 1000,
-      delay: 600,
-      easing: "easeOutSine",
-    });
+        // Animate h1 children with initial stagger effect
+        gsap.fromTo(
+          h1.children,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: { amount: 0.4, from: "start" }, // Matches anime.stagger(200, { start: 200 })
+            ease: "elastic.out(1, 0.5)", // Matches animejs easeOutElastic(1, 0.5)
+          }
+        );
+      }
 
-    // Animate button with a pop-in and subtle rotation
-    anime({
-      targets: buttonRef.current,
-      translateY: [40, 0],
-      scale: [0.8, 1],
-      rotate: [-5, 0],
-      opacity: [0, 1],
-      duration: 900,
-      delay: 1000,
-      easing: "easeOutElastic(1, 0.7)",
-    });
+      // Animate paragraph with fade-in and slide
+      const paragraph = textRef.current.querySelector("p");
+      if (paragraph) {
+        gsap.fromTo(
+          paragraph,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            delay: 0.6,
+            ease: "sine.out", // Matches animejs easeOutSine
+          }
+        );
+      }
+    } else {
+      console.warn("textRef is null, skipping text animations");
+    }
+
+    // Animate button with pop-in and rotation
+    if (buttonRef.current) {
+      gsap.fromTo(
+        buttonRef.current,
+        { y: 40, scale: 0.8, rotation: -5, opacity: 0 },
+        {
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          opacity: 1,
+          duration: 0.9,
+          delay: 1,
+          ease: "elastic.out(1, 0.7)", // Matches animejs easeOutElastic(1, 0.7)
+        }
+      );
+    } else {
+      console.warn("buttonRef is null, skipping button animation");
+    }
   }, []);
 
   return (

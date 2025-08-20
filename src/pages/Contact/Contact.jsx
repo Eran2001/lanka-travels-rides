@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { QRCodeSVG } from "qrcode.react";
-import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
+import { gsap } from "gsap";
 
 import Button from "@/components/ui/Button";
 import Notification from "@/components/ui/Notification";
@@ -19,6 +19,7 @@ const Contact = () => {
   const whatsappSectionRef = useRef(null);
   const emailSectionRef = useRef(null);
   const ctaSectionRef = useRef(null);
+  const qrCodeRef = useRef(null); // Dedicated ref for QR code
 
   // Initialize EmailJS with your Public Key
   useEffect(() => {
@@ -56,35 +57,60 @@ const Contact = () => {
   }, []);
 
   useEffect(() => {
-    if (isLoading) return;
+    if (isLoading || !gsap) {
+      console.warn(
+        "GSAP not loaded or still loading, skipping initial animations"
+      );
+      return;
+    }
 
     // Animate WhatsApp cards on load
-    anime({
-      targets: whatsappCardsRefs.current,
-      translateY: [100, 0],
-      opacity: [0, 1],
-      scale: [0.9, 1],
-      delay: anime.stagger(150, { start: 200 }),
-      duration: 900,
-      easing: "easeOutBounce",
-    });
+    if (whatsappCardsRefs.current.length > 0) {
+      gsap.fromTo(
+        whatsappCardsRefs.current,
+        { y: 100, opacity: 0, scale: 0.9 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.9,
+          stagger: { amount: 0.45, from: "start" }, // Matches anime.stagger(150, { start: 200 })
+          ease: "bounce.out", // Matches easeOutBounce
+          delay: 0.2,
+        }
+      );
+    } else {
+      console.warn("No WhatsApp cards found, skipping card animations");
+    }
 
     // Animate Call to Action button fade + pop in
     const ctaBtn = ctaSectionRef.current?.querySelector("button");
     if (ctaBtn) {
-      anime({
-        targets: ctaBtn,
-        scale: [0.8, 1],
-        opacity: [0, 1],
-        duration: 800,
-        easing: "easeOutElastic(1, .7)",
-        delay: 600,
-      });
+      gsap.fromTo(
+        ctaBtn,
+        { scale: 0.8, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.8,
+          ease: "elastic.out(1, 0.7)", // Matches easeOutElastic(1, .7)
+          delay: 0.6,
+        }
+      );
+    } else {
+      console.warn("CTA button not found, skipping CTA animation");
     }
   }, [isLoading]);
 
   // Scroll-triggered animations
   useEffect(() => {
+    if (isLoading || !gsap) {
+      console.warn(
+        "GSAP not loaded or still loading, skipping scroll animations"
+      );
+      return;
+    }
+
     const sections = [
       { ref: introRef, bg: "#f4d35e" },
       { ref: whatsappSectionRef, bg: "#ffffff" },
@@ -93,80 +119,94 @@ const Contact = () => {
     ];
 
     const playAnimations = (sectionRef, bg) => {
-      if (!sectionRef.current) return;
+      if (!sectionRef.current) {
+        console.warn("Section ref is null, skipping animations");
+        return;
+      }
 
       // Background fade-in
-      anime({
-        targets: sectionRef.current,
-        backgroundColor: [
-          `rgba(${
-            bg === "#f4d35e"
-              ? "244,211,94"
-              : bg === "#5c3d2e"
-              ? "92,61,46"
-              : bg === "#ffffff"
-              ? "255,255,255"
-              : "243,244,246"
-          }, 0)`,
-          bg,
-        ],
-        duration: 1000,
-        easing: "easeOutQuad",
-      });
+      // gsap.to(sectionRef.current, {
+      //   backgroundColor: bg,
+      //   duration: 1,
+      //   ease: "power2.out", // Matches easeOutQuad
+      // });
 
       // Animate header and paragraph
       const header = sectionRef.current.querySelector("h2, h3");
       const paragraph = sectionRef.current.querySelector("p");
       if (header || paragraph) {
-        anime({
-          targets: [header, paragraph].filter(Boolean),
-          translateY: [80, 0],
-          scale: [0.8, 1],
-          opacity: [0, 1],
-          delay: anime.stagger(150, { start: 200 }),
-          duration: 900,
-          easing: "easeOutElastic(1, 0.6)",
-        });
+        gsap.fromTo(
+          [header, paragraph].filter(Boolean),
+          { y: 80, scale: 0.8, opacity: 0 },
+          {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.9,
+            stagger: { amount: 0.3, from: "start" }, // Matches anime.stagger(150, { start: 200 })
+            ease: "elastic.out(1, 0.6)", // Matches easeOutElastic(1, 0.6)
+            delay: 0.2,
+          }
+        );
+      } else {
+        console.warn("Header or paragraph not found, skipping text animations");
       }
 
       // Button animation
       const button = sectionRef.current.querySelector("button");
       if (button) {
-        anime({
-          targets: button,
-          translateY: [50, 0],
-          scale: [0.9, 1],
-          opacity: [0, 1],
-          duration: 700,
-          easing: "easeOutElastic(1, 0.8)",
-          delay: 500,
-        });
+        gsap.fromTo(
+          button,
+          { y: 50, scale: 0.9, opacity: 0 },
+          {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.7,
+            ease: "elastic.out(1, 0.8)", // Matches easeOutElastic(1, 0.8)
+            delay: 0.5,
+          }
+        );
+      } else {
+        console.warn("Button not found, skipping button animation");
       }
 
-      // Animate WhatsApp cards if section is whatsappSectionRef
+      // Animate WhatsApp cards and QR code if section is whatsappSectionRef
       if (sectionRef === whatsappSectionRef) {
-        anime({
-          targets: whatsappCardsRefs.current,
-          translateY: [100, 0],
-          scale: [0.85, 1],
-          opacity: [0, 1],
-          delay: anime.stagger(120, { start: 600 }),
-          duration: 900,
-          easing: "easeOutElastic(1, 0.6)",
-        });
+        if (whatsappCardsRefs.current.length > 0) {
+          gsap.fromTo(
+            whatsappCardsRefs.current,
+            { y: 100, scale: 0.85, opacity: 0 },
+            {
+              y: 0,
+              scale: 1,
+              opacity: 1,
+              duration: 0.9,
+              stagger: { amount: 0.36, from: "start" }, // Matches anime.stagger(120, { start: 600 })
+              ease: "elastic.out(1, 0.6)", // Matches easeOutElastic(1, 0.6)
+              delay: 0.6,
+            }
+          );
+        } else {
+          console.warn("No WhatsApp cards found, skipping card animations");
+        }
 
         // Animate QR code
-        const qrCode = sectionRef.current.querySelector("svg");
-        if (qrCode) {
-          anime({
-            targets: qrCode,
-            scale: [0, 1],
-            translateY: [30, 0],
-            opacity: [0, 1],
-            delay: 800,
-            duration: 600,
-            easing: "easeOutElastic(1, 0.8)",
-          });
+        if (qrCodeRef.current) {
+          gsap.fromTo(
+            qrCodeRef.current,
+            { scale: 0, y: 30, opacity: 0 },
+            {
+              scale: 1,
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              ease: "elastic.out(1, 0.8)", // Matches easeOutElastic(1, 0.8)
+              delay: 0.8,
+            }
+          );
+        } else {
+          console.warn("QR code ref is null, skipping QR code animation");
         }
       }
 
@@ -176,15 +216,21 @@ const Contact = () => {
           "input, textarea, button"
         );
         if (inputs.length > 0) {
-          anime({
-            targets: inputs,
-            translateY: [100, 0],
-            scale: [0.85, 1],
-            opacity: [0, 1],
-            delay: anime.stagger(120, { start: 600 }),
-            duration: 900,
-            easing: "easeOutElastic(1, 0.6)",
-          });
+          gsap.fromTo(
+            inputs,
+            { y: 100, scale: 0.85, opacity: 0 },
+            {
+              y: 0,
+              scale: 1,
+              opacity: 1,
+              duration: 0.9,
+              stagger: { amount: 0.36, from: "start" }, // Matches anime.stagger(120, { start: 600 })
+              ease: "elastic.out(1, 0.6)", // Matches easeOutElastic(1, 0.6)
+              delay: 0.6,
+            }
+          );
+        } else {
+          console.warn("No form inputs found, skipping form animations");
         }
       }
     };
@@ -214,29 +260,23 @@ const Contact = () => {
 
   // Hover animations for WhatsApp cards
   const handleCardHover = (el) => {
-    anime({
-      targets: el,
-      scale: [1, 1.07],
-      translateY: [0, -15],
-      boxShadow: [
-        "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
+    gsap.to(el, {
+      scale: 1.07,
+      y: -15,
+      boxShadow:
         "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
-      ],
-      duration: 400,
-      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+      duration: 0.4,
+      ease: "power1.inOut", // Matches cubicBezier(0.25, 0.1, 0.25, 1)
     });
   };
   const handleCardHoverLeave = (el) => {
-    anime({
-      targets: el,
-      scale: [1.07, 1],
-      translateY: [-15, 0],
-      boxShadow: [
-        "0 25px 40px -5px rgba(0,0,0,0.3), 0 12px 15px -3px rgba(0,0,0,0.2)",
+    gsap.to(el, {
+      scale: 1,
+      y: 0,
+      boxShadow:
         "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
-      ],
-      duration: 400,
-      easing: "cubicBezier(0.25, 0.1, 0.25, 1)",
+      duration: 0.4,
+      ease: "power1.inOut", // Matches cubicBezier(0.25, 0.1, 0.25, 1)
     });
   };
 
@@ -269,8 +309,9 @@ const Contact = () => {
           <h2 className="text-3xl font-semibold text-[#5c3d2e] text-center mb-12">
             Instant Support via WhatsApp
           </h2>
-          <div className="flex flex-col lg:flex-row gap-8 items-start w-full">
-            <div className="w-full lg:w-1/2 space-y-8">
+          <div className="flex flex-col lg:flex-row gap-8 w-full items-stretch">
+            {/* Left side: 3 cards */}
+            <div className="w-full lg:w-1/2 space-y-8 flex flex-col">
               {[
                 {
                   title: "Quick Assistance",
@@ -296,7 +337,7 @@ const Contact = () => {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="bg-white p-6 rounded-lg shadow-lg text-center"
+                  className="bg-white p-6 rounded-lg shadow-lg text-center flex-1"
                   ref={(el) => (whatsappCardsRefs.current[i] = el)}
                   onMouseEnter={(e) => handleCardHover(e.currentTarget)}
                   onMouseLeave={(e) => handleCardHoverLeave(e.currentTarget)}
@@ -320,9 +361,12 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Right Side: QR Code */}
+            {/* Right side: QR Code */}
             <div className="w-full lg:w-1/2 flex justify-center items-center">
-              <div className="bg-white p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 rounded-lg shadow-lg text-center w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+              <div
+                ref={qrCodeRef}
+                className="bg-white p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 rounded-lg shadow-lg text-center w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-full flex flex-col justify-center"
+              >
                 <h3 className="text-2xl md:text-3xl font-bold text-[#5c3d2e] mb-6">
                   Scan to Chat
                 </h3>

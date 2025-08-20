@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/ui/Button";
-import why_choose_us from "../../assets/images/why_choose_us.jpg";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
 const LuxuryCollectionSection = () => {
@@ -96,7 +95,7 @@ const LuxuryCollectionSection = () => {
         <div className="w-full md:w-1/2 flex justify-center md:justify-center">
           <img
             ref={luxuryImageRef}
-            src={why_choose_us}
+            src="/images/why_choose_us.jpg"
             alt="Luxury Cars"
             className="h-full max-w-lg w-full rounded-2xl shadow-2xl border border-gray-200 object-cover"
             onError={(e) => {

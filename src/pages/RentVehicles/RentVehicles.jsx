@@ -2,90 +2,90 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
-import aqua1 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.48_44e1fb58.jpg";
-import aqua2 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.48_b090ba82.jpg";
-import aqua3 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.48_de8861ee.jpg";
-import aqua4 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.49_1ef79802.jpg";
-import aqua5 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.49_234dc77b.jpg";
-import aqua6 from "../../assets/car/AQUA/WhatsApp Image 2025-08-07 at 18.04.50_d723ce2b.jpg";
+import aqua1 from "../../assets/car/AQUA/a1.jpg";
+import aqua2 from "../../assets/car/AQUA/a2.jpg";
+import aqua3 from "../../assets/car/AQUA/a3.jpg";
+import aqua4 from "../../assets/car/AQUA/a4.jpg";
+import aqua5 from "../../assets/car/AQUA/a5.jpg";
+import aqua6 from "../../assets/car/AQUA/a6.jpg";
 
-import bmw1 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.19_64b2cac9.jpg";
-import bmw2 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.20_847e7faf.jpg";
-import bmw3 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.20_f7d7ff26.jpg";
-import bmw4 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.21_b50861e7.jpg";
-import bmw5 from "../../assets/car/BMW/WhatsApp Image 2025-08-07 at 18.04.22_365d455d.jpg";
+import bmw1 from "../../assets/car/BMW/bm1.jpg";
+import bmw2 from "../../assets/car/BMW/bm2.jpg";
+import bmw3 from "../../assets/car/BMW/bm3.jpg";
+import bmw4 from "../../assets/car/BMW/bm4.jpg";
+import bmw5 from "../../assets/car/BMW/bm5.jpg";
 
-import hyb1 from "../../assets/car/HYB/WhatsApp Image 2025-08-07 at 18.04.38_68e6e943.jpg";
-import hyb2 from "../../assets/car/HYB/WhatsApp Image 2025-08-07 at 18.04.38_b58ebbb0.jpg";
-import hyb3 from "../../assets/car/HYB/WhatsApp Image 2025-08-07 at 18.04.38_c2f0000a.jpg";
-import hyb4 from "../../assets/car/HYB/WhatsApp Image 2025-08-07 at 18.04.39_0e491901.jpg";
+import hyb1 from "../../assets/car/HYB/h1.jpg";
+import hyb2 from "../../assets/car/HYB/h2.jpg";
+import hyb3 from "../../assets/car/HYB/h3.jpg";
+import hyb4 from "../../assets/car/HYB/h4.jpg";
 
-import PK1 from "../../assets/car/PK/WhatsApp Image 2025-08-07 at 18.04.13_9e22c1bf.jpg";
-import PK2 from "../../assets/car/PK/WhatsApp Image 2025-08-07 at 18.04.13_cbc79d7d.jpg";
-import PK3 from "../../assets/car/PK/WhatsApp Image 2025-08-07 at 18.04.14_16dc8ccc.jpg";
-import PK4 from "../../assets/car/PK/WhatsApp Image 2025-08-07 at 18.04.14_e3de73a9.jpg";
+import PK1 from "../../assets/car/PK/pk1.jpg";
+import PK2 from "../../assets/car/PK/pk2.jpg";
+import PK3 from "../../assets/car/PK/pk3.jpg";
+import PK4 from "../../assets/car/PK/pk4.jpg";
 
-import PH1 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.45_11be5029.jpg";
-import PH2 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.46_34792509.jpg";
-import PH3 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.46_7ef343ff.jpg";
-import PH4 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.47_2d5795fe.jpg";
-import PH5 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.47_57fef88f.jpg";
-import PH6 from "../../assets/car/PH/WhatsApp Image 2025-08-07 at 18.04.47_a2a869e2.jpg";
+import PH1 from "../../assets/car/PH/ph1.jpg";
+import PH2 from "../../assets/car/PH/ph2.jpg";
+import PH3 from "../../assets/car/PH/ph3.jpg";
+import PH4 from "../../assets/car/PH/ph4.jpg";
+import PH5 from "../../assets/car/PH/ph5.jpg";
+import PH6 from "../../assets/car/PH/ph6.jpg";
 
-import W_B1 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.11_29d9893c.jpg";
-import W_B2 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.12_5a766a99.jpg";
-import W_B3 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.12_8723273a.jpg";
-import W_B4 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.12_d9f27e89.jpg";
-import W_B5 from "../../assets/car/WBLACK/WhatsApp Image 2025-08-07 at 18.04.23_64a7244a.jpg";
+import W_B1 from "../../assets/car/WBLACK/w1.jpg";
+import W_B2 from "../../assets/car/WBLACK/w2.jpg";
+import W_B3 from "../../assets/car/WBLACK/w3.jpg";
+import W_B4 from "../../assets/car/WBLACK/w4.jpg";
+import W_B5 from "../../assets/car/WBLACK/w5.jpg";
 
-import W_R1 from "../../assets/car/WRED/WhatsApp Image 2025-08-07 at 18.04.18_7073947c.jpg";
-import W_R2 from "../../assets/car/WRED/WhatsApp Image 2025-08-07 at 18.04.18_c30f69f5.jpg";
-import W_R3 from "../../assets/car/WRED/WhatsApp Image 2025-08-07 at 18.04.18_cf0eaf1b.jpg";
-import W_R4 from "../../assets/car/WRED/WhatsApp Image 2025-08-07 at 18.04.19_d9aa7b06.jpg";
+import W_R1 from "../../assets/car/WRED/red1.jpg";
+import W_R2 from "../../assets/car/WRED/red2.jpg";
+import W_R3 from "../../assets/car/WRED/red3.jpg";
+import W_R4 from "../../assets/car/WRED/red4.jpg";
 
 // Buses
-import NB1 from "../../assets/bus/NB/WhatsApp Image 2025-08-07 at 18.04.09_cf33d57d.jpg";
-import NB2 from "../../assets/bus/NB/WhatsApp Image 2025-08-07 at 18.04.20_5cf13add.jpg";
+import NB1 from "../../assets/bus/NB/nb1.jpg";
+import NB2 from "../../assets/bus/NB/nb2.jpg";
 
-import NC1 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.10_d7638fcf.jpg";
-import NC2 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.10_e609161d.jpg";
-import NC3 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.11_2760e859.jpg";
-import NC4 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.11_4d400cfd.jpg";
-import NC5 from "../../assets/bus/NC/WhatsApp Image 2025-08-07 at 18.04.23_27c70f87.jpg";
+import NC1 from "../../assets/bus/NC/nc1.jpg";
+import NC2 from "../../assets/bus/NC/nc2.jpg";
+import NC3 from "../../assets/bus/NC/nc3.jpg";
+import NC4 from "../../assets/bus/NC/nc4.jpg";
+import NC5 from "../../assets/bus/NC/nc5.jpg";
 
-import NDB1 from "../../assets/bus/NDB/WhatsApp Image 2025-08-07 at 18.04.13_3b5f75b7.jpg";
-import NDB2 from "../../assets/bus/NDB/WhatsApp Image 2025-08-07 at 18.04.28_c10e979a.jpg";
+import NDB1 from "../../assets/bus/NDB/ndb1.jpg";
+import NDB2 from "../../assets/bus/NDB/ndb2.jpg";
 
-import NDY1 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.15_25a645f1.jpg";
-import NDY2 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.15_1cd4ff09.jpg";
-import NDY3 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.29_ad3d2288.jpg";
-import NDY4 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.29_f8370432.jpg";
-import NDY5 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.30_45861e33.jpg";
-import NDY6 from "../../assets/bus/NDY/WhatsApp Image 2025-08-07 at 18.04.30_f0fbf077.jpg";
+import NDY1 from "../../assets/bus/NDY/ndy1.jpg";
+import NDY2 from "../../assets/bus/NDY/ndy2.jpg";
+import NDY3 from "../../assets/bus/NDY/ndy3.jpg";
+import NDY4 from "../../assets/bus/NDY/ndy4.jpg";
+import NDY5 from "../../assets/bus/NDY/ndy5.jpg";
+import NDY6 from "../../assets/bus/NDY/ndy6.jpg";
 
 // Vans
-import PB1 from "../../assets/van/PB/WhatsApp Image 2025-08-07 at 18.04.32_87706bbf.jpg";
-import PB2 from "../../assets/van/PB/WhatsApp Image 2025-08-07 at 18.04.33_16b0f1ea.jpg";
-import PB3 from "../../assets/van/PB/WhatsApp Image 2025-08-07 at 18.04.34_8584efdc.jpg";
+import PB1 from "../../assets/van/PB/pb1.jpg";
+import PB2 from "../../assets/van/PB/pb2.jpg";
+import PB3 from "../../assets/van/PB/pb3.jpg";
 
-import PC1 from "../../assets/van/PC/WhatsApp Image 2025-08-07 at 18.04.22_c6909b8c.jpg";
-import PC2 from "../../assets/van/PC/WhatsApp Image 2025-08-07 at 18.04.32_52a49ca1.jpg";
+import PC1 from "../../assets/van/PC/pc1.jpg";
+import PC2 from "../../assets/van/PC/pc2.jpg";
 
-import PD1 from "../../assets/van/PD/WhatsApp Image 2025-08-07 at 18.04.34_66afb912.jpg";
-import PD2 from "../../assets/van/PD/WhatsApp Image 2025-08-07 at 18.04.34_8b963c69.jpg";
-import PD3 from "../../assets/van/PD/WhatsApp Image 2025-08-07 at 18.04.36_3fb9c1a6.jpg";
-import PD4 from "../../assets/van/PD/WhatsApp Image 2025-08-07 at 18.04.36_774e9aa1.jpg";
+import PD1 from "../../assets/van/PD/pd1.jpg";
+import PD2 from "../../assets/van/PD/pd2.jpg";
+import PD3 from "../../assets/van/PD/pd3.jpg";
+import PD4 from "../../assets/van/PD/pd4.jpg";
 
-import PE1 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.15_b4ecf4b4.jpg";
-import PE2 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.16_02e42633.jpg";
-import PE3 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.16_5219d9ec.jpg";
-import PE4 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.16_d254f2c6.jpg";
-import PE5 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.17_f5f7f740.jpg";
-import PE6 from "../../assets/van/PE/WhatsApp Image 2025-08-07 at 18.04.30_d3c581ac.jpg";
+import PE1 from "../../assets/van/PE/pe1.jpg";
+import PE2 from "../../assets/van/PE/pe2.jpg";
+import PE3 from "../../assets/van/PE/pe3.jpg";
+import PE4 from "../../assets/van/PE/pe4.jpg";
+import PE5 from "../../assets/van/PE/pe5.jpg";
+import PE6 from "../../assets/van/PE/pe6.jpg";
 
-import PJ1 from "../../assets/van/PJ/WhatsApp Image 2025-08-07 at 18.04.17_8dd58e8f.jpg";
-import PJ2 from "../../assets/van/PJ/WhatsApp Image 2025-08-07 at 18.04.17_cef54a6d.jpg";
-import PJ3 from "../../assets/van/PJ/WhatsApp Image 2025-08-07 at 18.04.31_ad2e8eaf.jpg";
+import PJ1 from "../../assets/van/PJ/pj1.jpg";
+import PJ2 from "../../assets/van/PJ/pj2.jpg";
+import PJ3 from "../../assets/van/PJ/pj3.jpg";
 
 import Drawer from "@/components/ui/Drawer";
 import Button from "@/components/ui/Button";
@@ -446,6 +446,8 @@ const RentVehicles = () => {
     setIsDrawerOpen(true);
   };
 
+  if (isLoading) return <Loading />;
+
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-16 mt-27">
       <div className="container mx-auto px-4">
@@ -502,11 +504,11 @@ const RentVehicles = () => {
                     <h3 className="text-xl font-bold text-[#5c3d2e] mb-2">
                       {vehicle.name}
                     </h3>
-                    <p className="text-gray-600">Seats: {vehicle.seats}</p>
+                    {/* <p className="text-gray-600">Seats: {vehicle.seats}</p>
                     <p className="text-gray-600">
                       Luggage: {vehicle.luggage} bags
                     </p>
-                    <p className="text-gray-600">Price: {vehicle.price}</p>
+                    <p className="text-gray-600">Price: {vehicle.price}</p> */}
                     <Button
                       text="View"
                       onClick={() => openDrawer(vehicle)}
