@@ -27,7 +27,7 @@ const PopupSlider = ({ images = [], isOpen, onClose, title }) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 text-white text-4xl z-50 p-2 rounded-full bg-black/50 hover:bg-black/70 transition"
+          className="absolute top-6 right-6 cursor-pointer text-white text-4xl z-50 p-2 rounded-full bg-black/50 hover:bg-black/70 transition"
         >
           <IoMdClose />
         </button>
@@ -47,7 +47,7 @@ const PopupSlider = ({ images = [], isOpen, onClose, title }) => {
         {/* Left Arrow */}
         <button
           onClick={prevSlide}
-          className="absolute top-1/2 left-6 transform -translate-y-1/2 text-white text-5xl max-xl:text-3xl p-3 bg-black/50 rounded-full hover:bg-black/70 transition z-50"
+          className="absolute cursor-pointer top-1/2 left-6 transform -translate-y-1/2 text-white text-5xl max-xl:text-3xl p-3 bg-black/50 rounded-full hover:bg-black/70 transition z-50"
         >
           <IoIosArrowBack />
         </button>
@@ -55,7 +55,7 @@ const PopupSlider = ({ images = [], isOpen, onClose, title }) => {
         {/* Right Arrow */}
         <button
           onClick={nextSlide}
-          className="absolute top-1/2 right-6 transform -translate-y-1/2 text-white text-5xl max-xl:text-3xl p-3 bg-black/50 rounded-full hover:bg-black/70 transition z-50"
+          className="absolute cursor-pointer top-1/2 right-6 transform -translate-y-1/2 text-white text-5xl max-xl:text-3xl p-3 bg-black/50 rounded-full hover:bg-black/70 transition z-50"
         >
           <IoIosArrowForward />
         </button>

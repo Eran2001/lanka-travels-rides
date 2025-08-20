@@ -282,7 +282,7 @@ const Footer = () => {
                     onMouseLeave={(e) =>
                       handleSocialHoverLeave(e.currentTarget)
                     }
-                    className="mr-3 flex h-9 w-9 items-center justify-center rounded-full border border-stroke 
+                    className="mr-3 flex h-9 w-9 items-center cursor-pointer justify-center rounded-full border border-stroke 
           text-dark dark:text-white dark:border-dark-3 
           hover:border-primary hover:bg-gradient-to-r hover:from-accent hover:to-accent/70 hover:text-dark 
           sm:mr-4 lg:mr-3 xl:mr-4 transition-all duration-300 shadow-md hover:shadow-lg"
