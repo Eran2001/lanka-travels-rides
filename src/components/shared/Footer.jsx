@@ -234,12 +234,6 @@ const Footer = () => {
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/payments"
-              label="Payments"
-              onHover={handleLinkHover}
-              onLeave={handleLinkHoverLeave}
-            />
-            <NavLink
               link="/special-offers"
               label="Special Offers"
               onHover={handleLinkHover}

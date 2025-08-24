@@ -2,91 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
-import aqua1 from "../../assets/car/AQUA/a1.jpg";
-import aqua2 from "../../assets/car/AQUA/a2.jpg";
-import aqua3 from "../../assets/car/AQUA/a3.jpg";
-import aqua4 from "../../assets/car/AQUA/a4.jpg";
-import aqua5 from "../../assets/car/AQUA/a5.jpg";
-import aqua6 from "../../assets/car/AQUA/a6.jpg";
-
-import bmw1 from "../../assets/car/BMW/bm1.jpg";
-import bmw2 from "../../assets/car/BMW/bm2.jpg";
-import bmw3 from "../../assets/car/BMW/bm3.jpg";
-import bmw4 from "../../assets/car/BMW/bm4.jpg";
-import bmw5 from "../../assets/car/BMW/bm5.jpg";
-
-import hyb1 from "../../assets/car/HYB/h1.jpg";
-import hyb2 from "../../assets/car/HYB/h2.jpg";
-import hyb3 from "../../assets/car/HYB/h3.jpg";
-import hyb4 from "../../assets/car/HYB/h4.jpg";
-
-import PK1 from "../../assets/car/PK/pk1.jpg";
-import PK2 from "../../assets/car/PK/pk2.jpg";
-import PK3 from "../../assets/car/PK/pk3.jpg";
-import PK4 from "../../assets/car/PK/pk4.jpg";
-
-import PH1 from "../../assets/car/PH/ph1.jpg";
-import PH2 from "../../assets/car/PH/ph2.jpg";
-import PH3 from "../../assets/car/PH/ph3.jpg";
-import PH4 from "../../assets/car/PH/ph4.jpg";
-import PH5 from "../../assets/car/PH/ph5.jpg";
-import PH6 from "../../assets/car/PH/ph6.jpg";
-
-import W_B1 from "../../assets/car/WBLACK/w1.jpg";
-import W_B2 from "../../assets/car/WBLACK/w2.jpg";
-import W_B3 from "../../assets/car/WBLACK/w3.jpg";
-import W_B4 from "../../assets/car/WBLACK/w4.jpg";
-import W_B5 from "../../assets/car/WBLACK/w5.jpg";
-
-import W_R1 from "../../assets/car/WRED/red1.jpg";
-import W_R2 from "../../assets/car/WRED/red2.jpg";
-import W_R3 from "../../assets/car/WRED/red3.jpg";
-import W_R4 from "../../assets/car/WRED/red4.jpg";
-
-// Buses
-import NB1 from "../../assets/bus/NB/nb1.jpg";
-import NB2 from "../../assets/bus/NB/nb2.jpg";
-
-import NC1 from "../../assets/bus/NC/nc1.jpg";
-import NC2 from "../../assets/bus/NC/nc2.jpg";
-import NC3 from "../../assets/bus/NC/nc3.jpg";
-import NC4 from "../../assets/bus/NC/nc4.jpg";
-import NC5 from "../../assets/bus/NC/nc5.jpg";
-
-import NDB1 from "../../assets/bus/NDB/ndb1.jpg";
-import NDB2 from "../../assets/bus/NDB/ndb2.jpg";
-
-import NDY1 from "../../assets/bus/NDY/ndy1.jpg";
-import NDY2 from "../../assets/bus/NDY/ndy2.jpg";
-import NDY3 from "../../assets/bus/NDY/ndy3.jpg";
-import NDY4 from "../../assets/bus/NDY/ndy4.jpg";
-import NDY5 from "../../assets/bus/NDY/ndy5.jpg";
-import NDY6 from "../../assets/bus/NDY/ndy6.jpg";
-
-// Vans
-import PB1 from "../../assets/van/PB/pb1.jpg";
-import PB2 from "../../assets/van/PB/pb2.jpg";
-import PB3 from "../../assets/van/PB/pb3.jpg";
-
-import PC1 from "../../assets/van/PC/pc1.jpg";
-import PC2 from "../../assets/van/PC/pc2.jpg";
-
-import PD1 from "../../assets/van/PD/pd1.jpg";
-import PD2 from "../../assets/van/PD/pd2.jpg";
-import PD3 from "../../assets/van/PD/pd3.jpg";
-import PD4 from "../../assets/van/PD/pd4.jpg";
-
-import PE1 from "../../assets/van/PE/pe1.jpg";
-import PE2 from "../../assets/van/PE/pe2.jpg";
-import PE3 from "../../assets/van/PE/pe3.jpg";
-import PE4 from "../../assets/van/PE/pe4.jpg";
-import PE5 from "../../assets/van/PE/pe5.jpg";
-import PE6 from "../../assets/van/PE/pe6.jpg";
-
-import PJ1 from "../../assets/van/PJ/pj1.jpg";
-import PJ2 from "../../assets/van/PJ/pj2.jpg";
-import PJ3 from "../../assets/van/PJ/pj3.jpg";
-
 import Drawer from "@/components/ui/Drawer";
 import Button from "@/components/ui/Button";
 import Loading from "@/components/ui/Loading";
@@ -285,7 +200,14 @@ const RentVehicles = () => {
       items: [
         {
           name: "Toyota Prius c",
-          images: [aqua1, aqua2, aqua3, aqua4, aqua5, aqua6],
+          images: [
+            "/car/AQUA/a1.jpg",
+            "/car/AQUA/a2.jpg",
+            "/car/AQUA/a3.jpg",
+            "/car/AQUA/a4.jpg",
+            "/car/AQUA/a5.jpg",
+            "/car/AQUA/a6.jpg",
+          ],
           seats: 5,
           luggage: 2,
           transmission: "Manual",
@@ -294,7 +216,14 @@ const RentVehicles = () => {
         },
         {
           name: "BMW 320i",
-          images: [bmw1, bmw2, bmw3, bmw4, bmw5],
+          // images: [bmw1, bmw2, bmw3, bmw4, bmw5],
+          images: [
+            "/car/BMW/bm1.jpg",
+            "/car/BMW/bm2.jpg",
+            "/car/BMW/bm3.jpg",
+            "/car/BMW/bm4.jpg",
+            "/car/BMW/bm5.jpg",
+          ],
           seats: 5,
           luggage: 2,
           transmission: "Automatic",
@@ -303,7 +232,13 @@ const RentVehicles = () => {
         },
         {
           name: "Honda Fit Shuttle Hybrid",
-          images: [hyb1, hyb2, hyb3, hyb4],
+          // images: [hyb1, hyb2, hyb3, hyb4],
+          images: [
+            "/car/HYB/h1.jpg",
+            "/car/HYB/h2.jpg",
+            "/car/HYB/h3.jpg",
+            "/car/HYB/h4.jpg",
+          ],
           seats: 5,
           luggage: 2,
           transmission: "Manual",
@@ -312,7 +247,15 @@ const RentVehicles = () => {
         },
         {
           name: "Suzuki Every",
-          images: [PH1, PH2, PH3, PH4, PH5, PH6],
+          // images: [PH1, PH2, PH3, PH4, PH5, PH6],
+          images: [
+            "/car/PH/ph1.jpg",
+            "/car/PH/ph2.jpg",
+            "/car/PH/ph3.jpg",
+            "/car/PH/ph4.jpg",
+            "/car/PH/ph5.jpg",
+            "/car/PH/ph6.jpg",
+          ],
           seats: 5,
           luggage: 2,
           transmission: "Automatic",
@@ -321,7 +264,13 @@ const RentVehicles = () => {
         },
         {
           name: "Suzuki Every",
-          images: [PK1, PK2, PK3, PK4],
+          // images: [PK1, PK2, PK3, PK4],
+          images: [
+            "/car/PK/pk1.jpg",
+            "/car/PK/pk2.jpg",
+            "/car/PK/pk3.jpg",
+            "/car/PK/pk4.jpg",
+          ],
           seats: 4,
           luggage: 1,
           transmission: "Automatic",
@@ -330,7 +279,14 @@ const RentVehicles = () => {
         },
         {
           name: "Suzuki Stingray",
-          images: [W_B1, W_B2, W_B3, W_B4, W_B5],
+          // images: [W_B1, W_B2, W_B3, W_B4, W_B5],
+          images: [
+            "/car/WBLACK/w1.jpg",
+            "/car/WBLACK/w2.jpg",
+            "/car/WBLACK/w3.jpg",
+            "/car/WBLACK/w4.jpg",
+            "/car/WBLACK/w5.jpg",
+          ],
           seats: 4,
           luggage: 1,
           transmission: "Automatic",
@@ -339,7 +295,13 @@ const RentVehicles = () => {
         },
         {
           name: "Suzuki Wagon R",
-          images: [W_R1, W_R2, W_R3, W_R4],
+          // images: [W_R1, W_R2, W_R3, W_R4],
+          images: [
+            "/car/WRED/red1.jpg",
+            "/car/WRED/red2.jpg",
+            "/car/WRED/red3.jpg",
+            "/car/WRED/red4.jpg",
+          ],
           seats: 4,
           luggage: 1,
           transmission: "Automatic",
@@ -353,7 +315,8 @@ const RentVehicles = () => {
       items: [
         {
           name: "Toyota HiAce Super GL",
-          images: [PB1, PB2, PB3],
+          // images: [PB1, PB2, PB3],
+          images: ["/van/PB/pb1.jpg", "/van/PB/pb2.jpg", "/van/PB/pb3.jpg"],
           seats: 12,
           luggage: 6,
           transmission: "Automatic",
@@ -362,7 +325,8 @@ const RentVehicles = () => {
         },
         {
           name: "Toyota HiAce Commuter",
-          images: [PC1, PC2],
+          // images: [PC1, PC2],
+          images: ["/van/PC/pc1.jpg", "/van/PC/pc2.jpg"],
           seats: 15,
           luggage: 8,
           transmission: "Manual",
@@ -371,7 +335,13 @@ const RentVehicles = () => {
         },
         {
           name: "Nissan Caravan",
-          images: [PD1, PD2, PD3, PD4],
+          // images: [PD1, PD2, PD3, PD4],
+          images: [
+            "/van/PD/pd1.jpg",
+            "/van/PD/pd2.jpg",
+            "/van/PD/pd3.jpg",
+            "/van/PD/pd4.jpg",
+          ],
           seats: 10,
           luggage: 5,
           transmission: "Automatic",
@@ -380,7 +350,15 @@ const RentVehicles = () => {
         },
         {
           name: "Toyota HiAce KDH",
-          images: [PE1, PE2, PE3, PE4, PE5, PE6],
+          // images: [PE1, PE2, PE3, PE4, PE5, PE6],
+          images: [
+            "/van/PE/pe1.jpg",
+            "/van/PE/pe2.jpg",
+            "/van/PE/pe3.jpg",
+            "/van/PE/pe4.jpg",
+            "/van/PE/pe5.jpg",
+            "/van/PE/pe6.jpg",
+          ],
           seats: 14,
           luggage: 7,
           transmission: "Manual",
@@ -389,7 +367,8 @@ const RentVehicles = () => {
         },
         {
           name: "Ford Transit",
-          images: [PJ1, PJ2, PJ3],
+          // images: [PJ1, PJ2, PJ3],
+          images: ["/van/PJ/pj1.jpg", "/van/PJ/pj2.jpg", "/van/PJ/pj3.jpg"],
           seats: 15,
           luggage: 8,
           transmission: "Manual",
@@ -403,7 +382,8 @@ const RentVehicles = () => {
       items: [
         {
           name: "King Long",
-          images: [NB1, NB2],
+          // images: [NB1, NB2],
+          images: ["/bus/NB/nb1.jpg", "/bus/NB/nb2.jpg"],
           seats: 22,
           luggage: 12,
           transmission: "Manual",
@@ -412,7 +392,14 @@ const RentVehicles = () => {
         },
         {
           name: "Hino Bus",
-          images: [NC1, NC2, NC3, NC4, NC5],
+          // images: [NC1, NC2, NC3, NC4, NC5],
+          images: [
+            "/bus/NC/nc1.jpg",
+            "/bus/NC/nc2.jpg",
+            "/bus/NC/nc3.jpg",
+            "/bus/NC/nc4.jpg",
+            "/bus/NC/nc5.jpg",
+          ],
           seats: 35,
           luggage: 20,
           transmission: "Automatic",
@@ -421,7 +408,8 @@ const RentVehicles = () => {
         },
         {
           name: "Hino Liesse II",
-          images: [NDB1, NDB2],
+          // images: [NDB1, NDB2],
+          images: ["/bus/NDB/ndb1.jpg", "/bus/NDB/ndb2.jpg"],
           seats: 29,
           luggage: 15,
           transmission: "Manual",
@@ -430,7 +418,15 @@ const RentVehicles = () => {
         },
         {
           name: "Toyota Coaster",
-          images: [NDY1, NDY2, NDY3, NDY4, NDY5, NDY6],
+          // images: [NDY1, NDY2, NDY3, NDY4, NDY5, NDY6],
+          images: [
+            "/bus/NDY/ndy1.jpg",
+            "/bus/NDY/ndy2.jpg",
+            "/bus/NDY/ndy3.jpg",
+            "/bus/NDY/ndy4.jpg",
+            "/bus/NDY/ndy5.jpg",
+            "/bus/NDY/ndy6.jpg",
+          ],
           seats: 30,
           luggage: 18,
           transmission: "Manual",
@@ -494,7 +490,7 @@ const RentVehicles = () => {
                       "https://via.placeholder.com/300x200?text=Vehicle+Image"
                     }
                     alt={vehicle.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-80 object-cover"
                     onError={(e) => {
                       e.target.src =
                         "https://via.placeholder.com/300x200?text=Vehicle+Image";
