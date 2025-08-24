@@ -123,7 +123,7 @@ const BrandsSection = () => {
 
   return (
     <div ref={sectionRef} className="bg-[#f0f7f4] py-20 md:py-14">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <h3
           ref={headerRef}
           className="text-center text-2xl md:text-3xl font-bold text-[#00513f] mb-12 uppercase tracking-wider relative"
