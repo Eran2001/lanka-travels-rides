@@ -112,7 +112,7 @@ const HeroTopSection = () => {
   }, []);
 
   return (
-    <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6 min-h-[70.7vh]">
+    <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 min-h-[70.7vh]">
       {/* Text */}
       <div
         ref={textRef}

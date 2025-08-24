@@ -153,7 +153,7 @@ const SecondaryNavBar = () => {
       </style>
 
       <nav className="w-full fixed top-14 max-xl:top-[28px] xl:top-[36px] z-[9999] bg-[#f4d35e] text-[#5c3d2e] shadow-md h-16 flex items-center">
-        <div className="w-full container mx-auto max-sm:px-4 py-6 flex items-center justify-between  max-xl:justify-between">
+        <div className="w-full container mx-auto max-sm:px-4 px-4 py-6 flex items-center justify-between  max-xl:justify-between">
           <NavLink to="/" ref={logoRef} className="font-bold text-xl relative">
             <img
               src={logoImg}
