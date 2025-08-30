@@ -107,14 +107,15 @@ const Services = () => {
 
   return (
     <section ref={sectionRef} className="py-12 bg-[#f9f5e3] sm:py-16 lg:py-20">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <div ref={headerRef} className="text-center">
           <h2 className="text-3xl font-bold leading-tight text-[#5c3d2e] sm:text-4xl xl:text-5xl font-pj">
-            Reliable Car Rental Services for Every Journey
+            Your Gateway to Memorable Journeys in Sri Lanka
           </h2>
           <p className="mt-4 text-base leading-7 text-[#5c3d2e] sm:mt-8 font-pj">
-            Choose from a wide range of vehicles, enjoy transparent pricing, and
-            travel with confidence.
+           Travel in comfort with modern, well-equipped vehicles and trusted drivers. 
+  Whether it’s a scenic island tour, an airport transfer, or a day of exploring, 
+  we make every ride smooth, safe, and unforgettable.
           </p>
         </div>
 
@@ -232,8 +233,9 @@ const Services = () => {
               Affordable Pricing
             </h3>
             <p className="mt-5 text-base text-gray-600 font-pj">
-              No hidden charges. Get clear and upfront pricing on all vehicles
-              and rental durations.
+               Enjoy fair and transparent rates while exploring Sri Lanka’s beauty. 
+  From short day trips to long island tours, we make unforgettable journeys 
+  accessible to every traveler.
             </p>
           </div>
 

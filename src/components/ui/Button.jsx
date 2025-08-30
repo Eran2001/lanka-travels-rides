@@ -12,7 +12,7 @@ const Button = ({
   type = "button",
 }) => {
   const content = (
-    <span className="relative inline-flex items-center justify-center">
+    <span className="relative inline-flex items-center uppercase justify-center">
       {/* Icon Left */}
       {icon && iconPosition === "left" && (
         <IconifyIcon

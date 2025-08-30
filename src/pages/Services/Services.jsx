@@ -4,6 +4,9 @@ import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 import Loading from "@/components/ui/Loading";
 import Button from "@/components/ui/Button";
 
+import RentWithDriver from "../RentWithDriver/RentWithDriver";
+import SelfDrive from "../SelfDrive/SelfDrive";
+
 const Services = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -400,6 +403,11 @@ const Services = () => {
           </div>
         </section>
 
+
+            <RentWithDriver />
+        <SelfDrive />
+
+      
         {/* Call to Action */}
         <section ref={ctaSectionRef} className="py-16 text-center">
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">

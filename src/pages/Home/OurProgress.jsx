@@ -168,7 +168,7 @@ const OurProgress = () => {
               </span>
             </h3>
             <p className="mt-4 text-xl font-medium text-gray-900">
-              Happy Rentals
+              Happy Tours
             </p>
             <p className="text-base mt-0.5 text-gray-500">Across the island</p>
           </div>

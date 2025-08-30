@@ -62,7 +62,7 @@ const RentalTimesBar = () => {
 
   return (
     <div className="bg-[#006D5B] py-8 xl:mt-[-1px] max-sm:mt-14">
-      <div className="container mx-auto max-sm:px-4 px-4">
+      <div className="container mx-auto max-sm:px-4 px-0">
         <div
           ref={rentalTimesRef}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-white text-center"

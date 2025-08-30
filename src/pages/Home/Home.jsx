@@ -16,15 +16,14 @@ const Home = () => {
     document.title = "Lanka Travels Rides | Home";
   }, [isLoading]);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 500);
 
-    return () => clearTimeout(timeout);
-  }, []);
+  //   return () => clearTimeout(timeout);
+  // }, []);
 
-  if (isLoading) return <Loading />;
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <HeroSection />

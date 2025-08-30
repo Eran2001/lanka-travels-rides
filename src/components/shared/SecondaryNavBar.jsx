@@ -1,235 +1,145 @@
-import React, { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useLocation  } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Drawer from "../ui/Drawer";
-import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
-import logoImg from "../../assets/images/logoOriginal.png";
+import Button from "../ui/Button"
+
 const SecondaryNavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const logoRef = useRef(null);
-  const navLinksRef = useRef([]);
-  const drawerLinksRef = useRef([]);
-  const hamburgerRef = useRef(null);
-  const drawerContentRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    // Logo animation - bounce in
-    anime({
-      targets: logoRef.current,
-      translateY: [-40, 0],
-      scale: [0.6, 1],
-      rotate: [-10, 0],
-      opacity: [0, 1],
-      duration: 1200,
-      easing: "easeOutElastic(1, 0.6)",
-    });
-
-    // Navbar links - stagger cascade
-    anime({
-      targets: navLinksRef.current.filter(Boolean),
-      translateY: [-60, 0],
-      opacity: [0, 1],
-      scale: [0.8, 1],
-      rotate: [-5, 0],
-      delay: anime.stagger(150, { start: 500 }), // smoother cascade
-      duration: 900,
-      easing: "easeOutBack", // softer bounce
-    });
-
-    // Hamburger - pop in
-    anime({
-      targets: hamburgerRef.current,
-      scale: [0, 1],
-      opacity: [0, 1],
-      duration: 700,
-      delay: 1200,
-      easing: "easeOutElastic(1, 0.7)",
-    });
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (isDrawerOpen) {
-      // Disable scroll when drawer is open
-      document.body.style.overflow = "hidden";
-    } else {
-      // Restore scroll when drawer closes
-      document.body.style.overflow = "auto";
-    }
-
-    // Cleanup when component unmounts
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isDrawerOpen]);
-
-  // Add this useEffect below your existing anime effects
-  useEffect(() => {
-    if (isDrawerOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isDrawerOpen]);
-
-  useEffect(() => {
-    if (isDrawerOpen && drawerContentRef.current) {
-      anime({
-        targets: drawerContentRef.current,
-        translateX: ["100%", "0%"],
-        opacity: [0, 1],
-        duration: 600,
-        easing: "easeOutExpo",
-      });
-
-      anime({
-        targets: drawerLinksRef.current.filter(Boolean),
-        translateX: [40, 0],
-        opacity: [0, 1],
-        delay: anime.stagger(120, { start: 200 }),
-        duration: 800,
-        easing: "easeOutBack",
-      });
-    }
-  }, [isDrawerOpen]);
-
-  const handleHover = (el) => {
-    anime({
-      targets: el,
-      scale: [1, 1.05],
-      boxShadow: [
-        "0 0 0 rgba(244, 211, 94, 0)",
-        "0 0 12px rgba(244, 211, 94, 0.6)",
-      ],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
-
-  const handleHoverLeave = (el) => {
-    anime({
-      targets: el,
-      scale: [1.05, 1],
-      boxShadow: [
-        "0 0 12px rgba(244, 211, 94, 0.6)",
-        "0 0 0 rgba(244, 211, 94, 0)",
-      ],
-      duration: 300,
-      easing: "easeOutQuad",
-    });
-  };
 
   return (
     <>
-      <style>
-        {`
-          .nav-link::after, .nav-icon::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: #f4d35e;
-            border-radius: 50%;
-            opacity: 0;
-            transform: scale(0);
-            pointer-events: none;
-          }
-          .nav-link:hover::after, .nav-icon:hover::after {
-            animation: sparkle 0.6s ease-out forwards;
-          }
-          @keyframes sparkle {
-            0% { transform: scale(0); opacity: 0.7; }
-            50% { transform: scale(1.5); opacity: 1; }
-            100% { transform: scale(0); opacity: 0; }
-          }
-          .nav-link:hover::after {
-            top: 10%;
-            left: 90%;
-          }
-        `}
-      </style>
+      <nav
+  className={`w-full fixed top-0 z-9999 transition-all duration-300 ${
+    scrolled
+      ? "bg-black/80 backdrop-blur-md shadow-md"
+      : location.pathname === "/"
+      ? "bg-transparent"
+      : "bg-black/80 backdrop-blur-md shadow-md"
+  }`}
+>
+        {/* Top Section */}
+        <div className="container mx-auto relative flex items-center justify-between py-8 px-4">
+  {/* Left - Language Dropdown */}
+  <div className="relative inline-block z-10">
+    <select className="bg-transparent text-white border border-white cursor-pointer rounded pl-6 pr-10 py-2 max-sm:pl-3 max-sm:pr-8 text-md max-sm:text-sm focus:outline-none appearance-none">
+      <option>English</option>
+    </select>
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-white">
+      ▼
+    </div>
+  </div>
 
-      <nav className="w-full fixed top-14 max-xl:top-[28px] xl:top-[36px] z-[9999] bg-[#f4d35e] text-[#5c3d2e] shadow-md h-16 flex items-center">
-        <div className="w-full container mx-auto max-sm:px-4 px-4 py-6 flex items-center justify-between  max-xl:justify-between">
-          <NavLink to="/" ref={logoRef} className="font-bold text-xl relative">
-            <img
-              src={logoImg}
-              alt="Lanka Travel Rides Logo"
-              className="h-12 w-auto object-contain max-md:pt-1"
-            />
-          </NavLink>
+  {/* Center - Logo */}
+  <NavLink
+    to="/"
+    className="absolute left-1/2 transform -translate-x-1/2 flex items-center max-lg:hidden"
+  >
+    <img
+      src="/images/newLogo.jpg"
+      alt="Logo"
+      className="h-20 w-auto object-contain"
+    />
+  </NavLink>
 
-          <ul className="hidden xl:flex gap-4 items-center">
-            {[
-              "Home",
-              "Services",
-              "Clients",
-              "About Us",
-              "Contact Us",
-              "Rent Vehicles",
-              "Rent with Driver",
-              "Self Drive",
-              // "Payments",
-            ].map((item, index) => (
-              <NavLink
-                key={item}
-                to={
-                  item === "Home"
-                    ? "/"
-                    : `/${item.toLowerCase().replace(/ /g, "-")}`
-                }
-                className={({ isActive }) =>
-                  `nav-link relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? "bg-[#5c3d2e] text-[#f4d35e]"
-                      : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
-                  }`
-                }
-                ref={(el) => (navLinksRef.current[index] = el)}
-                onMouseEnter={(e) => handleHover(e.currentTarget)}
-                onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-              >
-                {item}
-              </NavLink>
-            ))}
-          </ul>
+  {/* Right - Contact Numbers + Button */}
+  <div className="flex items-center gap-4 z-10">
+    {/* Numbers inline */}
+    <div className="flex items-center gap-3 text-white text-md max-sm:text-sm max-sm:hidden">
+      <span>+94 77 790 0734</span>
+      <span>|</span>
+      <span>+94 77 790 0720</span>
+    </div>
 
-          <div className="xl:hidden">
-            <RxHamburgerMenu
-              ref={hamburgerRef}
-              className="text-[#5c3d2e] w-6 h-6 cursor-pointer"
-              onClick={() => setIsDrawerOpen(true)}
-              onMouseEnter={(e) => handleHover(e.currentTarget)}
-              onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
-            />
-          </div>
-        </div>
+    {/* Contact Us button */}
+    <NavLink to="/contact-us">
+  <Button text="CONTACT US" />
+</NavLink>
+
+  </div>
+</div>
+        {/* Bottom Section (NO BORDER) */}
+        <div className="container mx-auto flex items-center justify-center px-4 h-16 max-lg:h-20 relative">
+  {/* Left - Logo (only on mobile) */}
+  <NavLink
+    to="/"
+    className="flex items-center lg:hidden absolute left-4"
+  >
+    <img
+      src="/images/newLogo.jpg"
+      alt="Logo"
+      className="h-20 w-auto object-contain"
+    />
+  </NavLink>
+
+  {/* Desktop Links (centered) */}
+  <ul className="hidden lg:flex gap-6 items-center text-white font-medium">
+    {[
+      "HOME",
+      "WHAT WE OFFER",
+      "DISCOVER SRI LANKA",
+      "DAY TOURS",
+      // "CLIENTS",
+      "CHECK OUT OUR FLEET",
+      "ABOUT US",
+      "CONTACT US",
+    ].map((item) => (
+      <NavLink
+        key={item}
+        to={
+          item === "HOME"
+            ? "/"
+            : `/${item.toLowerCase().replace(/ /g, "-")}`
+        }
+        className={({ isActive }) =>
+          `px-3 py-2 rounded-md text-md transition ${
+            isActive ? "text-light bg-primary" : "hover:bg-white/20"
+          }`
+        }
+      >
+        {item}
+      </NavLink>
+    ))}
+  </ul>
+
+  {/* Mobile Hamburger */}
+  <div className="lg:hidden absolute right-4">
+    <RxHamburgerMenu
+      className="text-white w-7 h-7 cursor-pointer"
+      onClick={() => setIsDrawerOpen(true)}
+    />
+  </div>
+</div>
+
       </nav>
 
+      {/* Mobile Drawer */}
       <Drawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
-        title="Lanka Travel Rides"
+        title="Menu"
         width="w-72"
       >
-        <div
-          ref={drawerContentRef}
-          className="flex flex-col space-y-3 text-[#5c3d2e] max-w-full overflow-x-hidden"
-        >
+        <div className="flex flex-col space-y-3 text-text">
           {[
-            "Home",
-            "Services",
-            "Clients",
-            "About Us",
-            "Contact Us",
-            "Rent Vehicles",
-            "Rent with Driver",
-            "Self Drive",
-            // "Payments",
-          ].map((item, index) => (
+            "HOME",
+            "WHAT WE OFFER",
+            "DISCOVER SRI LANKA",
+      "DAY TOURS",
+      "CHECK OUT OUR FLEET",
+           "ABOUT US",
+      "CONTACT US",
+          ].map((item) => (
             <NavLink
               key={item}
               to={
@@ -239,15 +149,12 @@ const SecondaryNavBar = () => {
               }
               onClick={() => setIsDrawerOpen(false)}
               className={({ isActive }) =>
-                `nav-link px-4 py-3 rounded-md text-base font-medium transition-all duration-200 ${
+                `px-4 py-3 rounded-md text-base font-medium ${
                   isActive
-                    ? "bg-[#5c3d2e] text-[#f4d35e]"
-                    : "hover:bg-[#5c3d2e] hover:text-[#f4d35e]"
+                    ? "bg-blue-600 text-white"
+                    : "hover:bg-blue-100"
                 }`
               }
-              ref={(el) => (drawerLinksRef.current[index] = el)}
-              onMouseEnter={(e) => handleHover(e.currentTarget)}
-              onMouseLeave={(e) => handleHoverLeave(e.currentTarget)}
             >
               {item}
             </NavLink>

@@ -179,7 +179,7 @@ const CustomerFeedback = () => {
         }
       `}</style>
 
-      <div className="px-4 mx-auto xl:w-7xl max-xl:w-5xl max-lg:w-3xl max-md:w-2xl max-sm:w-100 sm:px-6 lg:px-8">
+      <div className="px-4 mx-auto xl:w-7xl max-xl:w-5xl max-lg:w-3xl max-md:w-2xl max-sm:w-[100%] sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <p className="text-lg font-medium text-[#5c3d2e] font-pj">
             More than +1000 customers love our car rental service

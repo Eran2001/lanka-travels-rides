@@ -249,8 +249,8 @@ const RentWithDriver = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="min-h-screen bg-gray-100 pt-24 pb-16 mt-27">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gray-100 pt-24 pb-16">
+      <div className="container mx-auto px-0">
         {/* Intro Section */}
         <section
           ref={introRef}
@@ -360,7 +360,7 @@ const RentWithDriver = () => {
         </section>
 
         {/* CTA Section */}
-        <section ref={ctaRef} className="py-16 text-center">
+        {/* <section ref={ctaRef} className="py-16 text-center">
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             Book Your Chauffeured Journey
           </h2>
@@ -369,7 +369,7 @@ const RentWithDriver = () => {
             onClick={() => navigate("/rent-vehicles")}
             className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-4"
           />
-        </section>
+        </section> */}
       </div>
     </div>
   );

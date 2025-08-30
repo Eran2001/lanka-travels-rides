@@ -20,7 +20,7 @@ const PopupSlider = ({ images = [], isOpen, onClose, title }) => {
   };
 
   return (
-    <div className="fixed top-24 max-xl:top-22 inset-0 z-50 flex items-center justify-center">
+    <div className="fixed top-40 max-lg:top-44 inset-0 z-9998 flex items-center justify-center">
       {/* Background */}
       <div
         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
@@ -47,7 +47,7 @@ const PopupSlider = ({ images = [], isOpen, onClose, title }) => {
             alt={`Slide ${index + 1}`}
             className={`${
               index === currentIndex ? "block" : "hidden"
-            } w-full xl:max-w-[90%] xl:max-h-[80%] object-contain rounded-lg z-50`}
+            } w-full lg:max-w-[70%] xl:max-w-[90%] xl:max-h-[80%] object-contain rounded-lg z-50`}
             onLoad={() => {
               if (loadedCount < images.length) {
                 setTimeout(() => setLoadedCount((prev) => prev + 1), 300);

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
-import logoImg from "../../assets/images/logoOriginal.png";
 import { Link } from "react-router-dom";
 import {
   FaFacebookF,
@@ -131,14 +130,14 @@ const Footer = () => {
             >
               <Link to="/" className="mb-6 inline-block max-w-[160px] ">
                 <img
-                  src={logoImg}
+                  src="/public/images/newLogo.jpg"
                   alt="logo"
                   className="max-w-full dark:hidden rounded-md"
                 />
                 <img
-                  src={logoImg}
+                  src="/public/images/newLogo.jpg"
                   alt="logo"
-                  className="max-w-full hidden dark:block rounded-md"
+                  className="max-w-full h-20 hidden dark:block rounded-md"
                 />
               </Link>
               <p className="mb-7 text-base text-light text-body-color dark:text-dark-6">
@@ -258,7 +257,7 @@ const Footer = () => {
               </h4>
               <div className="mb-6 flex items-center">
                 {[
-                  { icon: <FaFacebookF /> },
+                  { icon: <FaFacebookF />, link: "https://www.facebook.com/share/1F2Ui1Pebg/?mibextid=wwXIfr" },
                   { icon: <FaXTwitter /> },
                   {
                     icon: <FaInstagram />,

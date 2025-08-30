@@ -217,12 +217,12 @@ const FAQ = () => {
         <p ref={linkRef} className="text-center text-gray-600 text-base mt-9">
           Didn’t find the answer you’re looking for?{" "}
           <Link
-            to="faqs"
+            to="contact-us"
             className="font-medium text-[#006D5B] transition-all duration-200 hover:text-[#004D40]"
             onMouseEnter={(e) => handleLinkHover(e.currentTarget)}
             onMouseLeave={(e) => handleLinkHoverLeave(e.currentTarget)}
           >
-            Take a look at our FAQs
+            Let's Connect
           </Link>
         </p>
       </div>

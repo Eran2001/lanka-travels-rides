@@ -23,7 +23,7 @@ const Drawer = ({
 
       {/* Drawer panel */}
       <div
-        className={`absolute right-0 top-0 h-full ${width} bg-[#f9f5e3] shadow-xl transform transition-transform duration-300 ${
+        className={`absolute right-0 top-0 h-full ${width} bg-light shadow-xl transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >

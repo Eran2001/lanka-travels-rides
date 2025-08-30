@@ -127,7 +127,7 @@ const OurTeam = () => {
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div ref={headerRef} className="text-center">
           <h2 className="text-3xl font-bold text-[#5c3d2e] sm:text-4xl xl:text-5xl font-pj">
-            Meet Our Car Rental Experts
+            Meet Our Experts Who Make Your Tour Memorable and Hassle-Free 
           </h2>
         </div>
 
