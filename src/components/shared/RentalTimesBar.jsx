@@ -61,7 +61,7 @@ const RentalTimesBar = () => {
   }, []);
 
   return (
-    <div className="bg-[#006D5B] py-8 xl:mt-[-1px] max-sm:mt-14">
+    <div className="bg-[#006D5B] py-8 xl:mt-[-1px] max-sm:mt-0">
       <div className="container mx-auto max-sm:px-4 px-0">
         <div
           ref={rentalTimesRef}
