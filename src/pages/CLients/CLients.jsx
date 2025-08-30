@@ -218,7 +218,7 @@ export default function Clients() {
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto p-4">
+          <p className="text-lg text-gray-700 max-w-auto px-48 mx-auto p-4">
             Hear from our happy customers about their rental experience with us.
             From seamless booking processes to top-notch customer service, our
             clients consistently praise the reliability, affordability, and

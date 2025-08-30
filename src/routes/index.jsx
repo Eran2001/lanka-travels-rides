@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "@/layouts/MainLayout";
 import ErrorPage from "@/components/shared/ErrorPage";
+import Tours from "../pages/Tours/TOurs";
 
 const Home = lazy(() => import("@/pages/Home/Home"));
 const About = lazy(() => import("@/pages/About/About"));
@@ -25,6 +26,24 @@ const SpecialOffers = lazy(() => import("@/pages/SpecialOffers/SpecialOffers"));
 const Terms = lazy(() => import("@/pages/Terms/Terms"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy/PrivacyPolicy"));
 
+const WilpattuNationalPark = lazy(() =>
+  import("../pages/Destinations/pages/WilpattuNationalPark")
+);
+const Colombo = lazy(() => import("../pages/Destinations/pages/Colombo"));
+const NuwaraEliya = lazy(() =>
+  import("../pages/Destinations/pages/NuwaraEliya")
+);
+const Ella = lazy(() => import("../pages/Destinations/pages/Ella"));
+const Kandy = lazy(() => import("../pages/Destinations/pages/Kandy"));
+const Anuradhapura = lazy(() =>
+  import("../pages/Destinations/pages/Anuradhapura")
+);
+const Polonnaruwa = lazy(() =>
+  import("../pages/Destinations/pages/Polonnaruwa")
+);
+const Galle = lazy(() => import("../pages/Destinations/pages/Galle"));
+const Jaffna = lazy(() => import("../pages/Destinations/pages/Jaffna"));
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -42,11 +61,25 @@ export const router = createBrowserRouter([
       { path: "fleet", element: <OurFleet /> },
       { path: "check-out-our-fleet", element: <RentVehicles /> },
       { path: "faqs", element: <FAQ /> },
-      { path: "rent-with-driver", element: <RentWithDriver /> },
+      { path: "hire-with-driver", element: <RentWithDriver /> },
       { path: "self-drive", element: <SelfDrive /> },
       { path: "special-offers", element: <SpecialOffers /> },
       { path: "terms-and-conditions", element: <Terms /> },
       { path: "privacy-policy", element: <PrivacyPolicy /> },
+      {
+        path: "discover-sri-lanka/wilpattu-national-park",
+        element: <WilpattuNationalPark />,
+      },
+      { path: "discover-sri-lanka/colombo", element: <Colombo /> },
+      { path: "discover-sri-lanka/nuwara-eliya", element: <NuwaraEliya /> },
+      { path: "discover-sri-lanka/ella", element: <Ella /> },
+      { path: "discover-sri-lanka/kandy", element: <Kandy /> },
+      { path: "discover-sri-lanka/anuradhapura", element: <Anuradhapura /> },
+      { path: "discover-sri-lanka/polonnaruwa", element: <Polonnaruwa /> },
+      { path: "discover-sri-lanka/galle-fort", element: <Galle /> },
+      { path: "discover-sri-lanka/jaffna", element: <Jaffna /> },
+      { path: "discover-sri-lanka", element: <Destinations /> },
+      { path: "explore-tours", element: <Tours /> },
     ],
   },
 ]);

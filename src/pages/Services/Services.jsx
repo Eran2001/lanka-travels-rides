@@ -264,11 +264,16 @@ const Services = () => {
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             Our Services
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            At Lanka Travel Rides, we provide premium vehicle rental services
-            tailored to your needs. Whether you're exploring Sri Lanka or need
-            reliable transportation, our diverse fleet and flexible options
-            ensure a seamless experience.
+          <p className="text-lg text-gray-700 max-w-auto px-4 mx-auto">
+            Welcome to Lanka Travel Rides, your trusted partner for exploring
+            the wonders of Sri Lanka. We specialize in premium travel, tourism,
+            and vehicle rental services crafted to make your journey
+            unforgettable. Whether you're a solo adventurer, a family on
+            vacation, or a business traveler, our diverse fleet and tailored
+            experiences ensure comfort, convenience, and discovery. From vibrant
+            cities and serene beaches to ancient cultural landmarks and lush
+            rainforests, we provide the perfect transportation and tour
+            solutions to bring your Sri Lankan adventure to life.
           </p>
         </section>
 
@@ -280,10 +285,10 @@ const Services = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Rent with Driver",
+                title: "Hire with Driver",
                 description:
                   "Enjoy a hassle-free journey with our professional drivers who know Sri Lanka inside out. Perfect for tourists and business travelers seeking comfort and convenience.",
-                path: "/rent-with-driver",
+                path: "/hire-with-driver",
                 buttonText: "Learn More",
               },
               {
@@ -403,11 +408,52 @@ const Services = () => {
           </div>
         </section>
 
-
-            <RentWithDriver />
+        <RentWithDriver />
         <SelfDrive />
 
-      
+        <section className="py-10">
+          {/* Section Header */}
+          <div className="text-center py-12 bg-[#f4d35e] rounded-2xl shadow-md mb-12">
+            <h2 className="text-3xl font-bold text-[#5c3d2e] mb-4">
+              Terms & Privacy
+            </h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Please review our Terms & Conditions and Privacy Policy to ensure
+              a safe and transparent experience with Lanka Travel Rides.
+            </p>
+          </div>
+
+          {/* Terms & Privacy Content */}
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Terms */}
+            <div className="bg-gray-50 rounded-lg shadow-md p-10 text-center">
+              <h3 className="text-2xl font-bold text-[#5c3d2e] mb-6">
+                Terms & Conditions
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Vehicle handover must be completed within the agreed time.
+                Smoking and drinking inside the vehicle are strictly prohibited.
+                Customers must follow traffic laws and keep the vehicle clean.
+                The vehicle must not be used for illegal or unsafe activities at
+                any time.
+              </p>
+            </div>
+
+            {/* Privacy */}
+            <div className="bg-gray-50 rounded-lg shadow-md p-10 text-center">
+              <h3 className="text-2xl font-bold text-[#5c3d2e] mb-6">
+                Privacy Policy
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                We respect your privacy. Customer data is collected only for
+                bookings and service improvements. All information is securely
+                protected and never shared, sold, or misused. Your trust and
+                safety are our highest priority at Lanka Travel Rides.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Call to Action */}
         <section ref={ctaSectionRef} className="py-16 text-center">
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
@@ -418,8 +464,8 @@ const Services = () => {
             with Lanka Travel Rides.
           </p>
           <Button
-            text="Rent Now"
-            onClick={() => navigate("/rent-vehicles")}
+            text="Hire Now"
+            onClick={() => navigate("/check-out-our-fleet")}
             className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-8"
           />
         </section>

@@ -208,28 +208,28 @@ const RentVehicles = () => {
             "/car/AQUA/a5.jpg",
             "/car/AQUA/a6.jpg",
           ],
-          seats: 5,
-          luggage: 2,
-          transmission: "Manual",
-          fuel: "Diesel",
-          price: "LKR 10,000/day",
-        },
-        {
-          name: "BMW 320i",
-          // images: [bmw1, bmw2, bmw3, bmw4, bmw5],
-          images: [
-            "/car/BMW/bm1.jpg",
-            "/car/BMW/bm2.jpg",
-            "/car/BMW/bm3.jpg",
-            "/car/BMW/bm4.jpg",
-            "/car/BMW/bm5.jpg",
-          ],
-          seats: 5,
+          seats: 3,
           luggage: 2,
           transmission: "Automatic",
-          fuel: "Diesel",
-          price: "LKR 11,000/day",
+          fuel: "Petrol",
+          price: "$50",
         },
+        // {
+        //   name: "BMW 320i",
+        //   // images: [bmw1, bmw2, bmw3, bmw4, bmw5],
+        //   images: [
+        //     "/car/BMW/bm1.jpg",
+        //     "/car/BMW/bm2.jpg",
+        //     "/car/BMW/bm3.jpg",
+        //     "/car/BMW/bm4.jpg",
+        //     "/car/BMW/bm5.jpg",
+        //   ],
+        //   seats: 5,
+        //   luggage: 2,
+        //   transmission: "Automatic",
+        //   fuel: "Diesel",
+        //   price: "LKR 11,000/day",
+        // },
         {
           name: "Honda Fit Shuttle Hybrid",
           // images: [hyb1, hyb2, hyb3, hyb4],
@@ -239,11 +239,11 @@ const RentVehicles = () => {
             "/car/HYB/h3.jpg",
             "/car/HYB/h4.jpg",
           ],
-          seats: 5,
+          seats: 4,
           luggage: 2,
-          transmission: "Manual",
+          transmission: "Automatic",
           fuel: "Petrol",
-          price: "LKR 9,500/day",
+          price: "$50",
         },
         {
           name: "Suzuki Every",
@@ -256,43 +256,43 @@ const RentVehicles = () => {
             "/car/PH/ph5.jpg",
             "/car/PH/ph6.jpg",
           ],
-          seats: 5,
+          seats: 6,
           luggage: 2,
           transmission: "Automatic",
-          fuel: "Hybrid",
-          price: "LKR 12,000/day",
-        },
-        {
-          name: "Suzuki Every",
-          // images: [PK1, PK2, PK3, PK4],
-          images: [
-            "/car/PK/pk1.jpg",
-            "/car/PK/pk2.jpg",
-            "/car/PK/pk3.jpg",
-            "/car/PK/pk4.jpg",
-          ],
-          seats: 4,
-          luggage: 1,
-          transmission: "Automatic",
           fuel: "Petrol",
-          price: "LKR 18,000/day",
+          price: "$50",
         },
-        {
-          name: "Suzuki Stingray",
-          // images: [W_B1, W_B2, W_B3, W_B4, W_B5],
-          images: [
-            "/car/WBLACK/w1.jpg",
-            "/car/WBLACK/w2.jpg",
-            "/car/WBLACK/w3.jpg",
-            "/car/WBLACK/w4.jpg",
-            "/car/WBLACK/w5.jpg",
-          ],
-          seats: 4,
-          luggage: 1,
-          transmission: "Automatic",
-          fuel: "Petrol",
-          price: "LKR 25,000/day",
-        },
+        // {
+        //   name: "Suzuki Every",
+        //   // images: [PK1, PK2, PK3, PK4],
+        //   images: [
+        //     "/car/PK/pk1.jpg",
+        //     "/car/PK/pk2.jpg",
+        //     "/car/PK/pk3.jpg",
+        //     "/car/PK/pk4.jpg",
+        //   ],
+        //   seats: 4,
+        //   luggage: 1,
+        //   transmission: "Automatic",
+        //   fuel: "Petrol",
+        //   price: "LKR 18,000/day",
+        // },
+        // {
+        //   name: "Suzuki Stingray",
+        //   // images: [W_B1, W_B2, W_B3, W_B4, W_B5],
+        //   images: [
+        //     "/car/WBLACK/w1.jpg",
+        //     "/car/WBLACK/w2.jpg",
+        //     "/car/WBLACK/w3.jpg",
+        //     "/car/WBLACK/w4.jpg",
+        //     "/car/WBLACK/w5.jpg",
+        //   ],
+        //   seats: 4,
+        //   luggage: 1,
+        //   transmission: "Automatic",
+        //   fuel: "Petrol",
+        //   price: "LKR 25,000/day",
+        // },
         {
           name: "Suzuki Wagon R",
           // images: [W_R1, W_R2, W_R3, W_R4],
@@ -302,11 +302,11 @@ const RentVehicles = () => {
             "/car/WRED/red3.jpg",
             "/car/WRED/red4.jpg",
           ],
-          seats: 4,
+          seats: 3,
           luggage: 1,
           transmission: "Automatic",
           fuel: "Petrol",
-          price: "LKR 25,000/day",
+          price: "$50",
         },
       ],
     },
@@ -333,21 +333,21 @@ const RentVehicles = () => {
           fuel: "Diesel",
           price: "LKR 16,000/day",
         },
-        {
-          name: "Nissan Caravan",
-          // images: [PD1, PD2, PD3, PD4],
-          images: [
-            "/van/PD/pd1.jpg",
-            "/van/PD/pd2.jpg",
-            "/van/PD/pd3.jpg",
-            "/van/PD/pd4.jpg",
-          ],
-          seats: 10,
-          luggage: 5,
-          transmission: "Automatic",
-          fuel: "Petrol",
-          price: "LKR 14,000/day",
-        },
+        // {
+        //   name: "Nissan Caravan",
+        //   // images: [PD1, PD2, PD3, PD4],
+        //   images: [
+        //     "/van/PD/pd1.jpg",
+        //     "/van/PD/pd2.jpg",
+        //     "/van/PD/pd3.jpg",
+        //     "/van/PD/pd4.jpg",
+        //   ],
+        //   seats: 10,
+        //   luggage: 5,
+        //   transmission: "Automatic",
+        //   fuel: "Petrol",
+        //   price: "LKR 14,000/day",
+        // },
         {
           name: "Toyota HiAce KDH",
           // images: [PE1, PE2, PE3, PE4, PE5, PE6],
@@ -365,16 +365,16 @@ const RentVehicles = () => {
           fuel: "Diesel",
           price: "LKR 15,500/day",
         },
-        {
-          name: "Ford Transit",
-          // images: [PJ1, PJ2, PJ3],
-          images: ["/van/PJ/pj1.jpg", "/van/PJ/pj2.jpg", "/van/PJ/pj3.jpg"],
-          seats: 15,
-          luggage: 8,
-          transmission: "Manual",
-          fuel: "Diesel",
-          price: "LKR 16,500/day",
-        },
+        // {
+        //   name: "Ford Transit",
+        //   // images: [PJ1, PJ2, PJ3],
+        //   images: ["/van/PJ/pj1.jpg", "/van/PJ/pj2.jpg", "/van/PJ/pj3.jpg"],
+        //   seats: 15,
+        //   luggage: 8,
+        //   transmission: "Manual",
+        //   fuel: "Diesel",
+        //   price: "LKR 16,500/day",
+        // },
       ],
     },
     {
@@ -384,11 +384,11 @@ const RentVehicles = () => {
           name: "King Long",
           // images: [NB1, NB2],
           images: ["/bus/NB/nb1.jpg", "/bus/NB/nb2.jpg"],
-          seats: 22,
+          seats: 45,
           luggage: 12,
           transmission: "Manual",
           fuel: "Diesel",
-          price: "LKR 25,000/day",
+          price: "$200",
         },
         {
           name: "Hino Bus",
@@ -400,21 +400,21 @@ const RentVehicles = () => {
             "/bus/NC/nc4.jpg",
             "/bus/NC/nc5.jpg",
           ],
-          seats: 35,
+          seats: "29 & 33",
           luggage: 20,
           transmission: "Automatic",
           fuel: "Diesel",
-          price: "LKR 30,000/day",
+          price: "$120",
         },
         {
           name: "Hino Liesse II",
           // images: [NDB1, NDB2],
           images: ["/bus/NDB/ndb1.jpg", "/bus/NDB/ndb2.jpg"],
-          seats: 29,
+          seats: "29 & 33",
           luggage: 15,
-          transmission: "Manual",
+          transmission: "Automatic",
           fuel: "Diesel",
-          price: "LKR 28,000/day",
+          price: "$120",
         },
         {
           name: "Toyota Coaster",
@@ -427,11 +427,11 @@ const RentVehicles = () => {
             "/bus/NDY/ndy5.jpg",
             "/bus/NDY/ndy6.jpg",
           ],
-          seats: 30,
+          seats: "29 & 33",
           luggage: 18,
-          transmission: "Manual",
+          transmission: "Automatic",
           fuel: "Diesel",
-          price: "LKR 29,500/day",
+          price: "$120",
         },
       ],
     },
@@ -452,9 +452,9 @@ const RentVehicles = () => {
           className="text-center py-8 bg-[#f4d35e] rounded-lg mb-24"
         >
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
-            Rent Vehicles
+            Hire Vehicles
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto p-4">
+          <p className="text-lg text-gray-700 max-w-auto px-4 mx-auto p-4">
             Discover the freedom of the road with our wide range of rental
             vehicles tailored to suit your every need. Whether you're planning a
             weekend getaway, a business trip, or simply need a temporary ride,
@@ -500,11 +500,11 @@ const RentVehicles = () => {
                     <h3 className="text-xl font-bold text-[#5c3d2e] mb-2">
                       {vehicle.name}
                     </h3>
-                    {/* <p className="text-gray-600">Seats: {vehicle.seats}</p>
+                    <p className="text-gray-600">Seats: {vehicle.seats}</p>
+                    <p className="text-gray-600">Price: {vehicle.price}</p>
                     <p className="text-gray-600">
-                      Luggage: {vehicle.luggage} bags
+                      Transmission: {vehicle.transmission}
                     </p>
-                    <p className="text-gray-600">Price: {vehicle.price}</p> */}
                     <Button
                       text="View"
                       onClick={() => openDrawer(vehicle)}

@@ -282,7 +282,7 @@ const About = () => {
           <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
             About Lanka Travel Rides
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-auto px-4 mx-auto">
             At <span className="font-semibold">Lanka Travel Rides</span>, we are
             dedicated to providing reliable, affordable, and high-quality
             transportation solutions across Sri Lanka. Whether you're a tourist

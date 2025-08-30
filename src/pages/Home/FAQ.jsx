@@ -218,9 +218,7 @@ const FAQ = () => {
           Didn’t find the answer you’re looking for?{" "}
           <Link
             to="contact-us"
-            className="font-medium text-[#006D5B] transition-all duration-200 hover:text-[#004D40]"
-            onMouseEnter={(e) => handleLinkHover(e.currentTarget)}
-            onMouseLeave={(e) => handleLinkHoverLeave(e.currentTarget)}
+            className="font-medium text-[#006D5B] transition-all duration-200"
           >
             Let's Connect
           </Link>

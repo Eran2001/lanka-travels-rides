@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import anime from "https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.es.js";
 
 import Button from "@/components/ui/Button";
@@ -8,6 +8,7 @@ import Loading from "@/components/ui/Loading";
 const RentWithDriver = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   const introRef = useRef(null);
   const processRef = useRef(null);
@@ -249,7 +250,11 @@ const RentWithDriver = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="min-h-screen bg-gray-100 pt-24 pb-16">
+    <div
+      className={`min-h-screen bg-gray-100 ${
+        location.pathname === "/hire-with-driver" ? "pt-24 pb-16" : "pt-6 pb-4"
+      } mt-27`}
+    >
       <div className="container mx-auto px-0">
         {/* Intro Section */}
         <section
@@ -359,17 +364,18 @@ const RentWithDriver = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        {/* <section ref={ctaRef} className="py-16 text-center">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
-            Book Your Chauffeured Journey
-          </h2>
-          <Button
-            text="Choose Your Vehicle"
-            onClick={() => navigate("/rent-vehicles")}
-            className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-4"
-          />
-        </section> */}
+        {location.pathname !== "/what-we-offer" && (
+          <section ref={ctaRef} className="py-16 text-center">
+            <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+              Book Your Chauffeured Journey
+            </h2>
+            <Button
+              text="Choose Your Vehicle"
+              onClick={() => navigate("/check-out-our-fleet")}
+              className="px-8 py-4 max-sm:px-10 max-sm:py-4 mt-4"
+            />
+          </section>
+        )}
       </div>
     </div>
   );

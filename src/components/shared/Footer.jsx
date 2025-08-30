@@ -142,12 +142,12 @@ const Footer = () => {
               </Link>
               <p className="mb-7 text-base text-light text-body-color dark:text-dark-6">
                 We are Lanka Travel Rides, contact with us we have Exclusive
-                cars waiting for your call.
+                journeys waiting for your call.
               </p>
               <p className="flex flex-col text-sm font-medium text-dark dark:text-white space-y-1">
                 <span className="flex items-center">
                   <FaPhone className="mr-2 text-accent" />
-                  +94 77 790 0734
+                  +94 76 597 2177
                 </span>
                 <span className="flex items-center">
                   <FaPhone className="mr-2 text-accent" />
@@ -179,8 +179,8 @@ const Footer = () => {
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/rent-with-driver"
-              label="Rent with Driver"
+              link="/hire-with-driver"
+              label="Hire with Driver"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
@@ -197,8 +197,8 @@ const Footer = () => {
             refCallback={(el) => (linkGroupsRef.current[1] = el)}
           >
             <NavLink
-              link="/services"
-              label="Services"
+              link="/what-we-offer"
+              label="What We Offer"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
@@ -215,8 +215,8 @@ const Footer = () => {
               onLeave={handleLinkHoverLeave}
             />
             <NavLink
-              link="/rent-vehicles"
-              label="Rent Vehicles"
+              link="/check-out-our-fleet"
+              label="Our Fleet"
               onHover={handleLinkHover}
               onLeave={handleLinkHoverLeave}
             />
@@ -257,7 +257,10 @@ const Footer = () => {
               </h4>
               <div className="mb-6 flex items-center">
                 {[
-                  { icon: <FaFacebookF />, link: "https://www.facebook.com/share/1F2Ui1Pebg/?mibextid=wwXIfr" },
+                  {
+                    icon: <FaFacebookF />,
+                    link: "https://www.facebook.com/share/1F2Ui1Pebg/?mibextid=wwXIfr",
+                  },
                   { icon: <FaXTwitter /> },
                   {
                     icon: <FaInstagram />,

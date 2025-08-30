@@ -32,7 +32,7 @@ const PopupSlider = ({ images = [], isOpen, onClose, title }) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 text-white text-4xl z-50 p-2 rounded-full bg-black/50 hover:bg-black/70"
+          className="absolute cursor-pointer top-6 right-6 text-white text-4xl z-50 p-2 rounded-full bg-black/50 hover:bg-black/70"
         >
           <IoMdClose />
         </button>
@@ -64,7 +64,7 @@ const PopupSlider = ({ images = [], isOpen, onClose, title }) => {
         {/* Left Arrow */}
         <button
           onClick={prevSlide}
-          className="
+          className=" cursor-pointer
     absolute 
     left-6 
     text-white text-5xl p-3 bg-black/50 rounded-full hover:bg-black/70 z-50
@@ -78,7 +78,7 @@ const PopupSlider = ({ images = [], isOpen, onClose, title }) => {
         {/* Right Arrow */}
         <button
           onClick={nextSlide}
-          className="
+          className=" cursor-pointer
     absolute 
     right-6 
     text-white text-5xl p-3 bg-black/50 rounded-full hover:bg-black/70 z-50
