@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "@/layouts/MainLayout";
 import ErrorPage from "@/components/shared/ErrorPage";
-import Tours from "../pages/Tours/TOurs";
 
 const Home = lazy(() => import("@/pages/Home/Home"));
 const About = lazy(() => import("@/pages/About/About"));
@@ -43,6 +42,7 @@ const Polonnaruwa = lazy(() =>
 );
 const Galle = lazy(() => import("../pages/Destinations/pages/Galle"));
 const Jaffna = lazy(() => import("../pages/Destinations/pages/Jaffna"));
+const Tours = lazy(() => import("../pages/Tours/ExploreTours"));
 
 export const router = createBrowserRouter([
   {
