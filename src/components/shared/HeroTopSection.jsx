@@ -15,7 +15,7 @@ const HeroTopSection = () => {
       <div className="absolute inset-0 bg-black/40 bg-opacity-50"></div>
 
       {/* Centered content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 max-sm:mt-20">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 max-sm:mt-32">
         <h1
   className="text-7xl max-[400px]:text-5xl max-[500px]:text-6xl sm:text-7xl md:text-8xl font-bold mb-4 max-sm:mb-0"
   style={{ textShadow: "2px 2px 6px rgba(0,0,0,0.7)" }}
@@ -31,8 +31,8 @@ const HeroTopSection = () => {
 </p>
         {/* Buttons row */}
         <div className="flex space-x-10 mt-12">
-          <Button className="max-sm:py-4 lg:py-4 lg:px-10 lg:rounded-full" text="CHECK OUR TOURS"  />
-          <Button className="max-sm:py-4 lg:py-4 lg:px-10 lg:rounded-full" text="WANT CUSTOM TOUR?" />
+          <Button className="max-sm:py-4 lg:py-4 lg:px-10 lg:rounded-full max-sm:text-sm" text="CHECK OUR TOURS"  />
+          <Button className="max-sm:py-4 lg:py-4 lg:px-10 lg:rounded-full max-sm:text-sm" text="WANT CUSTOM TOUR?" />
         </div>
       </div>
     </div>
