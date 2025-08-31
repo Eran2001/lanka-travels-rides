@@ -51,7 +51,7 @@ const Polonnaruwa = () => {
       {/* Banner Image */}
       <div className="relative w-full h-[60vh]">
         <img
-          src="/public/images/polonnaruwa.jpg"
+          src="/images/polonnaruwa.jpg"
           alt="Polonnaruwa"
           className="w-full h-full object-top"
         />
@@ -67,24 +67,43 @@ const Polonnaruwa = () => {
 
       {/* Content Section */}
       <div className="container mx-auto px-6 lg:px-20 py-16 space-y-12">
-        <section ref={(el) => (sectionRefs.current[0] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Overview</h2>
+        <section
+          ref={(el) => (sectionRefs.current[0] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Overview
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            Polonnaruwa, another UNESCO World Heritage Site, showcases the grandeur of Sri Lanka’s medieval kingdom with its stone carvings, temples, and royal ruins.
+            Polonnaruwa, another UNESCO World Heritage Site, showcases the
+            grandeur of Sri Lanka’s medieval kingdom with its stone carvings,
+            temples, and royal ruins.
           </p>
         </section>
 
-        <section ref={(el) => (sectionRefs.current[1] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Key Highlights</h2>
+        <section
+          ref={(el) => (sectionRefs.current[1] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Key Highlights
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            Highlights include the Gal Vihara rock sculptures, the Royal Palace, Parakrama Samudra (vast man-made lake), and Rankoth Vehera stupa.
+            Highlights include the Gal Vihara rock sculptures, the Royal Palace,
+            Parakrama Samudra (vast man-made lake), and Rankoth Vehera stupa.
           </p>
         </section>
 
-        <section ref={(el) => (sectionRefs.current[2] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Best Time to Visit</h2>
+        <section
+          ref={(el) => (sectionRefs.current[2] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Best Time to Visit
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            Best time is July to September for dry weather, though mornings and evenings are pleasant year-round.
+            Best time is July to September for dry weather, though mornings and
+            evenings are pleasant year-round.
           </p>
         </section>
       </div>

@@ -51,7 +51,7 @@ const NuwaraEliya = () => {
       {/* Banner Image */}
       <div className="relative w-full h-[60vh]">
         <img
-          src="/public/images/nwaraEliya.jpg"
+          src="/images/nwaraEliya.jpg"
           alt="Nuwara Eliya"
           className="w-full h-full object-cover"
         />
@@ -67,24 +67,45 @@ const NuwaraEliya = () => {
 
       {/* Content Section */}
       <div className="container mx-auto px-6 lg:px-20 py-16 space-y-12">
-        <section ref={(el) => (sectionRefs.current[0] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Overview</h2>
+        <section
+          ref={(el) => (sectionRefs.current[0] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Overview
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-           Known as “Little England,” Nuwara Eliya is a picturesque hill station surrounded by lush tea plantations, colonial-era buildings, and a cool climate year-round.
+            Known as “Little England,” Nuwara Eliya is a picturesque hill
+            station surrounded by lush tea plantations, colonial-era buildings,
+            and a cool climate year-round.
           </p>
         </section>
 
-        <section ref={(el) => (sectionRefs.current[1] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Key Highlights</h2>
+        <section
+          ref={(el) => (sectionRefs.current[1] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Key Highlights
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            Explore Gregory Lake, Hakgala Botanical Gardens, tea estates, and the scenic landscapes of Horton Plains. The colonial-style golf course and Tudor-style houses add to its charm.
+            Explore Gregory Lake, Hakgala Botanical Gardens, tea estates, and
+            the scenic landscapes of Horton Plains. The colonial-style golf
+            course and Tudor-style houses add to its charm.
           </p>
         </section>
 
-        <section ref={(el) => (sectionRefs.current[2] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Best Time to Visit</h2>
+        <section
+          ref={(el) => (sectionRefs.current[2] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Best Time to Visit
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The best time is April, during the flower season and Nuwara Eliya’s annual festival, but the cool weather makes it a pleasant escape year-round.
+            The best time is April, during the flower season and Nuwara Eliya’s
+            annual festival, but the cool weather makes it a pleasant escape
+            year-round.
           </p>
         </section>
       </div>

@@ -51,7 +51,7 @@ const Anuradhapura = () => {
       {/* Banner Image */}
       <div className="relative w-full h-[60vh]">
         <img
-          src="/public/images/anurdhapura.jpg"
+          src="/images/anurdhapura.jpg"
           alt="Anuradhapura"
           className="w-full h-full object-cover"
         />
@@ -67,24 +67,44 @@ const Anuradhapura = () => {
 
       {/* Content Section */}
       <div className="container mx-auto px-6 lg:px-20 py-16 space-y-12">
-        <section ref={(el) => (sectionRefs.current[0] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Overview</h2>
+        <section
+          ref={(el) => (sectionRefs.current[0] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Overview
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            Anuradhapura is Sri Lanka’s first ancient capital and a UNESCO World Heritage Site, home to some of the most sacred and well-preserved ruins of ancient Sinhalese civilization.
+            Anuradhapura is Sri Lanka’s first ancient capital and a UNESCO World
+            Heritage Site, home to some of the most sacred and well-preserved
+            ruins of ancient Sinhalese civilization.
           </p>
         </section>
 
-        <section ref={(el) => (sectionRefs.current[1] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Key Highlights</h2>
+        <section
+          ref={(el) => (sectionRefs.current[1] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Key Highlights
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            Key sites include the sacred Sri Maha Bodhi tree, Ruwanwelisaya stupa, Jetavanaramaya, and the twin ponds (Kuttam Pokuna). The city is an important pilgrimage site for Buddhists.
+            Key sites include the sacred Sri Maha Bodhi tree, Ruwanwelisaya
+            stupa, Jetavanaramaya, and the twin ponds (Kuttam Pokuna). The city
+            is an important pilgrimage site for Buddhists.
           </p>
         </section>
 
-        <section ref={(el) => (sectionRefs.current[2] = el)} className="opacity-0">
-          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">Best Time to Visit</h2>
+        <section
+          ref={(el) => (sectionRefs.current[2] = el)}
+          className="opacity-0"
+        >
+          <h2 className="text-3xl font-semibold text-[#5c3d2e] mb-4">
+            Best Time to Visit
+          </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The best months are April to September, during the dry season for comfortable exploration.
+            The best months are April to September, during the dry season for
+            comfortable exploration.
           </p>
         </section>
       </div>
