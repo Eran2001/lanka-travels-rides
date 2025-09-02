@@ -65,7 +65,7 @@ const Tours = () => {
                   <td className="py-3 px-4">$70</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="py-3 px-4">KDH Pat Roof</td>
+                  <td className="py-3 px-4">KDH Flat Roof</td>
                   <td className="py-3 px-4">Diesel</td>
                   <td className="py-3 px-4">9</td>
                   <td className="py-3 px-4">Auto</td>
@@ -117,7 +117,7 @@ const Tours = () => {
           <div className="grid md:grid-cols-2 gap-8 text-center">
             <div className="bg-white shadow p-6 rounded-lg">
               <h3 className="text-xl font-bold text-[#5c3d2e] mb-4">
-                KDH Pat Roof
+                KDH Flat Roof
               </h3>
               <p className="text-gray-700 leading-relaxed">
                 One Day: Rs.15,000 ($50)

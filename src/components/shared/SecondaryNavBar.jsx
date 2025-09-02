@@ -55,12 +55,12 @@ const SecondaryNavBar = () => {
           {/* Center - Logo */}
           <NavLink
             to="/"
-            className="absolute left-1/2 transform -translate-x-1/2 flex items-center max-lg:hidden"
+            className="absolute left-1/2 transform -translate-x-1/2 flex items-center max-lg:hidden rounded-md"
           >
             <img
-              src="/images/newLogo.jpg"
+              src="/public/images/logoOriginal.png"
               alt="Logo"
-              className="h-20 w-auto object-contain"
+              className="h-20 w-auto object-contain rounded-md"
             />
           </NavLink>
 
@@ -84,12 +84,12 @@ const SecondaryNavBar = () => {
           {/* Left - Logo (only on mobile) */}
           <NavLink
             to="/"
-            className="flex items-center lg:hidden absolute left-4"
+            className="flex items-center lg:hidden rounded-md absolute left-4"
           >
             <img
-              src="/images/newLogo.jpg"
+              src="/images/logoOriginal.png"
               alt="Logo"
-              className="h-20 w-auto object-contain"
+              className="h-20 w-auto object-contain rounded-md"
             />
           </NavLink>
 
@@ -153,14 +153,14 @@ const SecondaryNavBar = () => {
             <NavLink
               key={item}
               to={
-                item === "Home"
+                item === "HOME"
                   ? "/"
                   : `/${item.toLowerCase().replace(/ /g, "-")}`
               }
               onClick={() => setIsDrawerOpen(false)}
               className={({ isActive }) =>
                 `px-4 py-3 rounded-md text-base font-medium ${
-                  isActive ? "bg-blue-600 text-white" : "hover:bg-blue-100"
+                  isActive ? "bg-primary text-white" : "hover:bg-blue-100"
                 }`
               }
             >

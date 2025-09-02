@@ -9,6 +9,7 @@ import {
   FaLinkedinIn,
   FaPhone,
   FaInstagram,
+  FaTiktok,
 } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 
@@ -130,12 +131,12 @@ const Footer = () => {
             >
               <Link to="/" className="mb-6 inline-block max-w-[160px] ">
                 <img
-                  src="/images/newLogo.jpg"
+                  src="/images/logoOriginal.png"
                   alt="logo"
                   className="max-w-full dark:hidden rounded-md"
                 />
                 <img
-                  src="/images/newLogo.jpg"
+                  src="/images/logoOriginal.png"
                   alt="logo"
                   className="max-w-full h-20 hidden dark:block rounded-md"
                 />
@@ -261,12 +262,15 @@ const Footer = () => {
                     icon: <FaFacebookF />,
                     link: "https://www.facebook.com/share/1F2Ui1Pebg/?mibextid=wwXIfr",
                   },
-                  { icon: <FaXTwitter /> },
+                  {
+                    icon: <FaTiktok />,
+                    link: "https://www.tiktok.com/@lankatravelrides?_t=ZS-8zOZUDZhMMn&_r=1",
+                  },
                   {
                     icon: <FaInstagram />,
-                    link: "https://www.instagram.com/lankatravelrides?igsh=aDlobXhwdjg5aW1t",
+                    link: "https://www.instagram.com/mlrental_?igsh=MW9idW02ZHVlbTNiZQ%3D%3D&utm_source=qr",
                   },
-                  { icon: <FaLinkedinIn /> },
+                  // { icon: <FaLinkedinIn /> },
                 ].map((social, idx) => (
                   <a
                     key={idx}

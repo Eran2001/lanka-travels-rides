@@ -109,7 +109,7 @@ const LuxuryCollectionSection = () => {
         {/* Text Section */}
         <div
           ref={luxuryTextRef}
-          className="w-full lg:w-1/2 text-center lg:text-left flex flex-col justify-center max-md:items-center max-w-full"
+          className="w-full lg:w-1/2 text-center lg:text-left flex flex-col justify-center max-lg:items-center max-w-full"
         >
           <h2 className="text-xl md:text-3xl font-semibold text-[#00513f] mb-3 tracking-wide">
             Why Choose Us

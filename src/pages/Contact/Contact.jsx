@@ -311,7 +311,7 @@ const Contact = () => {
           </h2>
           <div className="flex flex-col lg:flex-row gap-8 w-full items-stretch">
             {/* Left side: 3 cards */}
-            <div className="w-full lg:w-1/2 space-y-8 flex flex-col">
+            {/* <div className="w-full lg:w-1/2 space-y-8 flex flex-col">
               {[
                 {
                   title: "Quick Assistance",
@@ -359,6 +359,45 @@ const Contact = () => {
                   </a>
                 </div>
               ))}
+            </div> */}
+            <div className="w-full lg:w-1/2 flex justify-center items-center">
+              <div
+                ref={qrCodeRef}
+                className="bg-white p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 rounded-lg shadow-lg text-center w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-full flex flex-col justify-center"
+              >
+                <h3 className="text-2xl md:text-3xl font-bold text-[#5c3d2e] mb-6">
+                  Chat with Our UK Team
+                </h3>
+
+                {/* Small QR for small screens */}
+                <div className="block md:hidden">
+                  <QRCodeSVG
+                    value="https://wa.me/+447577461153"
+                    size={200}
+                    bgColor="#ffffff"
+                    fgColor="#5c3d2e"
+                    level="Q"
+                    className="mx-auto"
+                  />
+                </div>
+
+                {/* Large QR for md and up */}
+                <div className="hidden md:block">
+                  <QRCodeSVG
+                    value="https://wa.me/+447577461153"
+                    size={320}
+                    bgColor="#ffffff"
+                    fgColor="#5c3d2e"
+                    level="Q"
+                    className="mx-auto"
+                  />
+                </div>
+
+                <p className="text-gray-600 mt-6 text-center text-base md:text-lg max-w-xl mx-auto">
+                  Based in the UK? Scan this QR code to connect instantly with
+                  our UK team for quick assistance.
+                </p>
+              </div>
             </div>
 
             {/* Right side: QR Code */}
@@ -368,7 +407,7 @@ const Contact = () => {
                 className="bg-white p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 rounded-lg shadow-lg text-center w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-full flex flex-col justify-center"
               >
                 <h3 className="text-2xl md:text-3xl font-bold text-[#5c3d2e] mb-6">
-                  Scan to Chat
+                  Chat with Our Local Team
                 </h3>
 
                 {/* Small QR for small screens */}
@@ -396,7 +435,8 @@ const Contact = () => {
                 </div>
 
                 <p className="text-gray-600 mt-6 text-center text-base md:text-lg max-w-xl mx-auto">
-                  Scan the QR code to message us on WhatsApp instantly.
+                  If you’re in Sri Lanka, scan this QR code to reach our local
+                  support team anytime.
                 </p>
               </div>
             </div>
