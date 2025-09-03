@@ -58,7 +58,7 @@ const SecondaryNavBar = () => {
             className="absolute left-1/2 transform -translate-x-1/2 flex items-center max-lg:hidden rounded-md"
           >
             <img
-              src="/public/images/logoOriginal.png"
+              src="/images/logoOriginal.png"
               alt="Logo"
               className="h-20 w-auto object-contain rounded-md"
             />
