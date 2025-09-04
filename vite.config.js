@@ -11,14 +11,15 @@ const __dirname = path.dirname(__filename);
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: {
-    host: "devlop.lanka-travels-rides.dev-rides.lk",
-    port: 5173,
-    https: false,
-  },
+  base: "/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+  },
+  server: {
+    host: "devlop.lanka-travels-rides.dev-rides.lk",
+    port: 5173,
+    https: false,
   },
 });
