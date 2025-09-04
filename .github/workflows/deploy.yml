@@ -2,7 +2,7 @@ name: Deploy Tourism Site
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
 
 jobs:
   build-and-deploy:
