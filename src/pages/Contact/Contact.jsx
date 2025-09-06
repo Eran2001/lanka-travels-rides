@@ -19,7 +19,8 @@ const Contact = () => {
   const whatsappSectionRef = useRef(null);
   const emailSectionRef = useRef(null);
   const ctaSectionRef = useRef(null);
-  const qrCodeRef = useRef(null); // Dedicated ref for QR code
+  const qrUKRef = useRef(null);
+  const qrLocalRef = useRef(null);
 
   // Initialize EmailJS with your Public Key
   useEffect(() => {
@@ -191,22 +192,36 @@ const Contact = () => {
           console.warn("No WhatsApp cards found, skipping card animations");
         }
 
-        // Animate QR code
-        if (qrCodeRef.current) {
+        // Animate UK QR code
+        if (qrUKRef.current) {
           gsap.fromTo(
-            qrCodeRef.current,
+            qrUKRef.current,
             { scale: 0, y: 30, opacity: 0 },
             {
               scale: 1,
               y: 0,
               opacity: 1,
               duration: 0.6,
-              ease: "elastic.out(1, 0.8)", // Matches easeOutElastic(1, 0.8)
+              ease: "elastic.out(1, 0.8)",
               delay: 0.8,
             }
           );
-        } else {
-          console.warn("QR code ref is null, skipping QR code animation");
+        }
+
+        // Animate Local QR code
+        if (qrLocalRef.current) {
+          gsap.fromTo(
+            qrLocalRef.current,
+            { scale: 0, y: 30, opacity: 0 },
+            {
+              scale: 1,
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              ease: "elastic.out(1, 0.8)",
+              delay: 1,
+            }
+          );
         }
       }
 
@@ -362,7 +377,7 @@ const Contact = () => {
             </div> */}
             <div className="w-full lg:w-1/2 flex justify-center items-center">
               <div
-                ref={qrCodeRef}
+                ref={qrUKRef}
                 className="bg-white p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 rounded-lg shadow-lg text-center w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-full flex flex-col justify-center"
               >
                 <h3 className="text-2xl md:text-3xl font-bold text-[#5c3d2e] mb-6">
@@ -374,6 +389,7 @@ const Contact = () => {
                   <QRCodeSVG
                     value="https://wa.me/+447577461153"
                     size={200}
+                    ref={qrUKRef}
                     bgColor="#ffffff"
                     fgColor="#5c3d2e"
                     level="Q"
@@ -403,7 +419,7 @@ const Contact = () => {
             {/* Right side: QR Code */}
             <div className="w-full lg:w-1/2 flex justify-center items-center">
               <div
-                ref={qrCodeRef}
+                ref={qrLocalRef}
                 className="bg-white p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 rounded-lg shadow-lg text-center w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-full flex flex-col justify-center"
               >
                 <h3 className="text-2xl md:text-3xl font-bold text-[#5c3d2e] mb-6">

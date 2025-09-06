@@ -131,12 +131,12 @@ const Footer = () => {
             >
               <Link to="/" className="mb-6 inline-block max-w-[160px] ">
                 <img
-                  src="/images/logoOriginal.png"
+                  src="/images/lastLogo.jpg"
                   alt="logo"
                   className="max-w-full dark:hidden rounded-md"
                 />
                 <img
-                  src="/images/logoOriginal.png"
+                  src="/images/lastLogo.jpg"
                   alt="logo"
                   className="max-w-full h-20 hidden dark:block rounded-md"
                 />

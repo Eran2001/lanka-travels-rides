@@ -44,6 +44,9 @@ const Galle = lazy(() => import("../pages/Destinations/pages/Galle"));
 const Jaffna = lazy(() => import("../pages/Destinations/pages/Jaffna"));
 const Tours = lazy(() => import("../pages/Tours/ExploreTours"));
 
+const EllaDay = lazy(() => import("../pages/day-tours/EllaDayTour"));
+const KandyDay = lazy(() => import("../pages/day-tours/KandyDayTour"));
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -80,6 +83,8 @@ export const router = createBrowserRouter([
       { path: "discover-sri-lanka/jaffna", element: <Jaffna /> },
       { path: "discover-sri-lanka", element: <Destinations /> },
       { path: "explore-tours", element: <Tours /> },
+      { path: "day-tours/ella-day-tour", element: <EllaDay /> },
+      { path: "day-tours/kandy-day-tour", element: <KandyDay /> },
     ],
   },
 ]);
